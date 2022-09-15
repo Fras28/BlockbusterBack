@@ -9,9 +9,11 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const init_1 = __importDefault(require("./db/init"));
+const routes_1 = __importDefault(require("./controller/routes"));
 dotenv_1.default.config();
 (0, init_1.default)();
 const app = (0, express_1.default)();
+const port = process.env.PORT || 3000;
 app.use(body_parser_1.default.urlencoded({ extended: true, limit: "50mb" }));
 app.use(body_parser_1.default.json({ limit: "50mb" }));
 app.use((0, cookie_parser_1.default)());
@@ -23,5 +25,7 @@ app.use((_req, res, next) => {
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     next();
 });
-app.listen(3000);
-console.log("Estoy siendo escuchado");
+app.use("", routes_1.default);
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});

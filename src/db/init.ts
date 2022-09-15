@@ -1,4 +1,4 @@
-import Blockbuster from "./models/Blockbuster";
+import Blockbuster from "./models/blockbuster.model";
 
 const dbInit = () => Promise.all([Blockbuster.sync({ alter: true })]);
 
