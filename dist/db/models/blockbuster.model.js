@@ -11,18 +11,24 @@ Blockbuster.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true,
+        primaryKey: true
     },
     name: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
     year: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
     genre: {
         type: sequelize_1.DataTypes.STRING,
     },
+    poster: {
+        type: sequelize_1.DataTypes.STRING
+    },
+    country: {
+        type: sequelize_1.DataTypes.STRING
+    }
 }, { sequelize: db_1.default, paranoid: true });
 exports.default = Blockbuster;
