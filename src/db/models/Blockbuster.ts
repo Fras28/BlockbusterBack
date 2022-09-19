@@ -2,16 +2,16 @@ import { DataType, DataTypes, Model, ModelStatic, Optional } from "sequelize";
 import sequelizeConnection from "../db";
 
 interface BlockbusterAttributes {
-  id: number;
+  id?: number;
   name: string;
-  year: number;
+  year: string;
   genre: string;
 }
 
 class Blockbuster extends Model<BlockbusterAttributes> {
   public id!: number;
   public name!: string;
-  public year!: number;
+  public year!: string;
   public genre!: string;
 
   public readonly createdAt!: Date;
@@ -31,7 +31,7 @@ Blockbuster.init(
       allowNull: false,
     },
     year: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     genre: {

@@ -18,7 +18,7 @@ Blockbuster.init({
         allowNull: false,
     },
     year: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
     genre: {
