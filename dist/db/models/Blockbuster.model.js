@@ -49,5 +49,11 @@ Blockbuster.init({
     country: {
         type: sequelize_1.DataTypes.STRING,
     },
+    imdbVotes: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    imdbRating: {
+        type: sequelize_1.DataTypes.STRING,
+    },
 }, { sequelize: db_1.default, paranoid: true });
 exports.default = Blockbuster;

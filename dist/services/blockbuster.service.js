@@ -26,7 +26,7 @@ class BlockbusterService {
         return __awaiter(this, void 0, void 0, function* () {
             MoviesArr.map((e) => __awaiter(this, void 0, void 0, function* () {
                 let films = yield axios_1.default.get(url, { params: { t: e, apikey: apiKey } });
-                const { Title: name, Year: year, Genre: genre, Poster: poster, Country: country, Rated: rated, Released: released, Runtime: runtime, Director: director, Actors: actors, Plot: plot, Language: language, } = films.data;
+                const { Title: name, Year: year, Genre: genre, Poster: poster, Country: country, Rated: rated, Released: released, Runtime: runtime, Director: director, Actors: actors, Plot: plot, Language: language, imdbVotes: imdbVotes, imdbRating: imdbRating } = films.data;
                 yield this.insertOne({
                     name,
                     year,
@@ -40,6 +40,8 @@ class BlockbusterService {
                     actors,
                     plot,
                     language,
+                    imdbVotes,
+                    imdbRating
                 });
             }));
             return;

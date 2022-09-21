@@ -17,6 +17,9 @@ type Movie = {
   actors: string;
   plot: string;
   language: string;
+  imdbVotes: string;
+  imdbRating: string;
+
 };
 
 export class BlockbusterService {
@@ -39,6 +42,8 @@ export class BlockbusterService {
         Actors: actors,
         Plot: plot,
         Language: language,
+        imdbVotes:imdbVotes ,
+        imdbRating: imdbRating
       } = films.data;
       
       await this.insertOne({
@@ -54,6 +59,8 @@ export class BlockbusterService {
         actors,
         plot,
         language,
+        imdbVotes,
+        imdbRating
       });
     });
     return;

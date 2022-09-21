@@ -2,6 +2,8 @@ import Blockbuster from "./models/Blockbuster.model";
 import Comments from "./models/Coments.model";
 import User from "./models/Users.model";
 import MoviesComents from "./models/MoviesComents.model";
+import UsersMovies from "./models/UsersMovies.model"
+import UsersComments from "./models/UsersComments.model"
 
 const dbInit = () =>
   Promise.all([
@@ -9,6 +11,8 @@ const dbInit = () =>
     Comments.sync({ alter: true }),
     User.sync({ alter: true }),
     MoviesComents.sync({ alter: true }),
+    UsersMovies.sync({alter: true}),
+    UsersComments.sync({alter: true})
   ]);
 
 export default dbInit;

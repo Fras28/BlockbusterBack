@@ -11,10 +11,10 @@ Users.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
     },
     name: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
     },
     lastname: {
         type: sequelize_1.DataTypes.STRING,
@@ -28,5 +28,15 @@ Users.init({
     email: {
         type: sequelize_1.DataTypes.STRING,
     },
+    status: {
+        type: sequelize_1.DataTypes.BOOLEAN,
+    },
+    category: {
+        type: sequelize_1.DataTypes.STRING,
+        // .ENUM("user", "silver", "gold", "admin"),
+        // defaultValue: "user",
+    },
 }, { sequelize: db_1.default, paranoid: true });
+// season:{
+// type: DataTypes.ENUM("summer", "autumn","winter","spring")},
 exports.default = Users;

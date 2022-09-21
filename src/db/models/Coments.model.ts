@@ -11,8 +11,6 @@ interface ComentsAttributes {
   picture:string;
 }
 
-
-
 class Comments extends Model<ComentsAttributes> {
   public id!: number;
   public name!: string;

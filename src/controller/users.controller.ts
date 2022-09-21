@@ -1,10 +1,8 @@
-import Blockbuster from "../db/models/Blockbuster.model";
-import { BlockbusterService } from "../services/blockbuster.service";
 import { Request, Response} from "express";
 import Users from "../db/models/Users.model";
-import { userService } from "../services/user.service";
+import { UserService } from "../services/user.service"
 
-const usersService = new userService(new Users());
+export const usersService = new UserService(new Users());
 
 export const addUser = async (req:Request, res: Response) => {
     console.log(req);

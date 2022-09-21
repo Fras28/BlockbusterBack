@@ -12,14 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addUser = void 0;
+exports.addUser = exports.usersService = void 0;
 const Users_model_1 = __importDefault(require("../db/models/Users.model"));
 const user_service_1 = require("../services/user.service");
-const usersService = new user_service_1.userService(new Users_model_1.default());
+exports.usersService = new user_service_1.UserService(new Users_model_1.default());
 const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(req);
     try {
-        const dbUser = yield usersService.insertUser(req.body);
+        const dbUser = yield exports.usersService.insertUser(req.body);
         console.log(dbUser);
         return res.status(200).send(dbUser);
     }

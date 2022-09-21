@@ -16,6 +16,8 @@ interface BlockbusterAttributes {
   plot: string;
   language: string;
   country: string;
+  imdbVotes: string;
+  imdbRating: string;
 }
 
 class Blockbuster extends Model<BlockbusterAttributes> {
@@ -32,6 +34,8 @@ class Blockbuster extends Model<BlockbusterAttributes> {
   public plot!: string;
   public language!: string;
   public country!: string;
+  public imdbVotes!: string;
+  public imdbRating!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -57,23 +61,18 @@ Blockbuster.init(
     poster: {
       type: DataTypes.STRING,
     },
-    
     rated: {
       type: DataTypes.STRING,
     },
-    
     released: {
       type: DataTypes.STRING,
     },
-    
     runtime: {
       type: DataTypes.STRING,
     },
-    
     director: {
       type: DataTypes.STRING,
     },
-    
     actors: {
       type: DataTypes.STRING,
     },
@@ -84,6 +83,12 @@ Blockbuster.init(
       type: DataTypes.STRING,
     },
     country: {
+      type: DataTypes.STRING,
+    },
+    imdbVotes: {
+      type: DataTypes.STRING,
+    },
+    imdbRating: {
       type: DataTypes.STRING,
     },
   },

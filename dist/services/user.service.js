@@ -12,18 +12,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userService = void 0;
+exports.UserService = void 0;
 const Users_model_1 = __importDefault(require("../db/models/Users.model"));
-class userService {
+class UserService {
     constructor(userModel) {
         this.userModel = userModel;
     }
     //-------------Crear Usuario --------
     insertUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(user);
-            return yield Users_model_1.default.create(user, { validate: true });
+            const insertedUser = yield Users_model_1.default.create(user, { validate: true });
+            return insertedUser;
+        });
+    }
+    defineCategory(category, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userX = yield Users_model_1.default.update({ category }, { where: { id } });
+            return userX;
+        });
+    }
+    banUser(status, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userX = yield Users_model_1.default.update({ status }, { where: { id } });
+            return userX;
         });
     }
 }
-exports.userService = userService;
+exports.UserService = UserService;
