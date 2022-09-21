@@ -1,12 +1,12 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from "../db";
-import Blockbuster from './Blockbuster'
+import Blockbuster from './Blockbuster.model'
 import Comments from './Coments.model'
 
 interface MoviesComentsAttributes {
     id ?: number;
-    blockbusterId : number;
-    comentsId : number;
+    blockbusterId? : number;
+    comentsId? : number;
     createdAt ?: Date;
     updatedAt ?: Date;
     deletedAt ?: Date;
@@ -51,12 +51,5 @@ MoviesComents.init({
     sequelize: sequelizeConnection
 })
 
-Blockbuster.belongsToMany(Comments, {
-    through: MoviesComents
-})
-
-Comments.belongsToMany(Blockbuster, {
-    through: MoviesComents
-})
 
 export default MoviesComents;

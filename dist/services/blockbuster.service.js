@@ -16,18 +16,10 @@ exports.BlockbusterService = void 0;
 const axios_1 = __importDefault(require("axios"));
 const Blockbuster_model_1 = __importDefault(require("../db/models/Blockbuster.model"));
 const url = `http://www.omdbapi.com/?t=`;
-const apiKey = `8c217066`;
+const apiKey = `d92c2f98`;
 class BlockbusterService {
     constructor(blockbusterModel) {
         this.blockbusterModel = blockbusterModel;
-    }
-    //-----------------Metodo para traer peliculas de Base de Datos-----
-    getAll() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const blockbusterRows = yield Blockbuster_model_1.default.findAll();
-            console.log(blockbusterRows.length);
-            return blockbusterRows;
-        });
     }
     //------------Metodo para llenar Base de Datos-------
     fullDataBase(MoviesArr) {
@@ -46,13 +38,19 @@ class BlockbusterService {
             return;
         });
     }
-    //  async insertMany (listOfFilms:Movie[]){
-    //   const filtMovies: any = listOfFilms.filter((c) => c !== undefined);
-    //   await  Blockbuster.bulkCreate(filtMovies, { validate: true });
-    //  }
+    //-----------------Metodo para traer peliculas de Base de Datos-----
+    getAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const blockbusterRows = yield Blockbuster_model_1.default.findAll();
+            console.log(blockbusterRows.length);
+            return blockbusterRows;
+        });
+    }
+    //----------------- Creador de peliculas -------
     insertOne(movie) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield Blockbuster_model_1.default.create(movie, { validate: true });
+            console.log(movie);
+            return yield Blockbuster_model_1.default.create(movie, { validate: true });
         });
     }
 }

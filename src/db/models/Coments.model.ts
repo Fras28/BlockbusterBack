@@ -1,6 +1,7 @@
 import { json } from "body-parser";
-import {  DataTypes, Model } from "sequelize";
+import {  DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from "../db";
+import Blockbuster from "./Blockbuster.model";
 
 interface ComentsAttributes {
   id?: number;
@@ -9,6 +10,8 @@ interface ComentsAttributes {
   coment:string;
   picture:string;
 }
+
+
 
 class Comments extends Model<ComentsAttributes> {
   public id!: number;
@@ -28,26 +31,28 @@ Comments.init(
       type: DataTypes.INTEGER,
       autoIncrement:true,
       primaryKey:true
+
     },
     name:{
         type:DataTypes.STRING,
-        primaryKey:true
     },
     nickname:{
         type:DataTypes.STRING,
-        primaryKey:true
+
     },
     coment:{
         type:DataTypes.STRING(300),
-        primaryKey:true
+
     },
     picture:{
         type:DataTypes.STRING,
-        primaryKey:true
+   
     },
 
   },
 { sequelize: sequelizeConnection, paranoid: true }
 );
+
+
 
 export default Comments;

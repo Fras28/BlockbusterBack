@@ -14,7 +14,7 @@ Users.init({
         primaryKey: true
     },
     name: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.STRING
     },
     lastname: {
         type: sequelize_1.DataTypes.STRING,

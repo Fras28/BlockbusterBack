@@ -26,33 +26,26 @@ class Users extends Model<UsersAttributes> {
 
 Users.init(
   {
-      id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement:true,
       primaryKey:true
     },
-    name:{
-        type:DataTypes.STRING,
-        primaryKey:true
-    },
-    lastname:{
-        type:DataTypes.STRING,
-        primaryKey:true
-    },
-    nickname:{
-        type:DataTypes.STRING,
-        primaryKey:true
-    },
-    picture:{
-        type:DataTypes.STRING,
-        primaryKey:true
-    },
-    email:{
-        type:DataTypes.STRING,
-        primaryKey:true
-    },
-
-
+   name:{
+    type:DataTypes.STRING
+   },
+   lastname:{
+    type:DataTypes.STRING,
+},
+nickname:{
+  type:DataTypes.STRING,
+},
+picture:{
+  type:DataTypes.STRING,
+},
+email:{
+  type:DataTypes.STRING,
+},
   },
   { sequelize: sequelizeConnection, paranoid: true }
 );

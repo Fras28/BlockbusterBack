@@ -11,12 +11,12 @@ class MoviesComents extends sequelize_1.Model {
 }
 MoviesComents.init({
     id: {
-        type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
+        type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
     blockbusterId: {
-        type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
+        type: sequelize_1.DataTypes.INTEGER,
         references: {
             model: Blockbuster_model_1.default,
             key: 'id'
@@ -31,11 +31,5 @@ MoviesComents.init({
     }
 }, {
     sequelize: db_1.default
-});
-Blockbuster_model_1.default.belongsToMany(Coments_model_1.default, {
-    through: MoviesComents
-});
-Coments_model_1.default.belongsToMany(Blockbuster_model_1.default, {
-    through: MoviesComents
 });
 exports.default = MoviesComents;

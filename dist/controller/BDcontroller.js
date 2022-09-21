@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fullDbMovies = exports.getAllMovies = void 0;
+exports.addMovie = exports.fullDbMovies = exports.getAllMovies = void 0;
 const Blockbuster_model_1 = __importDefault(require("../db/models/Blockbuster.model"));
 const blockbuster_service_1 = require("../services/blockbuster.service");
 const infoSec_1 = require("../infoSec");
@@ -42,4 +42,16 @@ const fullDbMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.fullDbMovies = fullDbMovies;
+const addMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req);
+    try {
+        const dbMovie = yield blockbusterService.insertOne(req.body);
+        console.log(dbMovie);
+        return res.status(200).send(dbMovie);
+    }
+    catch (e) {
+        return res.status(404).send(e);
+    }
+});
+exports.addMovie = addMovie;
 // :D
