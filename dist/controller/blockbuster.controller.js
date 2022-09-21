@@ -18,6 +18,7 @@ const blockbuster_service_1 = require("../services/blockbuster.service");
 const infoSec_1 = require("../infoSec");
 const filmsName = infoSec_1.MoviesArr;
 const blockbusterService = new blockbuster_service_1.BlockbusterService(new Blockbuster_model_1.default());
+//MEDIANTE EL SERVICIO HACE EL GET A LA API
 const getAllMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield blockbusterService.getAll();
@@ -28,6 +29,7 @@ const getAllMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.getAllMovies = getAllMovies;
+//MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 const fullDbMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dbMovies = yield blockbusterService.getAll();
@@ -38,10 +40,11 @@ const fullDbMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         return res.status(200).send(dbMovies);
     }
     catch (e) {
-        return res.status(404).send("films not found in db");
+        return res.status(404).send("films not found in db!");
     }
 });
 exports.fullDbMovies = fullDbMovies;
+//POST PARA CREAR PELICULAS
 const addMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(req);
     try {
@@ -54,4 +57,3 @@ const addMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.addMovie = addMovie;
-// :D

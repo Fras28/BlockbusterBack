@@ -26,13 +26,20 @@ class BlockbusterService {
         return __awaiter(this, void 0, void 0, function* () {
             MoviesArr.map((e) => __awaiter(this, void 0, void 0, function* () {
                 let films = yield axios_1.default.get(url, { params: { t: e, apikey: apiKey } });
-                const { Title: name, Year: year, Genre: genre, Poster: poster, Country: country, } = films.data;
+                const { Title: name, Year: year, Genre: genre, Poster: poster, Country: country, Rated: rated, Released: released, Runtime: runtime, Director: director, Actors: actors, Plot: plot, Language: language, } = films.data;
                 yield this.insertOne({
                     name,
                     year,
                     genre,
                     poster,
                     country,
+                    rated,
+                    released,
+                    runtime,
+                    director,
+                    actors,
+                    plot,
+                    language,
                 });
             }));
             return;

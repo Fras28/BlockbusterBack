@@ -10,12 +10,17 @@ type Movie = {
   genre: string;
   poster: string;
   country: string;
+  rated: string;
+  released: string;
+  runtime: string;
+  director: string;
+  actors: string;
+  plot: string;
+  language: string;
 };
-
 
 export class BlockbusterService {
   constructor(private blockbusterModel: Blockbuster) {}
- 
 
   //------------Metodo para llenar Base de Datos-------
   async fullDataBase(MoviesArr: string[]) {
@@ -27,26 +32,43 @@ export class BlockbusterService {
         Genre: genre,
         Poster: poster,
         Country: country,
+        Rated: rated,
+        Released: released,
+        Runtime: runtime,
+        Director: director,
+        Actors: actors,
+        Plot: plot,
+        Language: language,
       } = films.data;
+      
       await this.insertOne({
         name,
         year,
         genre,
         poster,
         country,
+        rated,
+        released,
+        runtime,
+        director,
+        actors,
+        plot,
+        language,
       });
     });
     return;
   }
- //-----------------Metodo para traer peliculas de Base de Datos-----
+
+  //-----------------Metodo para traer peliculas de Base de Datos-----
   async getAll() {
     const blockbusterRows = await Blockbuster.findAll();
     console.log(blockbusterRows.length);
     return blockbusterRows;
   }
+
   //----------------- Creador de peliculas -------
   async insertOne(movie: Movie) {
-    console.log(movie)
+    console.log(movie);
     return await Blockbuster.create(movie, { validate: true });
   }
 }

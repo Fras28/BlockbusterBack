@@ -1,7 +1,7 @@
-import { Router } from "express";
-import BLockbusterController from "./blockbuster.routes";
+// import { Router } from "express";
+// import BLockbusterController from "./blockbuster.routes";
 
-const router = Router();
+// const router = Router();
 
-router.use("/movies", BLockbusterController);
-export default router;
+// router.use("/movies", BLockbusterController);
+// export default router;

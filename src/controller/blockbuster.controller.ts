@@ -7,6 +7,7 @@ const filmsName = MoviesArr;
 
 const blockbusterService = new BlockbusterService(new Blockbuster());
 
+//MEDIANTE EL SERVICIO HACE EL GET A LA API
 export const getAllMovies = async (req: Request, res: Response) => {
   try {
     const result = await blockbusterService.getAll();
@@ -17,6 +18,7 @@ export const getAllMovies = async (req: Request, res: Response) => {
   }
 };
 
+//MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 export const fullDbMovies = async (req: Request, res: Response) => {
   try {
     const dbMovies = await blockbusterService.getAll();
@@ -27,10 +29,11 @@ export const fullDbMovies = async (req: Request, res: Response) => {
     }
     return res.status(200).send(dbMovies);
   } catch (e) {
-    return res.status(404).send("films not found in db");
+    return res.status(404).send("films not found in db!");
   }
 };
 
+//POST PARA CREAR PELICULAS
 export const addMovie = async (req: Request, res: Response) => {
   console.log(req);
   try {
@@ -43,4 +46,4 @@ export const addMovie = async (req: Request, res: Response) => {
 
 };
 
-// :D
+

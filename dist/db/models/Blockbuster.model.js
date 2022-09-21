@@ -25,5 +25,29 @@ Blockbuster.init({
     poster: {
         type: sequelize_1.DataTypes.STRING,
     },
+    rated: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    released: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    runtime: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    director: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    actors: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    language: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    plot: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    country: {
+        type: sequelize_1.DataTypes.STRING,
+    },
 }, { sequelize: db_1.default, paranoid: true });
 exports.default = Blockbuster;
