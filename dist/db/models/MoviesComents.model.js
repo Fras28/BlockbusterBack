@@ -5,20 +5,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
-const Blockbuster_1 = __importDefault(require("./Blockbuster"));
+const Blockbuster_model_1 = __importDefault(require("./Blockbuster.model"));
 const Coments_model_1 = __importDefault(require("./Coments.model"));
 class MoviesComents extends sequelize_1.Model {
 }
 MoviesComents.init({
     id: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
         autoIncrement: true,
         primaryKey: true,
     },
     blockbusterId: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
         references: {
-            model: Blockbuster_1.default,
+            model: Blockbuster_model_1.default,
             key: 'id'
         }
     },
@@ -32,10 +32,10 @@ MoviesComents.init({
 }, {
     sequelize: db_1.default
 });
-Blockbuster_1.default.belongsToMany(Coments_model_1.default, {
+Blockbuster_model_1.default.belongsToMany(Coments_model_1.default, {
     through: MoviesComents
 });
-Coments_model_1.default.belongsToMany(Blockbuster_1.default, {
+Coments_model_1.default.belongsToMany(Blockbuster_model_1.default, {
     through: MoviesComents
 });
 exports.default = MoviesComents;

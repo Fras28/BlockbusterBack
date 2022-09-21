@@ -5,25 +5,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
-class Comments extends sequelize_1.Model {
+class Blockbuster extends sequelize_1.Model {
 }
-Comments.init({
+Blockbuster.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
     },
     name: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
-    nickname: {
+    year: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
-    coment: {
-        type: sequelize_1.DataTypes.STRING(300),
-    },
-    picture: {
+    genre: {
         type: sequelize_1.DataTypes.STRING,
     },
 }, { sequelize: db_1.default, paranoid: true });
-exports.default = Comments;
+exports.default = Blockbuster;

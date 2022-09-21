@@ -15,23 +15,18 @@ Users.init({
     },
     name: {
         type: sequelize_1.DataTypes.STRING,
-        primaryKey: true
     },
     lastname: {
         type: sequelize_1.DataTypes.STRING,
-        primaryKey: true
     },
     nickname: {
         type: sequelize_1.DataTypes.STRING,
-        primaryKey: true
     },
     picture: {
         type: sequelize_1.DataTypes.STRING,
-        primaryKey: true
     },
     email: {
         type: sequelize_1.DataTypes.STRING,
-        primaryKey: true
     },
 }, { sequelize: db_1.default, paranoid: true });
 exports.default = Users;
