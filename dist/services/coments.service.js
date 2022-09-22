@@ -24,7 +24,6 @@ class CommentService {
             return inserComment;
         });
     }
-    ;
     editComment(coment, id) {
         return __awaiter(this, void 0, void 0, function* () {
             Coments_model_1.default.update({ coment }, { where: { id } });

@@ -19,7 +19,7 @@ type Movie = {
   language: string;
   imdbVotes: string;
   imdbRating: string;
-
+  status:boolean;
 };
 
 export class BlockbusterService {
@@ -42,10 +42,10 @@ export class BlockbusterService {
         Actors: actors,
         Plot: plot,
         Language: language,
-        imdbVotes:imdbVotes ,
-        imdbRating: imdbRating
+        imdbVotes: imdbVotes,
+        imdbRating: imdbRating,
       } = films.data;
-      
+
       await this.insertOne({
         name,
         year,
@@ -60,10 +60,11 @@ export class BlockbusterService {
         plot,
         language,
         imdbVotes,
-        imdbRating
+        imdbRating,
+        status:true,
       });
     });
-    return;
+    return "Data Base full filed";
   }
 
   //-----------------Metodo para traer peliculas de Base de Datos-----

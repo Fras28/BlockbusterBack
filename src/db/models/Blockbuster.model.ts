@@ -18,6 +18,7 @@ interface BlockbusterAttributes {
   country: string;
   imdbVotes: string;
   imdbRating: string;
+  status:boolean;
 }
 
 class Blockbuster extends Model<BlockbusterAttributes> {
@@ -36,6 +37,7 @@ class Blockbuster extends Model<BlockbusterAttributes> {
   public country!: string;
   public imdbVotes!: string;
   public imdbRating!: string;
+  public status!: boolean;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -91,6 +93,9 @@ Blockbuster.init(
     imdbRating: {
       type: DataTypes.STRING,
     },
+    status:{
+      type:DataTypes.BOOLEAN,
+    }
   },
   { sequelize: sequelizeConnection, paranoid: true }
 );

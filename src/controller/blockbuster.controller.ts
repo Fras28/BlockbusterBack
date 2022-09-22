@@ -15,7 +15,7 @@ const blockbusterService = new BlockbusterService(new Blockbuster());
 //     return res.status(200).send(result);
 //   } catch (e) {
 //     return res.status(404).send("films not found");
-//   }
+//   }successfully
 // };
 
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD

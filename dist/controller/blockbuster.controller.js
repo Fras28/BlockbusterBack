@@ -25,7 +25,7 @@ const blockbusterService = new blockbuster_service_1.BlockbusterService(new Bloc
 //     return res.status(200).send(result);
 //   } catch (e) {
 //     return res.status(404).send("films not found");
-//   }
+//   }successfully
 // };
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 const fullDbMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

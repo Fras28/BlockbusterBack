@@ -55,5 +55,8 @@ Blockbuster.init({
     imdbRating: {
         type: sequelize_1.DataTypes.STRING,
     },
+    status: {
+        type: sequelize_1.DataTypes.BOOLEAN,
+    }
 }, { sequelize: db_1.default, paranoid: true });
 exports.default = Blockbuster;

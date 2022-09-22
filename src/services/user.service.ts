@@ -1,7 +1,6 @@
 import Users from "../db/models/Users.model";
 
-
- type Category =  "user" | "silver" | "gold" | "admin";
+type Category = "user" | "silver" | "gold";
 
 type User = {
   name: string;
@@ -10,26 +9,22 @@ type User = {
   picture: string;
   email: string;
   status: boolean;
-  category:Category;
+  category: Category;
 };
 
-export class UserService{
+export class UserService {
   constructor(private userModel: Users) {}
   //-------------Crear Usuario --------
-  async insertUser(user: User) { 
+  async insertUser(user: User) {
     const insertedUser = await Users.create(user, { validate: true });
-    return insertedUser  }
+    return insertedUser;
+  }
   async defineCategory(category: Category, id: number) {
-    let userX =   await Users.update({ category }, { where: { id } });
+    let userX = await Users.update({ category }, { where: { id } });
     return userX;
   }
-  async banUser(status: boolean, id: number) {
-    let userX = await Users.update({ status }, { where: { id } });
-    return userX;
-  }
-  async changePic(picture:string, id: number) {
+  async changePic(picture: string, id: number) {
     let userX = await Users.update({ picture }, { where: { id } });
     return userX;
   }
 }
-

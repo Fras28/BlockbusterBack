@@ -8,8 +8,6 @@ const router = Router();
 
 //router.get("/home", getAllMovies);
 router.get("/",fullDbMovies)
-
-
 router.post('/addM', addMovie)
 router.post('/newU', addUser)
 

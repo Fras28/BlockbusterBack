@@ -31,12 +31,6 @@ class UserService {
             return userX;
         });
     }
-    banUser(status, id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield Users_model_1.default.update({ status }, { where: { id } });
-            return userX;
-        });
-    }
     changePic(picture, id) {
         return __awaiter(this, void 0, void 0, function* () {
             let userX = yield Users_model_1.default.update({ picture }, { where: { id } });
