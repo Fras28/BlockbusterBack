@@ -11,24 +11,52 @@ Blockbuster.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
     },
     name: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
     },
     year: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
     },
     genre: {
         type: sequelize_1.DataTypes.STRING,
     },
     poster: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
+    },
+    rated: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    released: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    runtime: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    director: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    actors: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    language: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    plot: {
+        type: sequelize_1.DataTypes.STRING,
     },
     country: {
-        type: sequelize_1.DataTypes.STRING
+        type: sequelize_1.DataTypes.STRING,
+    },
+    imdbVotes: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    imdbRating: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    status: {
+        type: sequelize_1.DataTypes.BOOLEAN,
     }
 }, { sequelize: db_1.default, paranoid: true });
 exports.default = Blockbuster;
