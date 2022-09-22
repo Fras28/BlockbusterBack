@@ -9,7 +9,7 @@ class Blockbuster extends sequelize_1.Model {
 }
 Blockbuster.init({
     id: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
         autoIncrement: true,
         primaryKey: true,
     },
