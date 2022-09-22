@@ -13,6 +13,9 @@ const dbInit = () => Promise.all([
     Blockbuster_model_1.default.sync({ alter: true }),
     Coments_model_1.default.sync({ alter: true }),
     Users_model_1.default.sync({ alter: true }),
+])
+    .then(dbInit2);
+const dbInit2 = () => ([
     MoviesComents_model_1.default.sync({ alter: true }),
     UsersMovies_model_1.default.sync({ alter: true }),
     UsersComments_model_1.default.sync({ alter: true })

@@ -27,5 +27,9 @@ export class UserService{
     let userX = await Users.update({ status }, { where: { id } });
     return userX;
   }
+  async changePic(picture:string, id: number) {
+    let userX = await Users.update({ picture }, { where: { id } });
+    return userX;
+  }
 }
 

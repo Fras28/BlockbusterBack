@@ -12,30 +12,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addMovie = exports.fullDbMovies = exports.getAllMovies = void 0;
+exports.addMovie = exports.fullDbMovies = void 0;
 const Blockbuster_model_1 = __importDefault(require("../db/models/Blockbuster.model"));
 const blockbuster_service_1 = require("../services/blockbuster.service");
 const infoSec_1 = require("../infoSec");
 const filmsName = infoSec_1.MoviesArr;
 const blockbusterService = new blockbuster_service_1.BlockbusterService(new Blockbuster_model_1.default());
 //MEDIANTE EL SERVICIO HACE EL GET A LA API
-const getAllMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const result = yield blockbusterService.getAll();
-        return res.status(200).send(result);
-    }
-    catch (e) {
-        return res.status(404).send("films not found");
-    }
-});
-exports.getAllMovies = getAllMovies;
+// export const getAllMovies = async (req: Request, res: Response) => {
+//   try {
+//     const result = await blockbusterService.getAll();
+//     return res.status(200).send(result);
+//   } catch (e) {
+//     return res.status(404).send("films not found");
+//   }
+// };
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 const fullDbMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const dbMovies = yield blockbusterService.getAll();
+        const dbMovies = yield Blockbuster_model_1.default.findAll();
         if (dbMovies.length === 0) {
-            const inserMovies = yield blockbusterService.fullDataBase(filmsName);
-            return res.status(200).send(inserMovies);
+            yield blockbusterService.fullDataBase(filmsName);
+            const dbMovies = yield Blockbuster_model_1.default.findAll();
+            return res.status(200).send(dbMovies);
         }
         return res.status(200).send(dbMovies);
     }
