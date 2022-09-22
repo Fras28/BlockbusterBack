@@ -1,8 +1,10 @@
 import axios from "axios";
+
 import Blockbuster from "../db/models/Blockbuster.model";
 import Users from "../db/models/Users.model";
 const url: string = `http://www.omdbapi.com/?t=`;
 const apiKey: string = `d92c2f98`;
+
 
 type Movie = {
   name: string;
@@ -10,6 +12,7 @@ type Movie = {
   genre: string;
   poster: string;
   country: string;
+
   rated: string;
   released: string;
   runtime: string;
@@ -20,10 +23,12 @@ type Movie = {
   imdbVotes: string;
   imdbRating: string;
   status:boolean;
+
 };
 
 export class BlockbusterService {
   constructor(private blockbusterModel: Blockbuster) {}
+
 
   //------------Metodo para llenar Base de Datos-------
   async fullDataBase(MoviesArr: string[]) {
@@ -78,5 +83,6 @@ export class BlockbusterService {
   async insertOne(movie: Movie) {
     console.log(movie);
     return await Blockbuster.create(movie, { validate: true });
+
   }
 }

@@ -4,12 +4,15 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import dbInit from "./db/init";
+
 import router from "./routes/blockbuster.routes";
+
 dotenv.config();
 
 dbInit();
 
 const app: Application = express();
+const port = process.env.PORT || 3028;
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -25,8 +28,10 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
+
 app.use(router)
 
-app.listen(3000);
 
-console.log("Estoy siendo escuchado");
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
