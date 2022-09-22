@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const blockbuster_controller_1 = require("../controller/blockbuster.controller");
+const users_controller_1 = require("../controller/users.controller");
+const router = (0, express_1.Router)();
+//router.get("/home", getAllMovies);
+router.get("/", blockbuster_controller_1.fullDbMovies);
+router.post('/addM', blockbuster_controller_1.addMovie);
+router.post('/newU', users_controller_1.addUser);
+exports.default = router;

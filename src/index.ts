@@ -4,7 +4,9 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import dbInit from "./db/init";
-import routes from "./controller/routes";
+
+import router from "./routes/blockbuster.routes";
+
 dotenv.config();
 
 dbInit();
@@ -26,7 +28,9 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
-app.use("", routes);
+
+app.use(router)
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

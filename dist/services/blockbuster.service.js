@@ -14,45 +14,61 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlockbusterService = void 0;
 const axios_1 = __importDefault(require("axios"));
-const blockbuster_model_1 = __importDefault(require("../db/models/blockbuster.model"));
+
+const Blockbuster_model_1 = __importDefault(require("../db/models/Blockbuster.model"));
 const url = `http://www.omdbapi.com/?t=`;
-const apiKey = `8c217066`;
+const apiKey = `d92c2f98`;
+
 class BlockbusterService {
     constructor(blockbusterModel) {
         this.blockbusterModel = blockbusterModel;
     }
-    //-----------------Metodo para traer peliculas de Base de Datos-----
-    getAll() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const blockbusterRows = yield blockbuster_model_1.default.findAll();
-            console.log(blockbusterRows.length);
-            return blockbusterRows;
-        });
-    }
+
+
     //------------Metodo para llenar Base de Datos-------
     fullDataBase(MoviesArr) {
         return __awaiter(this, void 0, void 0, function* () {
             MoviesArr.map((e) => __awaiter(this, void 0, void 0, function* () {
                 let films = yield axios_1.default.get(url, { params: { t: e, apikey: apiKey } });
-                const { Title: name, Year: year, Genre: genre, Poster: poster, Country: country, } = films.data;
+
+                const { Title: name, Year: year, Genre: genre, Poster: poster, Country: country, Rated: rated, Released: released, Runtime: runtime, Director: director, Actors: actors, Plot: plot, Language: language, imdbVotes: imdbVotes, imdbRating: imdbRating, } = films.data;
+
                 yield this.insertOne({
                     name,
                     year,
                     genre,
                     poster,
                     country,
+
+                    rated,
+                    released,
+                    runtime,
+                    director,
+                    actors,
+                    plot,
+                    language,
+                    imdbVotes,
+                    imdbRating,
+                    status: true,
                 });
             }));
-            return;
+            return "Data Base full filed";
         });
     }
-    //  async insertMany (listOfFilms:Movie[]){
-    //   const filtMovies: any = listOfFilms.filter((c) => c !== undefined);
-    //   await  Blockbuster.bulkCreate(filtMovies, { validate: true });
-    //  }
+    //-----------------Metodo para traer peliculas de Base de Datos-----
+    getAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const blockbusterRows = yield Blockbuster_model_1.default.findAll();
+            console.log(blockbusterRows.length);
+            return blockbusterRows;
+        });
+    }
+    //----------------- Creador de peliculas -------
     insertOne(movie) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield blockbuster_model_1.default.create(movie, { validate: true });
+            console.log(movie);
+            return yield Blockbuster_model_1.default.create(movie, { validate: true });
+
         });
     }
 }
