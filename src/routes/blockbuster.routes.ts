@@ -7,9 +7,9 @@ import { addUser } from "../controller/users.controller";
 const router = Router();
 
 //router.get("/home", getAllMovies);
-router.get("/",fullDbMovies)
-router.post('/addM', addMovie)
-router.post('/newU', addUser)
+router.get("movie/",fullDbMovies)
+router.post('movie/addM', addMovie)
+router.post('movie/newU', addUser)
 
 
 export default router;
