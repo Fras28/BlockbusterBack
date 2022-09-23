@@ -2,12 +2,13 @@ import Users from "../db/models/Users.model";
 
 type Category = "user" | "silver" | "gold";
 
-type User = {
+export type User = {
   name: string;
   lastname: string;
   nickname: string;
   picture: string;
   email: string;
+  age:string
   status: boolean;
   category: Category;
 };
