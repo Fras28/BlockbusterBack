@@ -1,6 +1,6 @@
 import { DataType, DataTypes, Model, ModelStatic, Optional } from "sequelize";
 import sequelizeConnection from "../db";
-import comments from "./coments.model";
+import Comments from "./Coments.model";
 
 interface BlockbusterAttributes {
   id?: number;
