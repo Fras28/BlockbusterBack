@@ -1,7 +1,7 @@
 import { json } from "body-parser";
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from "../db";
-import Blockbuster from "./Blockbuster.model";
+import Blockbuster from "./blockbuster.model";
 
 interface ComentsAttributes {
   id?: number;

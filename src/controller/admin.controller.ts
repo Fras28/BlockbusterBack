@@ -2,7 +2,7 @@ import Users from "../db/models/Users.model";
 import { Request, Response } from "express";
 import { AdminService} from "../services/admin.service";
 import { Movie } from "../types";
-import Blockbuster from "../db/models/Blockbuster.model";
+import Blockbuster from "../db/models/blockbuster.model";
 
 
 

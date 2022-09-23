@@ -1,5 +1,5 @@
 import axios from "axios";
-import Blockbuster from "../db/models/Blockbuster.model";
+import Blockbuster from "../db/models/blockbuster.model";
 import Users from "../db/models/Users.model";
 const url: string = `http://www.omdbapi.com/?t=`;
 const apiKey: string = `d92c2f98`;

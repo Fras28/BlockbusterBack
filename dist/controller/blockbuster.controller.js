@@ -13,11 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addMovie = exports.getMovieId = exports.fullDbMovies = void 0;
-const Blockbuster_model_1 = __importDefault(require("../db/models/Blockbuster.model"));
+const blockbuster_model_1 = __importDefault(require("../db/models/blockbuster.model"));
 const blockbuster_service_1 = require("../services/blockbuster.service");
 const infoSec_1 = require("../infoSec");
 const filmsName = infoSec_1.MoviesArr;
-const blockbusterService = new blockbuster_service_1.BlockbusterService(new Blockbuster_model_1.default());
+const blockbusterService = new blockbuster_service_1.BlockbusterService(new blockbuster_model_1.default());
 //MEDIANTE EL SERVICIO HACE EL GET A LA API
 // export const getAllMovies = async (req: Request, res: Response) => {
 //   try {
@@ -30,10 +30,10 @@ const blockbusterService = new blockbuster_service_1.BlockbusterService(new Bloc
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 const fullDbMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const dbMovies = yield Blockbuster_model_1.default.findAll();
+        const dbMovies = yield blockbuster_model_1.default.findAll();
         if (dbMovies.length === 0) {
             yield blockbusterService.fullDataBase(filmsName);
-            const dbMovies = yield Blockbuster_model_1.default.findAll();
+            const dbMovies = yield blockbuster_model_1.default.findAll();
             return res.status(200).send(dbMovies);
         }
         return res.status(200).send(dbMovies);
@@ -46,7 +46,7 @@ exports.fullDbMovies = fullDbMovies;
 const getMovieId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     console.log(id);
-    let movie = yield Blockbuster_model_1.default.findAll({ where: { id } });
+    let movie = yield blockbuster_model_1.default.findAll({ where: { id } });
     return res.status(200).send(movie);
 });
 exports.getMovieId = getMovieId;

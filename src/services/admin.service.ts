@@ -1,4 +1,4 @@
-import Blockbuster from "../db/models/Blockbuster.model";
+import Blockbuster from "../db/models/blockbuster.model";
 import Users from "../db/models/Users.model";
 // import { Movie } from "../types";
 // import { Adm } from "../types";

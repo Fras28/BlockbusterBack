@@ -12,10 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.editeMovie = exports.suspendMovie = exports.removeMovie = exports.newMovie = exports.newAdmin = exports.desBanUser = exports.banUser = void 0;
+exports.suspendMovie = exports.removeMovie = exports.newMovie = exports.newAdmin = exports.desBanUser = exports.banUser = void 0;
 const Users_model_1 = __importDefault(require("../db/models/Users.model"));
 const admin_service_1 = require("../services/admin.service");
-const Blockbuster_model_1 = __importDefault(require("../db/models/Blockbuster.model"));
 const adminService = new admin_service_1.AdminService(new Users_model_1.default());
 const banUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
@@ -149,15 +148,14 @@ exports.suspendMovie = suspendMovie;
 //     res.status(400).send("something went rong whit this Movix");
 //   }
 // };
-const editeMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    //   const Movie:Movie = req.body;
-    //  const movieEdited = await BlockBD.post(Movie, { where: Movie.id  })
-    //  res.status(200).send( movieEdited)
-    const { name, year, genre, poster, updatedAt, createdAt, rated, released, runtime, director, actors, language, plot, country, imdbVotes, imdbRating, status, deletedAt } = req.body;
-    const id = req.params;
-    // console.log(Movie)
-    console.log(id);
-    const updatedM = Blockbuster_model_1.default.update({ name, year, genre, poster, createdAt, rated, released, runtime, director, actors, language, plot, country, imdbVotes, imdbRating, status, deletedAt }, { where: { id } });
-    res.status(200).send(updatedM);
-});
-exports.editeMovie = editeMovie;
+// export const editeMovie = async (req: Request, res: Response) => {
+// //   const Movie:Movie = req.body;
+// //  const movieEdited = await BlockBD.post(Movie, { where: Movie.id  })
+// //  res.status(200).send( movieEdited)
+// const {name,year,genre,poster,updatedAt,createdAt,rated,released,runtime,director,actors,language,plot,country,imdbVotes,imdbRating,status,deletedAt} = req.body;
+//   const id = req.params;
+//   // console.log(Movie)
+//   console.log(id)
+//   const updatedM =  Blockbuster.update({name,year,genre,poster,updatedAt,createdAt,rated,released,runtime,director,actors,language,plot,country,imdbVotes,imdbRating,status,deletedAt}, {where:{id}})
+//   res.status(200).send(updatedM) ;
+// }
