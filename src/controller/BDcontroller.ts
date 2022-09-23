@@ -1,11 +1,11 @@
 import { Request, Response, Router } from "express";
-import Blockbuster from "../db/models/blockbuster.model";
+import blockbuster from "../db/models/blockbuster.model";
 import { BlockbusterService } from "../services/blockbuster.service";
 import { MoviesArr } from "../infoSec";
 
 const filmsName = MoviesArr;
 
-const blockbusterService = new BlockbusterService(new Blockbuster());
+const blockbusterService = new BlockbusterService(new blockbuster());
 
 export const getAllMovies = async (req: Request, res: Response) => {
   try {

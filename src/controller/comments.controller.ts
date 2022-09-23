@@ -1,18 +1,18 @@
 import { Request, Response, Router } from "express";
-import Comments from "../db/models/coments.model";
+import comments from "../db/models/coments.model";
 import { CommentService } from "../services/coments.service";
 import { MoviesArr } from "../infoSec";
 
-const commentsService = new CommentService(new Comments());
+const commentsService = new CommentService(new comments());
 
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 export const fullDBComments = async (req: Request, res: Response) => {
     try{
-        const dbComments = await Comments.findAll()
+        const dbComments = await comments.findAll()
         const commentFullData = req.body;
         if(dbComments.length === 0){
             await commentsService.newComment(commentFullData)
-            const dbComments = await Comments.findAll();
+            const dbComments = await comments.findAll();
             return res.status(200).send(dbComments)
         }
         return res.status(200).send(dbComments);

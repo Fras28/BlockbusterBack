@@ -1,4 +1,4 @@
-import Users from "../db/models/users.model";
+import users from "../db/models/users.model";
 import { Request, Response } from "express";
 import { AdminService} from "../services/admin.service";
 import { Movie } from "../types";
@@ -6,7 +6,7 @@ import Blockbuster from "../db/models/blockbuster.model";
 
 
 
-const adminService = new AdminService(new Users());
+const adminService = new AdminService(new users());
 
 export const banUser = async (req: Request, res: Response) => {
   const { id } = req.body;

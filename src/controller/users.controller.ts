@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import Users from "../db/models/users.model";
+import users from "../db/models/users.model";
 import { UserService } from "../services/user.service";
 
-export const usersService = new UserService(new Users());
+export const usersService = new UserService(new users());
 
 export const addUser = async (req: Request, res: Response) => {
   console.log(req);

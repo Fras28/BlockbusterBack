@@ -1,12 +1,12 @@
 import { Request, Response, Router } from "express";
 
-import Blockbuster from "../db/models/blockbuster.model";
+import blockbuster from "../db/models/blockbuster.model";
 import { BlockbusterService } from "../services/blockbuster.service";
 import { MoviesArr } from "../infoSec";
 
 const filmsName = MoviesArr;
 
-const blockbusterService = new BlockbusterService(new Blockbuster());
+const blockbusterService = new BlockbusterService(new blockbuster());
 
 //MEDIANTE EL SERVICIO HACE EL GET A LA API
 // export const getAllMovies = async (req: Request, res: Response) => {
@@ -22,10 +22,10 @@ const blockbusterService = new BlockbusterService(new Blockbuster());
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 export const fullDbMovies = async (req: Request, res: Response) => {
   try {
-    const dbMovies = await Blockbuster.findAll()
+    const dbMovies = await blockbuster.findAll()
     if (dbMovies.length === 0) {
      await blockbusterService.fullDataBase(filmsName);
-      const dbMovies = await Blockbuster.findAll()
+      const dbMovies = await blockbuster.findAll()
       return res.status(200).send(dbMovies);
     }
     return res.status(200).send(dbMovies);
@@ -37,7 +37,7 @@ export const fullDbMovies = async (req: Request, res: Response) => {
 export const getMovieId =async (req: Request, res: Response) => {
   const {id} = req.params;
 console.log(id)
-  let movie = await Blockbuster.findAll({where:{id}})
+  let movie = await blockbuster.findAll({where:{id}})
   return res.status(200).send(movie)
 }
 
