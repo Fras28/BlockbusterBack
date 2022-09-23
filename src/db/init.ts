@@ -1,5 +1,5 @@
 
-import blockbuster from "./models/Blockbuster.model";
+import blockbuster from "./models/blockbuster.model";
 import comments from "./models/coments.model";
 import user from "./models/users.model";
 import moviesComents from "./models/moviesComents.model";
