@@ -134,15 +134,15 @@ export const suspendMovie = async (req: Request, res: Response) => {
 //   }
 // };
 
-export const editeMovie = async (req: Request, res: Response) => {
-//   const Movie:Movie = req.body;
-//  const movieEdited = await BlockBD.post(Movie, { where: Movie.id  })
-//  res.status(200).send( movieEdited)
-const {name,year,genre,poster,updatedAt,createdAt,rated,released,runtime,director,actors,language,plot,country,imdbVotes,imdbRating,status,deletedAt} = req.body;
-  const id = req.params;
-  // console.log(Movie)
-  console.log(id)
-  const updatedM =  Blockbuster.update({name,year,genre,poster,createdAt,rated,released,runtime,director,actors,language,plot,country,imdbVotes,imdbRating,status,deletedAt}, {where:{id}})
-  res.status(200).send(updatedM) ;
-}
+// export const editeMovie = async (req: Request, res: Response) => {
+// //   const Movie:Movie = req.body;
+// //  const movieEdited = await BlockBD.post(Movie, { where: Movie.id  })
+// //  res.status(200).send( movieEdited)
+// const {name,year,genre,poster,updatedAt,createdAt,rated,released,runtime,director,actors,language,plot,country,imdbVotes,imdbRating,status,deletedAt} = req.body;
+//   const id = req.params;
+//   // console.log(Movie)
+//   console.log(id)
+//   const updatedM =  Blockbuster.update({name,year,genre,poster,updatedAt,createdAt,rated,released,runtime,director,actors,language,plot,country,imdbVotes,imdbRating,status,deletedAt}, {where:{id}})
+//   res.status(200).send(updatedM) ;
+// }
 

@@ -12,7 +12,7 @@ dotenv.config();
 dbInit();
 
 const app: Application = express();
-const port = process.env.PORT || 3028;
+const port = process.env.PORT || 5432;
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -33,5 +33,5 @@ app.use(router)
 
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:5432`);
 });
