@@ -1,5 +1,5 @@
 import { json } from "body-parser";
-import {  DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelizeConnection from "../db";
 
 interface UsersAttributes {
@@ -7,8 +7,10 @@ interface UsersAttributes {
   name: string;
   lastname: string;
   nickname: string;
-  picture:string;
-  email:string;
+  picture: string;
+  email: string;
+  status: boolean;
+  category: string;
 }
 
 class Users extends Model<UsersAttributes> {
@@ -18,6 +20,8 @@ class Users extends Model<UsersAttributes> {
   public nickname!: string;
   public picture!: string;
   public email!: string;
+  public status!: boolean;         
+  public category!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -26,35 +30,37 @@ class Users extends Model<UsersAttributes> {
 
 Users.init(
   {
-      id: {
+    id: {
       type: DataTypes.INTEGER,
-      autoIncrement:true,
-      primaryKey:true
+      autoIncrement: true,
+      primaryKey: true,
     },
-    name:{
-        type:DataTypes.STRING,
-        primaryKey:true
+    name: {
+      type: DataTypes.STRING,
     },
-    lastname:{
-        type:DataTypes.STRING,
-        primaryKey:true
+    lastname: {
+      type: DataTypes.STRING,
     },
-    nickname:{
-        type:DataTypes.STRING,
-        primaryKey:true
+    nickname: {
+      type: DataTypes.STRING,
     },
-    picture:{
-        type:DataTypes.STRING,
-        primaryKey:true
+    picture: {
+      type: DataTypes.STRING,
     },
-    email:{
-        type:DataTypes.STRING,
-        primaryKey:true
+    email: {
+      type: DataTypes.STRING,
     },
-
-
+    status: {
+      type: DataTypes.BOOLEAN,
+    },
+    category: {
+      type: DataTypes.STRING,
+      // .ENUM("user", "silver", "gold", "admin"),
+      // defaultValue: "user",
+    },
   },
   { sequelize: sequelizeConnection, paranoid: true }
 );
-
+// season:{
+// type: DataTypes.ENUM("summer", "autumn","winter","spring")},
 export default Users;

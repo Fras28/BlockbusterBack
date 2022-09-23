@@ -1,7 +1,10 @@
 import axios from "axios";
-import Blockbuster from "../db/models/Blockbuster";
+
+import Blockbuster from "../db/models/Blockbuster.model";
+import Users from "../db/models/Users.model";
 const url: string = `http://www.omdbapi.com/?t=`;
-const apiKey: string = `8c217066`;
+const apiKey: string = `d92c2f98`;
+
 
 type Movie = {
   name: string;
@@ -9,51 +12,77 @@ type Movie = {
   genre: string;
   poster: string;
   country: string;
+
+  rated: string;
+  released: string;
+  runtime: string;
+  director: string;
+  actors: string;
+  plot: string;
+  language: string;
+  imdbVotes: string;
+  imdbRating: string;
+  status:boolean;
+
 };
 
 export class BlockbusterService {
   constructor(private blockbusterModel: Blockbuster) {}
-  //-----------------Metodo para traer peliculas de Base de Datos-----
-  async getAll() {
-    
-    const blockbusterRows = await Blockbuster.findAll();
-    console.log(blockbusterRows.length)
-    return blockbusterRows;
-  }
+
 
   //------------Metodo para llenar Base de Datos-------
   async fullDataBase(MoviesArr: string[]) {
+    MoviesArr.map(async (e: string) => {
+      let films = await axios.get(url, { params: { t: e, apikey: apiKey } });
+      const {
+        Title: name,
+        Year: year,
+        Genre: genre,
+        Poster: poster,
+        Country: country,
+        Rated: rated,
+        Released: released,
+        Runtime: runtime,
+        Director: director,
+        Actors: actors,
+        Plot: plot,
+        Language: language,
+        imdbVotes: imdbVotes,
+        imdbRating: imdbRating,
+      } = films.data;
 
-
-      MoviesArr.map(async (e: string) => {
-        let films = await axios.get(url, { params: { t: e, apikey: apiKey } });
-        const {
-          Title: name,
-          Year: year,
-          Genre: genre,
-          Poster: poster,
-          Country: country,
-        } = films.data;
-        await this.insertOne({
-          name,
-          year,
-          genre,
-          poster,
-          country,
-        });
-      })
-
-    return ;
+      await this.insertOne({
+        name,
+        year,
+        genre,
+        poster,
+        country,
+        rated,
+        released,
+        runtime,
+        director,
+        actors,
+        plot,
+        language,
+        imdbVotes,
+        imdbRating,
+        status:true,
+      });
+    });
+    return "Data Base full filed";
   }
 
-  //  async insertMany (listOfFilms:Movie[]){
+  //-----------------Metodo para traer peliculas de Base de Datos-----
+  async getAll() {
+    const blockbusterRows = await Blockbuster.findAll();
+    console.log(blockbusterRows.length);
+    return blockbusterRows;
+  }
 
-  //   const filtMovies: any = listOfFilms.filter((c) => c !== undefined);
-
-  //   await  Blockbuster.bulkCreate(filtMovies, { validate: true });
-
-  //  }
+  //----------------- Creador de peliculas -------
   async insertOne(movie: Movie) {
-    await Blockbuster.create(movie, { validate: true });
+    console.log(movie);
+    return await Blockbuster.create(movie, { validate: true });
+
   }
 }
