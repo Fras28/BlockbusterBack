@@ -1,23 +1,23 @@
 
-import Blockbuster from "./models/Blockbuster.model";
-import Comments from "./models/Coments.model";
-import User from "./models/Users.model";
-import MoviesComents from "./models/MoviesComents.model";
-import UsersMovies from "./models/UsersMovies.model"
-import UsersComments from "./models/UsersComments.model"
+import blockbuster from "./models/Blockbuster.model";
+import comments from "./models/Coments.model";
+import user from "./models/Users.model";
+import moviesComents from "./models/MoviesComents.model";
+import usersMovies from "./models/UsersMovies.model"
+import usersComments from "./models/UsersComments.model"
 
 const dbInit = () =>
 Promise.all([
-  Blockbuster.sync({ alter: true }),
-  Comments.sync({ alter: true }),
-  User.sync({ alter: true }),
+  blockbuster.sync({ alter: true }),
+  comments.sync({ alter: true }),
+  user.sync({ alter: true }),
 ])
   .then(dbInit2)
   
   const dbInit2=() => ([
-    MoviesComents.sync({ alter: true }),
-    UsersMovies.sync({alter: true}),
-    UsersComments.sync({alter: true})
+    moviesComents.sync({ alter: true }),
+    usersMovies.sync({alter: true}),
+    usersComments.sync({alter: true})
   ]);
 
 export default dbInit;

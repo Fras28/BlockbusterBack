@@ -5,7 +5,7 @@ const blockbuster_controller_1 = require("../controller/blockbuster.controller")
 const users_controller_1 = require("../controller/users.controller");
 const router = (0, express_1.Router)();
 //router.get("/home", getAllMovies);
-router.get("/", blockbuster_controller_1.fullDbMovies);
-router.post('/addM', blockbuster_controller_1.addMovie);
-router.post('/newU', users_controller_1.addUser);
+router.get("movie/", blockbuster_controller_1.fullDbMovies);
+router.post('movie/addM', blockbuster_controller_1.addMovie);
+router.post('movie/newU', users_controller_1.addUser);
 exports.default = router;
