@@ -12,9 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.suspendMovie = exports.removeMovie = exports.newMovie = exports.newAdmin = exports.desBanUser = exports.banUser = void 0;
+exports.editeMovie = exports.suspendMovie = exports.removeMovie = exports.newMovie = exports.newAdmin = exports.desBanUser = exports.banUser = void 0;
 const Users_model_1 = __importDefault(require("../db/models/Users.model"));
 const admin_service_1 = require("../services/admin.service");
+const Blockbuster_model_1 = __importDefault(require("../db/models/Blockbuster.model"));
 const adminService = new admin_service_1.AdminService(new Users_model_1.default());
 const banUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
@@ -82,3 +83,81 @@ const suspendMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.suspendMovie = suspendMovie;
+// export const editeMovie = async (req: Request, res: Response) => {
+//   const Movie:Movie = req.body;
+//   const text:string = req.body;
+//   const id = req.params;
+//   try {
+//     console.log(text)
+//     if (Movie.name) {
+//       await adminService.editeName(Movie.id, text);
+//       res.status(200).send(`Movix ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.year) {
+//       await adminService.editeYear(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.genre) {
+//       await adminService.editeGenre(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.poster) {
+//       await adminService.editePoster(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.country) {
+//       await adminService.editeCountry(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.rated) {
+//       await adminService.editeRated(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.released) {
+//       await adminService.editeReleased(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.runtime) {
+//       await adminService.editeRuntime(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.director) {
+//       await adminService.editeDirector(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.actors) {
+//       await adminService.editeActors(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.plot) {
+//       await adminService.editePlot(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.language) {
+//       await adminService.editeLanguage(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.imdbVotes) {
+//       await adminService.editeimdbVotes(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.imdbRating) {
+//       await adminService.editeimdbRating(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//   } catch (e) {
+//     res.status(400).send("something went rong whit this Movix");
+//   }
+// };
+const editeMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    //   const Movie:Movie = req.body;
+    //  const movieEdited = await BlockBD.post(Movie, { where: Movie.id  })
+    //  res.status(200).send( movieEdited)
+    const { name, year, genre, poster, updatedAt, createdAt, rated, released, runtime, director, actors, language, plot, country, imdbVotes, imdbRating, status, deletedAt } = req.body;
+    const id = req.params;
+    // console.log(Movie)
+    console.log(id);
+    const updatedM = Blockbuster_model_1.default.update({ name, year, genre, poster, createdAt, rated, released, runtime, director, actors, language, plot, country, imdbVotes, imdbRating, status, deletedAt }, { where: { id } });
+    res.status(200).send(updatedM);
+});
+exports.editeMovie = editeMovie;
