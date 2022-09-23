@@ -9,7 +9,7 @@ import { AdminService} from "../services/admin.service";
 const adminService = new AdminService(new users());
 
 export const banUser = async (req: Request, res: Response) => {
-  const { id } = req.body;
+  const { id } = req.body ;
   try {
     await adminService.banUser(id);
     res.status(200).send("User baned successfully");
