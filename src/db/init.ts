@@ -1,10 +1,10 @@
 
 import blockbuster from "./models/Blockbuster.model";
-import comments from "./models/Coments.model";
-import user from "./models/Users.model";
-import moviesComents from "./models/MoviesComents.model";
-import usersMovies from "./models/UsersMovies.model"
-import usersComments from "./models/UsersComments.model"
+import comments from "./models/coments.model";
+import user from "./models/users.model";
+import moviesComents from "./models/moviesComents.model";
+import usersMovies from "./models/usersMovies.model"
+import usersComments from "./models/usersComments.model"
 
 const dbInit = () =>
 Promise.all([

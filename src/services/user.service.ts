@@ -1,4 +1,4 @@
-import Users from "../db/models/Users.model";
+import Users from "../db/models/users.model";
 
 type Category = "user" | "silver" | "gold";
 

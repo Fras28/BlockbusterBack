@@ -1,5 +1,5 @@
 import Blockbuster from "../db/models/blockbuster.model";
-import Users from "../db/models/Users.model";
+import Users from "../db/models/users.model";
 // import { Movie } from "../types";
 // import { Adm } from "../types";
 // import { User } from "../types";

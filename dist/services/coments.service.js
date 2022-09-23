@@ -13,26 +13,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentService = void 0;
-const Coments_model_1 = __importDefault(require("../db/models/Coments.model"));
+const coments_model_1 = __importDefault(require("../db/models/coments.model"));
 class CommentService {
     constructor(commentModel) {
         this.commentModel = commentModel;
     }
     newComment(comment) {
         return __awaiter(this, void 0, void 0, function* () {
-            const inserComment = yield Coments_model_1.default.create(comment, { validate: true });
+            const inserComment = yield coments_model_1.default.create(comment, { validate: true });
             return inserComment;
         });
     }
     editComment(coment, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            Coments_model_1.default.update({ coment }, { where: { id } });
+            coments_model_1.default.update({ coment }, { where: { id } });
             return coment;
         });
     }
     deletComment(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const comentD = yield Coments_model_1.default.destroy({ where: { id } });
+            const comentD = yield coments_model_1.default.destroy({ where: { id } });
             return !!comentD;
         });
     }

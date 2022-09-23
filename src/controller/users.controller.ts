@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Users from "../db/models/Users.model";
+import Users from "../db/models/users.model";
 import { UserService } from "../services/user.service";
 
 export const usersService = new UserService(new Users());

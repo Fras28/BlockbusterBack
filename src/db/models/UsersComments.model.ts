@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from "../db";
-import Comments from "./Coments.model";
-import Users from "./Users.model";
+import Comments from "./coments.model";
+import Users from "./users.model";
 
 interface UsersCommentsAttributes {
     id?: number;

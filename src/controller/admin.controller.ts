@@ -1,4 +1,4 @@
-import Users from "../db/models/Users.model";
+import Users from "../db/models/users.model";
 import { Request, Response } from "express";
 import { AdminService} from "../services/admin.service";
 import { Movie } from "../types";

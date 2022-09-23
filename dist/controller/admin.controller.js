@@ -13,9 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.suspendMovie = exports.removeMovie = exports.newMovie = exports.newAdmin = exports.desBanUser = exports.banUser = void 0;
-const Users_model_1 = __importDefault(require("../db/models/Users.model"));
+const users_model_1 = __importDefault(require("../db/models/users.model"));
 const admin_service_1 = require("../services/admin.service");
-const adminService = new admin_service_1.AdminService(new Users_model_1.default());
+const adminService = new admin_service_1.AdminService(new users_model_1.default());
 const banUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {

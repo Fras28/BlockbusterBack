@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import Comments from "../db/models/Coments.model";
+import Comments from "../db/models/coments.model";
 import { CommentService } from "../services/coments.service";
 import { MoviesArr } from "../infoSec";
 

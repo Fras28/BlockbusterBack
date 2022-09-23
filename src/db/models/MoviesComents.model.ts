@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from "../db";
 import Blockbuster from './blockbuster.model'
-import Comments from './Coments.model'
+import Comments from './coments.model'
 
 interface MoviesComentsAttributes {
     id ?: number;

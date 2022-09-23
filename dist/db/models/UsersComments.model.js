@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
-const Coments_model_1 = __importDefault(require("./Coments.model"));
-const Users_model_1 = __importDefault(require("./Users.model"));
+const coments_model_1 = __importDefault(require("./coments.model"));
+const users_model_1 = __importDefault(require("./users.model"));
 class UsersComments extends sequelize_1.Model {
 }
 UsersComments.init({
@@ -18,14 +18,14 @@ UsersComments.init({
     commentsId: {
         type: sequelize_1.DataTypes.INTEGER,
         references: {
-            model: Coments_model_1.default,
+            model: coments_model_1.default,
             key: 'id'
         }
     },
     usersId: {
         type: sequelize_1.DataTypes.INTEGER,
         references: {
-            model: Users_model_1.default,
+            model: users_model_1.default,
             key: 'id'
         }
     }

@@ -14,20 +14,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminService = void 0;
 const blockbuster_model_1 = __importDefault(require("../db/models/blockbuster.model"));
-const Users_model_1 = __importDefault(require("../db/models/Users.model"));
+const users_model_1 = __importDefault(require("../db/models/users.model"));
 class AdminService {
     constructor(UserModel) {
         this.UserModel = UserModel;
     }
     banUser(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield Users_model_1.default.update({ status: false }, { where: { id } });
+            let userX = yield users_model_1.default.update({ status: false }, { where: { id } });
             return userX;
         });
     }
     desBanUser(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield Users_model_1.default.update({ status: true }, { where: { id } });
+            let userX = yield users_model_1.default.update({ status: true }, { where: { id } });
             return userX;
         });
     }
@@ -56,7 +56,7 @@ class AdminService {
     }
     defineAdmin(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield Users_model_1.default.update({ category: "admin" }, { where: { id } });
+            let userX = yield users_model_1.default.update({ category: "admin" }, { where: { id } });
             return userX;
         });
     }

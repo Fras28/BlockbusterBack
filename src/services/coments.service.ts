@@ -1,4 +1,4 @@
-import Comments from "../db/models/Coments.model";
+import Comments from "../db/models/coments.model";
 
 type Comment = {
   id: number;

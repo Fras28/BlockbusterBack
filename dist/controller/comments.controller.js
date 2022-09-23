@@ -13,17 +13,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteComments = exports.putComments = exports.fullDBComments = void 0;
-const Coments_model_1 = __importDefault(require("../db/models/Coments.model"));
+const coments_model_1 = __importDefault(require("../db/models/coments.model"));
 const coments_service_1 = require("../services/coments.service");
-const commentsService = new coments_service_1.CommentService(new Coments_model_1.default());
+const commentsService = new coments_service_1.CommentService(new coments_model_1.default());
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const dbComments = yield Coments_model_1.default.findAll();
+        const dbComments = yield coments_model_1.default.findAll();
         const commentFullData = req.body;
         if (dbComments.length === 0) {
             yield commentsService.newComment(commentFullData);
-            const dbComments = yield Coments_model_1.default.findAll();
+            const dbComments = yield coments_model_1.default.findAll();
             return res.status(200).send(dbComments);
         }
         return res.status(200).send(dbComments);

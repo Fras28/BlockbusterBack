@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
-const Users_model_1 = __importDefault(require("../db/models/Users.model"));
+const users_model_1 = __importDefault(require("../db/models/users.model"));
 class UserService {
     constructor(userModel) {
         this.userModel = userModel;
@@ -21,19 +21,19 @@ class UserService {
     //-------------Crear Usuario --------
     insertUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const insertedUser = yield Users_model_1.default.create(user, { validate: true });
+            const insertedUser = yield users_model_1.default.create(user, { validate: true });
             return insertedUser;
         });
     }
     defineCategory(category, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield Users_model_1.default.update({ category }, { where: { id } });
+            let userX = yield users_model_1.default.update({ category }, { where: { id } });
             return userX;
         });
     }
     changePic(picture, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield Users_model_1.default.update({ picture }, { where: { id } });
+            let userX = yield users_model_1.default.update({ picture }, { where: { id } });
             return userX;
         });
     }

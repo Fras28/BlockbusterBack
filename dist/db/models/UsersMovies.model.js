@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
 const blockbuster_model_1 = __importDefault(require("./blockbuster.model"));
-const Users_model_1 = __importDefault(require("./Users.model"));
+const users_model_1 = __importDefault(require("./users.model"));
 class UsersMovies extends sequelize_1.Model {
 }
 UsersMovies.init({
@@ -25,7 +25,7 @@ UsersMovies.init({
     usersId: {
         type: sequelize_1.DataTypes.INTEGER,
         references: {
-            model: Users_model_1.default,
+            model: users_model_1.default,
             key: 'id'
         }
     }

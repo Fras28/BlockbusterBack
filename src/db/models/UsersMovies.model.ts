@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from "../db";
 import Blockbuster from "./blockbuster.model";
-import Users from "./Users.model";
+import Users from "./users.model";
 
 interface UsersMovieAttributes {
     id?: number;

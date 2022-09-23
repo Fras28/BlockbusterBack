@@ -13,9 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.picProfile = exports.afterPay = exports.addUser = exports.usersService = void 0;
-const Users_model_1 = __importDefault(require("../db/models/Users.model"));
+const users_model_1 = __importDefault(require("../db/models/users.model"));
 const user_service_1 = require("../services/user.service");
-exports.usersService = new user_service_1.UserService(new Users_model_1.default());
+exports.usersService = new user_service_1.UserService(new users_model_1.default());
 const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(req);
     try {
