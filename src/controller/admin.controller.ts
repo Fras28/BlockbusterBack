@@ -1,8 +1,8 @@
 import users from "../db/models/users.model";
 import { Request, Response } from "express";
 import { AdminService} from "../services/admin.service";
-import { Movie } from "../types";
-import Blockbuster from "../db/models/blockbuster.model";
+
+
 
 
 

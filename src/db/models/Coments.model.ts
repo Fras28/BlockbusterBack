@@ -1,7 +1,7 @@
 import { json } from "body-parser";
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from "../db";
-import Blockbuster from "./blockbuster.model";
+
 
 interface ComentsAttributes {
   id?: number;
@@ -12,7 +12,7 @@ interface ComentsAttributes {
   status: boolean;
 }
 
-class Comments extends Model<ComentsAttributes> {
+class comments extends Model<ComentsAttributes> {
   public id!: number;
   public name!: string;
   public nickname!: string;
@@ -25,7 +25,7 @@ class Comments extends Model<ComentsAttributes> {
   public readonly deletedAt!: Date;
 }
 
-Comments.init(
+comments.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -52,4 +52,4 @@ Comments.init(
 );
 
 
-export default Comments;
+export default comments;

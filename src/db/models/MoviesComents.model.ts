@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from "../db";
-import Blockbuster from './blockbuster.model'
-import Comments from './coments.model'
+import blockbuster from './blockbuster.model'
+import comments from './coments.model'
 
 interface MoviesComentsAttributes {
     id ?: number;
@@ -36,14 +36,14 @@ MoviesComents.init({
     blockbusterId: {
         type: DataTypes.INTEGER,
         references: {
-            model: Blockbuster,
+            model: blockbuster,
             key: 'id'
         }
     },
     comentsId: {
         type: DataTypes.INTEGER,
         references: {
-            model: Comments,
+            model: comments,
             key: 'id'
         }
     }

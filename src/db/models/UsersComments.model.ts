@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from "../db";
-import Comments from "./coments.model";
-import Users from "./users.model";
+import comments from "./coments.model";
+import users from "./users.model";
 
 interface UsersCommentsAttributes {
     id?: number;
@@ -15,7 +15,7 @@ interface UsersCommentsAttributes {
 export interface UsersCommentsInput extends Optional<UsersCommentsAttributes, 'id'>{}
 export interface UsersCommentsOutput extends UsersCommentsInput{}
 
-class UsersComments extends Model<UsersCommentsAttributes, UsersCommentsInput> implements UsersCommentsAttributes{
+class usersComments extends Model<UsersCommentsAttributes, UsersCommentsInput> implements UsersCommentsAttributes{
     public id!: number;
     public commentsId!: number;
     public usersId!: number;
@@ -26,7 +26,7 @@ class UsersComments extends Model<UsersCommentsAttributes, UsersCommentsInput> i
     public readonly deletedAt!: Date;
 }
 
-UsersComments.init({
+usersComments.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -35,14 +35,14 @@ UsersComments.init({
     commentsId: {
         type: DataTypes.INTEGER,
         references: {
-            model: Comments,
+            model: comments,
             key: 'id'
         }
     },
     usersId: {
         type: DataTypes.INTEGER,
         references: {
-            model: Users,
+            model: users,
             key: 'id'
         }
     }
@@ -51,4 +51,4 @@ UsersComments.init({
 }
 )
 
-export default UsersComments;
+export default usersComments;

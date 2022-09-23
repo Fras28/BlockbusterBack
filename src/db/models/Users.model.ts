@@ -13,7 +13,7 @@ interface UsersAttributes {
   category: string;
 }
 
-class Users extends Model<UsersAttributes> {
+class users extends Model<UsersAttributes> {
   public id!: number;
   public name!: string;
   public lastname!: string;
@@ -28,7 +28,7 @@ class Users extends Model<UsersAttributes> {
   public readonly deletedAt!: Date;
 }
 
-Users.init(
+users.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -63,4 +63,4 @@ Users.init(
 );
 // season:{
 // type: DataTypes.ENUM("summer", "autumn","winter","spring")},
-export default Users;
+export default users;

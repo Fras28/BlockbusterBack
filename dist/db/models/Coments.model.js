@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
-class Comments extends sequelize_1.Model {
+class comments extends sequelize_1.Model {
 }
-Comments.init({
+comments.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
@@ -29,4 +29,4 @@ Comments.init({
         type: sequelize_1.DataTypes.BOOLEAN,
     },
 }, { sequelize: db_1.default, paranoid: true });
-exports.default = Comments;
+exports.default = comments;

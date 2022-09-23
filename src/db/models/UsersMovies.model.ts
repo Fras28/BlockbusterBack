@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from "../db";
-import Blockbuster from "./blockbuster.model";
-import Users from "./users.model";
+import blockbuster from "./blockbuster.model";
+import users from "./users.model";
 
 interface UsersMovieAttributes {
     id?: number;
@@ -15,7 +15,7 @@ interface UsersMovieAttributes {
 export interface UsersMovieInput extends Optional<UsersMovieAttributes, 'id'>{}
 export interface UserMovieOutput extends UsersMovieInput{}
 
-class UsersMovies extends Model<UsersMovieAttributes, UsersMovieInput> implements UsersMovieAttributes{
+class usersMovies extends Model<UsersMovieAttributes, UsersMovieInput> implements UsersMovieAttributes{
     public id!: number;
     public blockbusterId!: number;
     public usersId!: number;
@@ -26,7 +26,7 @@ class UsersMovies extends Model<UsersMovieAttributes, UsersMovieInput> implement
     public readonly deletedAt!: Date;
 }
 
-UsersMovies.init({
+usersMovies.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -35,14 +35,14 @@ UsersMovies.init({
     blockbusterId: {
         type: DataTypes.INTEGER,
         references: {
-            model: Blockbuster,
+            model: blockbuster,
             key: 'id'
         }
     },
     usersId: {
         type: DataTypes.INTEGER,
         references: {
-            model: Users,
+            model: users,
             key: 'id'
         }
     }
@@ -51,4 +51,4 @@ UsersMovies.init({
 }
 )
 
-export default UsersMovies;
+export default usersMovies;

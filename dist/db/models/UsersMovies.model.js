@@ -7,9 +7,9 @@ const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
 const blockbuster_model_1 = __importDefault(require("./blockbuster.model"));
 const users_model_1 = __importDefault(require("./users.model"));
-class UsersMovies extends sequelize_1.Model {
+class usersMovies extends sequelize_1.Model {
 }
-UsersMovies.init({
+usersMovies.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
@@ -32,4 +32,4 @@ UsersMovies.init({
 }, {
     sequelize: db_1.default
 });
-exports.default = UsersMovies;
+exports.default = usersMovies;

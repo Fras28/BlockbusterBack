@@ -7,9 +7,9 @@ const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
 const coments_model_1 = __importDefault(require("./coments.model"));
 const users_model_1 = __importDefault(require("./users.model"));
-class UsersComments extends sequelize_1.Model {
+class usersComments extends sequelize_1.Model {
 }
-UsersComments.init({
+usersComments.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
@@ -32,4 +32,4 @@ UsersComments.init({
 }, {
     sequelize: db_1.default
 });
-exports.default = UsersComments;
+exports.default = usersComments;
