@@ -1,5 +1,8 @@
 import Blockbuster from "../db/models/Blockbuster.model";
 import Users from "../db/models/Users.model";
+// import { Movie } from "../types";
+// import { Adm } from "../types";
+// import { User } from "../types";
 
 export type Movie = {
   id: number;
@@ -19,8 +22,8 @@ export type Movie = {
   imdbRating: string;
   status: boolean;
 };
-type Adm = "admin";
-type User = {
+export type Adm = "admin";
+export type User = {
   name: string;
   lastname: string;
   nickname: string;
@@ -68,7 +71,6 @@ export class AdminService {
       { name: string },
       { where: { id } }
     );
-
     return editName;
   }
   async editeYear(id: number, string: string) {

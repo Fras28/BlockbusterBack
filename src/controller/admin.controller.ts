@@ -1,7 +1,10 @@
 import Users from "../db/models/Users.model";
 import { Request, Response } from "express";
-import { AdminService, Movie } from "../services/admin.service";
-import { User } from "../services/user.service";
+import { AdminService} from "../services/admin.service";
+import { Movie } from "../types";
+import Blockbuster from "../db/models/Blockbuster.model";
+
+
 
 const adminService = new AdminService(new Users());
 
@@ -62,67 +65,84 @@ export const suspendMovie = async (req: Request, res: Response) => {
   }
 };
 
+
+// export const editeMovie = async (req: Request, res: Response) => {
+//   const Movie:Movie = req.body;
+//   const text:string = req.body;
+//   const id = req.params;
+//   try {
+//     console.log(text)
+//     if (Movie.name) {
+//       await adminService.editeName(Movie.id, text);
+//       res.status(200).send(`Movix ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.year) {
+//       await adminService.editeYear(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.genre) {
+//       await adminService.editeGenre(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.poster) {
+//       await adminService.editePoster(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.country) {
+//       await adminService.editeCountry(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.rated) {
+//       await adminService.editeRated(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.released) {
+//       await adminService.editeReleased(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.runtime) {
+//       await adminService.editeRuntime(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.director) {
+//       await adminService.editeDirector(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.actors) {
+//       await adminService.editeActors(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.plot) {
+//       await adminService.editePlot(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.language) {
+//       await adminService.editeLanguage(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.imdbVotes) {
+//       await adminService.editeimdbVotes(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+//     if (Movie.imdbRating) {
+//       await adminService.editeimdbRating(Movie.id, text);
+//       res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
+//     }
+    
+//   } catch (e) {
+//     res.status(400).send("something went rong whit this Movix");
+//   }
+// };
+
 export const editeMovie = async (req: Request, res: Response) => {
-  const Movie = req.body;
-  const text: string = req.body;
-  try {
-    if (Movie.name) {
-      await adminService.editeName(Movie.id, text);
-      res.status(200).send(`Movix ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.year) {
-      await adminService.editeYear(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.genre) {
-      await adminService.editeGenre(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.poster) {
-      await adminService.editePoster(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.country) {
-      await adminService.editeCountry(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.rated) {
-      await adminService.editeRated(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.released) {
-      await adminService.editeReleased(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.runtime) {
-      await adminService.editeRuntime(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.director) {
-      await adminService.editeDirector(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.actors) {
-      await adminService.editeActors(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.plot) {
-      await adminService.editePlot(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.language) {
-      await adminService.editeLanguage(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.imdbVotes) {
-      await adminService.editeimdbVotes(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-    if (Movie.imdbRating) {
-      await adminService.editeimdbRating(Movie.id, text);
-      res.status(200).send(`Movie ${Movie.name} edited successfully👍`);
-    }
-  } catch (e) {
-    res.status(400).send("something went rong whit this Movix");
-  }
-};
+//   const Movie:Movie = req.body;
+//  const movieEdited = await BlockBD.post(Movie, { where: Movie.id  })
+//  res.status(200).send( movieEdited)
+const {name,year,genre,poster,updatedAt,createdAt,rated,released,runtime,director,actors,language,plot,country,imdbVotes,imdbRating,status,deletedAt} = req.body;
+  const id = req.params;
+  // console.log(Movie)
+  console.log(id)
+  const updatedM =  Blockbuster.update({name,year,genre,poster,createdAt,rated,released,runtime,director,actors,language,plot,country,imdbVotes,imdbRating,status,deletedAt}, {where:{id}})
+  res.status(200).send(updatedM) ;
+}
+

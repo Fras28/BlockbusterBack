@@ -60,8 +60,92 @@ class AdminService {
             return userX;
         });
     }
+    editeName(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ name: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeYear(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ year: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editePoster(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ poster: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeGenre(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ genre: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeCountry(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ country: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeRated(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ rated: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeReleased(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ released: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeRuntime(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ runtime: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeDirector(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ director: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeActors(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ actors: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editePlot(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ plot: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeLanguage(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ language: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeimdbVotes(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ imdbVotes: string }, { where: { id } });
+            return editName;
+        });
+    }
+    editeimdbRating(id, string) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let editName = yield Blockbuster_model_1.default.update({ imdbRating: string }, { where: { id } });
+            return editName;
+        });
+    }
 }
 exports.AdminService = AdminService;
 //editar peliculas
 //quitar roll de admin
-//editar precio de mermrecias 
+//editar precio de mermrecias

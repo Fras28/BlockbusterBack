@@ -34,6 +34,13 @@ export const fullDbMovies = async (req: Request, res: Response) => {
   }
 };
 
+export const getMovieId =async (req: Request, res: Response) => {
+  const {id} = req.params;
+console.log(id)
+  let movie = await Blockbuster.findAll({where:{id}})
+  return res.status(200).send(movie)
+}
+
 //POST PARA CREAR PELICULAS
 export const addMovie = async (req: Request, res: Response) => {
   console.log(req);
@@ -46,6 +53,6 @@ export const addMovie = async (req: Request, res: Response) => {
   }
 
 };
-
+ 
 
 
