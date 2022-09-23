@@ -13,7 +13,7 @@ const blockbuster_routes_1 = __importDefault(require("./routes/blockbuster.route
 dotenv_1.default.config();
 (0, init_1.default)();
 const app = (0, express_1.default)();
-const port = process.env.PORT || 3028;
+const port = process.env.PORT || 5432;
 app.use(body_parser_1.default.urlencoded({ extended: true, limit: "50mb" }));
 app.use(body_parser_1.default.json({ limit: "50mb" }));
 app.use((0, cookie_parser_1.default)());

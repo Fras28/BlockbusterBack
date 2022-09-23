@@ -1,18 +1,15 @@
 import axios from "axios";
-
-import Blockbuster from "../db/models/Blockbuster.model";
+import Blockbuster from "../db/models/blockbuster.model";
 import Users from "../db/models/Users.model";
 const url: string = `http://www.omdbapi.com/?t=`;
 const apiKey: string = `d92c2f98`;
 
 
-type Movie = {
+export type Movie = {
   name: string;
   year: string;
   genre: string;
   poster: string;
-  country: string;
-
   rated: string;
   released: string;
   runtime: string;
@@ -20,6 +17,7 @@ type Movie = {
   actors: string;
   plot: string;
   language: string;
+  country: string;
   imdbVotes: string;
   imdbRating: string;
   status:boolean;
