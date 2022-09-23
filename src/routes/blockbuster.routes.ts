@@ -8,11 +8,13 @@ import { addUser } from "../controller/users.controller";
 const router = Router();
 
 //router.get("/home", getAllMovies);
-router.get("/movies",fullDbMovies)
-router.post('/movies/addM', addMovie)
-router.get('/movies/detail/:id', getMovieId)
-router.post('/movies/newU', addUser)
+
+router.get("/",fullDbMovies)
+router.post('/addM', addMovie)
+router.get('/detail/:id', getMovieId)
+router.post('/newU', addUser)
 // router.patch('/movies/edit/:id', editeMovie)
+
 
 
 
