@@ -1,6 +1,6 @@
 import { DataType, DataTypes, Model, ModelStatic, Optional } from "sequelize";
 import sequelizeConnection from "../db";
-
+import Comments from "./Coments.model";
 
 interface BlockbusterAttributes {
   id?: number;
@@ -21,7 +21,7 @@ interface BlockbusterAttributes {
   status:boolean;
 }
 
-class blockbuster extends Model<BlockbusterAttributes> {
+class Blockbuster extends Model<BlockbusterAttributes> {
   public id!: number;
   public name!: string;
   public year!: string;
@@ -44,7 +44,7 @@ class blockbuster extends Model<BlockbusterAttributes> {
   public readonly deletedAt!: Date;
 }
 
-blockbuster.init(
+Blockbuster.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -100,4 +100,4 @@ blockbuster.init(
   { sequelize: sequelizeConnection, paranoid: true }
 );
 
-export default blockbuster;
+export default Blockbuster;

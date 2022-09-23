@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
-class blockbuster extends sequelize_1.Model {
+class Blockbuster extends sequelize_1.Model {
 }
-blockbuster.init({
+Blockbuster.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
@@ -59,4 +59,4 @@ blockbuster.init({
         type: sequelize_1.DataTypes.BOOLEAN,
     }
 }, { sequelize: db_1.default, paranoid: true });
-exports.default = blockbuster;
+exports.default = Blockbuster;
