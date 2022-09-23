@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlockbusterService = void 0;
 const axios_1 = __importDefault(require("axios"));
-const Blockbuster_model_1 = __importDefault(require("../db/models/Blockbuster.model"));
+const blockbuster_model_1 = __importDefault(require("../db/models/blockbuster.model"));
 const url = `http://www.omdbapi.com/?t=`;
 const apiKey = `d92c2f98`;
 class BlockbusterService {
@@ -51,7 +51,7 @@ class BlockbusterService {
     //-----------------Metodo para traer peliculas de Base de Datos-----
     getAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            const blockbusterRows = yield Blockbuster_model_1.default.findAll();
+            const blockbusterRows = yield blockbuster_model_1.default.findAll();
             console.log(blockbusterRows.length);
             return blockbusterRows;
         });
@@ -60,7 +60,7 @@ class BlockbusterService {
     insertOne(movie) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(movie);
-            return yield Blockbuster_model_1.default.create(movie, { validate: true });
+            return yield blockbuster_model_1.default.create(movie, { validate: true });
         });
     }
 }

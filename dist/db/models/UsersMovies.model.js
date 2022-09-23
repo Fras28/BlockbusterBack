@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
-const Blockbuster_model_1 = __importDefault(require("./Blockbuster.model"));
+const blockbuster_model_1 = __importDefault(require("./blockbuster.model"));
 const Users_model_1 = __importDefault(require("./Users.model"));
 class UsersMovies extends sequelize_1.Model {
 }
@@ -18,7 +18,7 @@ UsersMovies.init({
     blockbusterId: {
         type: sequelize_1.DataTypes.INTEGER,
         references: {
-            model: Blockbuster_model_1.default,
+            model: blockbuster_model_1.default,
             key: 'id'
         }
     },

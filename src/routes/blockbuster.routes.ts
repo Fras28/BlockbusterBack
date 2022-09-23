@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import Blockbuster from "../db/models/Blockbuster.model";
+import Blockbuster from "../db/models/blockbuster.model";
 import { BlockbusterService } from "../services/blockbuster.service";
 import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.controller";
 import { addUser } from "../controller/users.controller";
