@@ -18,6 +18,7 @@ class CommentService {
     constructor(commentModel) {
         this.commentModel = commentModel;
     }
+    //CREATE
     newComment(comment) {
         return __awaiter(this, void 0, void 0, function* () {
             const inserComment = yield coments_model_1.default.create(comment, { validate: true });

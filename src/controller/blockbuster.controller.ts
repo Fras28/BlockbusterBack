@@ -1,23 +1,11 @@
 import { Request, Response, Router } from "express";
-
 import blockbuster from "../db/models/blockbuster.model";
 import { BlockbusterService } from "../services/blockbuster.service";
 import { MoviesArr } from "../infoSec";
 
 const filmsName = MoviesArr;
-
 const blockbusterService = new BlockbusterService(new blockbuster());
 
-//MEDIANTE EL SERVICIO HACE EL GET A LA API
-// export const getAllMovies = async (req: Request, res: Response) => {
-//   try {
-//     const result = await blockbusterService.getAll();
-
-//     return res.status(200).send(result);
-//   } catch (e) {
-//     return res.status(404).send("films not found");
-//   }successfully
-// };
 
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 export const fullDbMovies = async (req: Request, res: Response) => {
@@ -34,6 +22,7 @@ export const fullDbMovies = async (req: Request, res: Response) => {
   }
 };
 
+//GET BY ID
 export const getMovieId =async (req: Request, res: Response) => {
   const {id} = req.params;
 console.log(id)
@@ -51,8 +40,7 @@ export const addMovie = async (req: Request, res: Response) => {
   } catch (e) {
     return res.status(404).send(e);
   }
-
 };
  
 
-
+//Todo probado :)

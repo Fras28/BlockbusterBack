@@ -1,15 +1,15 @@
 import { Request, Response, Router } from "express";
 import comments from "../db/models/coments.model";
 import { CommentService } from "../services/coments.service";
-import { MoviesArr } from "../infoSec";
+
 
 const commentsService = new CommentService(new comments());
 
-//MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
+//CREA COMENTARIOS EN BD
 export const fullDBComments = async (req: Request, res: Response) => {
     try{
-        const dbComments = await comments.findAll()
         const commentFullData = req.body;
+        const dbComments = await comments.findAll()
         if(dbComments.length === 0){
             await commentsService.newComment(commentFullData)
             const dbComments = await comments.findAll();
@@ -21,7 +21,8 @@ export const fullDBComments = async (req: Request, res: Response) => {
     }
 }
 
-export const putComments = async(req: Request, res:Response) =>{
+//EDITA COMENTARIOS
+export const editComments = async(req: Request, res:Response) =>{
     const {comment, id} = req.body
     try{
         const dbComment = await commentsService.editComment(comment, id);
@@ -31,6 +32,7 @@ export const putComments = async(req: Request, res:Response) =>{
     }
 }
 
+//BORRAR COMENTARIOS
 export const deleteComments = async(req:Request, res:Response) =>{
     const {id} = req.body;
     try{

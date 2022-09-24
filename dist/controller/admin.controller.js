@@ -16,6 +16,7 @@ exports.suspendMovie = exports.removeMovie = exports.newMovie = exports.newAdmin
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 const admin_service_1 = require("../services/admin.service");
 const adminService = new admin_service_1.AdminService(new users_model_1.default());
+//Bannear usuario
 const banUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {
@@ -27,6 +28,7 @@ const banUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.banUser = banUser;
+//Unbann usuario 
 const desBanUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {
@@ -38,6 +40,7 @@ const desBanUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.desBanUser = desBanUser;
+//Crear nuevo administrador
 const newAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { idUser } = req.body;
     try {
@@ -49,6 +52,7 @@ const newAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.newAdmin = newAdmin;
+//Crear nueva pelicula
 const newMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const infoNewMovie = req.body;
     try {
@@ -60,6 +64,7 @@ const newMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.newMovie = newMovie;
+//Borrar pelicula
 const removeMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const idMovie = req.body;
     try {
@@ -71,6 +76,7 @@ const removeMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.removeMovie = removeMovie;
+//Bann pelicula
 const suspendMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const idMovie = req.body;
     try {

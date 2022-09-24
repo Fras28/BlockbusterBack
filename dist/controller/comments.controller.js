@@ -12,15 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteComments = exports.putComments = exports.fullDBComments = void 0;
+exports.deleteComments = exports.editComments = exports.fullDBComments = void 0;
 const coments_model_1 = __importDefault(require("../db/models/coments.model"));
 const coments_service_1 = require("../services/coments.service");
 const commentsService = new coments_service_1.CommentService(new coments_model_1.default());
-//MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
+//CREA COMENTARIOS EN BD
 const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const dbComments = yield coments_model_1.default.findAll();
         const commentFullData = req.body;
+        const dbComments = yield coments_model_1.default.findAll();
         if (dbComments.length === 0) {
             yield commentsService.newComment(commentFullData);
             const dbComments = yield coments_model_1.default.findAll();
@@ -33,7 +33,8 @@ const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.fullDBComments = fullDBComments;
-const putComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//EDITA COMENTARIOS
+const editComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { comment, id } = req.body;
     try {
         const dbComment = yield commentsService.editComment(comment, id);
@@ -43,7 +44,8 @@ const putComments = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         return res.status(400).send(e);
     }
 });
-exports.putComments = putComments;
+exports.editComments = editComments;
+//BORRAR COMENTARIOS
 const deleteComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {

@@ -3,11 +3,10 @@ import { Request, Response } from "express";
 import { AdminService} from "../services/admin.service";
 
 
-
-
-
 const adminService = new AdminService(new users());
 
+
+//Bannear usuario
 export const banUser = async (req: Request, res: Response) => {
   const { id } = req.body ;
   try {
@@ -17,6 +16,8 @@ export const banUser = async (req: Request, res: Response) => {
     res.status(404).send("User not found");
   }
 };
+
+//Unbann usuario 
 export const desBanUser = async (req: Request, res: Response) => {
   const { id } = req.body;
   try {
@@ -27,6 +28,7 @@ export const desBanUser = async (req: Request, res: Response) => {
   }
 };
 
+//Crear nuevo administrador
 export const newAdmin = async (req: Request, res: Response) => {
   const { idUser } = req.body;
   try {
@@ -37,6 +39,7 @@ export const newAdmin = async (req: Request, res: Response) => {
   }
 };
 
+//Crear nueva pelicula
 export const newMovie = async (req: Request, res: Response) => {
   const infoNewMovie = req.body;
   try {
@@ -46,6 +49,8 @@ export const newMovie = async (req: Request, res: Response) => {
     res.status(400).send("something went rong whit this Movie");
   }
 };
+
+//Borrar pelicula
 export const removeMovie = async (req: Request, res: Response) => {
   const idMovie = req.body;
   try {
@@ -55,6 +60,8 @@ export const removeMovie = async (req: Request, res: Response) => {
     res.status(400).send("something went rong whit this Movie ​🎦​");
   }
 };
+
+//Bann pelicula
 export const suspendMovie = async (req: Request, res: Response) => {
   const idMovie = req.body;
   try {

@@ -3,12 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const blockbuster_controller_1 = require("../controller/blockbuster.controller");
 const users_controller_1 = require("../controller/users.controller");
-// import { editeMovie } from "../controller/admin.controller";
+const comments_controller_1 = require("../controller/comments.controller");
 const router = (0, express_1.Router)();
-//router.get("/home", getAllMovies);
+//GET ALL MOVIES
 router.get("/", blockbuster_controller_1.fullDbMovies);
+//GET BY ID
+router.get('/id/:id', blockbuster_controller_1.getMovieId);
+//POSTS MOVIE
 router.post('/addM', blockbuster_controller_1.addMovie);
-router.get('/detail/:id', blockbuster_controller_1.getMovieId);
+//POST USER
 router.post('/newU', users_controller_1.addUser);
-// router.patch('/movies/edit/:id', editeMovie)
+//POST COMMENTS
+router.post("/commets", comments_controller_1.fullDBComments);
 exports.default = router;
