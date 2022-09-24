@@ -12,7 +12,7 @@ dotenv.config();
 dbInit();
 
 const app: Application = express();
-const port = process.env.PORT || 5432;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(bodyParser.json({ limit: "50mb" }));

@@ -1,19 +1,28 @@
-import { Request, Response, Router } from "express";
-import Blockbuster from "../db/models/blockbuster.model";
-import { BlockbusterService } from "../services/blockbuster.service";
+import { Router } from "express";
 import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.controller";
 import { addUser } from "../controller/users.controller";
-// import { editeMovie } from "../controller/admin.controller";
+import { fullDBComments } from "../controller/comments.controller"
+
 
 const router = Router();
 
-//router.get("/home", getAllMovies);
 
+
+//GET ALL MOVIES
 router.get("/",fullDbMovies)
+
+//GET BY ID
+router.get('/id/:id', getMovieId)
+
+//POSTS MOVIE
 router.post('/addM', addMovie)
-router.get('/detail/:id', getMovieId)
+
+//POST USER
 router.post('/newU', addUser)
-// router.patch('/movies/edit/:id', editeMovie)
+
+//POST COMMENTS
+router.post("/commets", fullDBComments)
+
 
 
 

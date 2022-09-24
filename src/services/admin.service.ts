@@ -22,7 +22,9 @@ export type Movie = {
   imdbRating: string;
   status: boolean;
 };
+
 export type Adm = "admin";
+
 export type User = {
   name: string;
   lastname: string;
@@ -40,10 +42,13 @@ export class AdminService {
     return userX;
   }
 
+
   async desBanUser(id: number) {
     let userX = await Users.update({ status: true }, { where: { id } });
     return userX;
   }
+
+
   //----------------- Creador de peliculas -------
   async addMovie(movie: Movie) {
     console.log(movie);
@@ -53,19 +58,26 @@ export class AdminService {
     }
     throw Error;
   }
+
+
   async deletMovie(id: number): Promise<boolean> {
-    const byeMovie = await Blockbuster.destroy({ where: { id } });
+    const byeMovie = await Blockbuster.destroy( { where: { id } });
     return !!byeMovie;
   }
+
+
   async suspendMovie(id: number) {
     let movie = await Blockbuster.update({ status: false }, { where: { id } });
     return movie;
   }
 
+
   async defineAdmin(id: number) {
     let userX = await Users.update({ category: "admin" }, { where: { id } });
     return userX;
   }
+
+
   async editeName(id: number, string: string) {
     let editName = await Blockbuster.update(
       { name: string },
@@ -73,6 +85,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeYear(id: number, string: string) {
     let editName = await Blockbuster.update(
       { year: string },
@@ -80,6 +94,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editePoster(id: number, string: string) {
     let editName = await Blockbuster.update(
       { poster: string },
@@ -87,6 +103,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeGenre(id: number, string: string) {
     let editName = await Blockbuster.update(
       { genre: string },
@@ -94,6 +112,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeCountry(id: number, string: string) {
     let editName = await Blockbuster.update(
       { country: string },
@@ -101,6 +121,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeRated(id: number, string: string) {
     let editName = await Blockbuster.update(
       { rated: string },
@@ -108,6 +130,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeReleased(id: number, string: string) {
     let editName = await Blockbuster.update(
       { released: string },
@@ -115,6 +139,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeRuntime(id: number, string: string) {
     let editName = await Blockbuster.update(
       { runtime: string },
@@ -122,6 +148,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeDirector(id: number, string: string) {
     let editName = await Blockbuster.update(
       { director: string },
@@ -129,6 +157,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeActors(id: number, string: string) {
     let editName = await Blockbuster.update(
       { actors: string },
@@ -136,6 +166,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editePlot(id: number, string: string) {
     let editName = await Blockbuster.update(
       { plot: string },
@@ -143,6 +175,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeLanguage(id: number, string: string) {
     let editName = await Blockbuster.update(
       { language: string },
@@ -150,6 +184,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeimdbVotes(id: number, string: string) {
     let editName = await Blockbuster.update(
       { imdbVotes: string },
@@ -157,6 +193,8 @@ export class AdminService {
     );
     return editName;
   }
+
+
   async editeimdbRating(id: number, string: string) {
     let editName = await Blockbuster.update(
       { imdbRating: string },

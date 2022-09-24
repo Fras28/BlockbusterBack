@@ -1,11 +1,13 @@
 import axios from "axios";
+import { Type } from "typescript";
 import Blockbuster from "../db/models/blockbuster.model";
-import Users from "../db/models/users.model";
+import comments from "../db/models/coments.model";
+import {Comment} from "../services/coments.service"
 const url: string = `http://www.omdbapi.com/?t=`;
 const apiKey: string = `d92c2f98`;
 
-
 export type Movie = {
+  id?: number;
   name: string;
   year: string;
   genre: string;
@@ -21,7 +23,7 @@ export type Movie = {
   imdbVotes: string;
   imdbRating: string;
   status:boolean;
-
+  comment?: Comment
 };
 
 export class BlockbusterService {
@@ -84,3 +86,5 @@ export class BlockbusterService {
 
   }
 }
+
+//Todo probado :)
