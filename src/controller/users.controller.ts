@@ -14,6 +14,8 @@ export const addUser = async (req: Request, res: Response) => {
     return res.status(400).send(e);
   }
 };
+
+
 export const afterPay = async (req: Request, res: Response) => {
   const { category, id } = req.body;
   try {
@@ -37,6 +39,8 @@ export const afterPay = async (req: Request, res: Response) => {
     res.status(404).send("something went rong whit the suscription 👎​");
   }
 };
+
+
 export const picProfile = async (req: Request, res: Response) => {
   const { pic, id } = req.body;
   try {

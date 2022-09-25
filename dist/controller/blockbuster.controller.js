@@ -18,15 +18,6 @@ const blockbuster_service_1 = require("../services/blockbuster.service");
 const infoSec_1 = require("../infoSec");
 const filmsName = infoSec_1.MoviesArr;
 const blockbusterService = new blockbuster_service_1.BlockbusterService(new blockbuster_model_1.default());
-//MEDIANTE EL SERVICIO HACE EL GET A LA API
-// export const getAllMovies = async (req: Request, res: Response) => {
-//   try {
-//     const result = await blockbusterService.getAll();
-//     return res.status(200).send(result);
-//   } catch (e) {
-//     return res.status(404).send("films not found");
-//   }successfully
-// };
 //MEDIANTE EL SERVICIO METE LAS PELICULAS EN BD
 const fullDbMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -43,6 +34,7 @@ const fullDbMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.fullDbMovies = fullDbMovies;
+//GET BY ID
 const getMovieId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     console.log(id);
@@ -63,3 +55,4 @@ const addMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.addMovie = addMovie;
+//Todo probado :)
