@@ -4,7 +4,8 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import dbInit from "./db/init";
-import cors from "cors"
+
+
 
 import router from "./routes/blockbuster.routes";
 
@@ -15,13 +16,13 @@ dbInit();
 const app: Application = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors())
+
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 app.use((_req: Request, res: Response, next: NextFunction) => {
-  res.header("Access-Control-Allow-Origin", "https://blockbusterserverhenry.onrender.com/"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
