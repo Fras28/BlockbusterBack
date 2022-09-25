@@ -19,7 +19,11 @@ const commentsService = new coments_service_1.CommentService(new coments_model_1
 //CREA COMENTARIOS EN BD
 const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        let movieId = req.params;
+        // let xParamId = parseInt(movieId);
         const commentFullData = req.body;
+        // console.log(xParamId)
+        // commentFullData.movieId = xParamId;
         const dbComments = yield coments_model_1.default.findAll();
         if (dbComments.length === 0) {
             yield commentsService.newComment(commentFullData);
@@ -29,7 +33,7 @@ const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function*
         return res.status(200).send(dbComments);
     }
     catch (e) {
-        return res.status(400).send('Comments not found in db!');
+        return res.status(400).send("Comments not found in db!");
     }
 });
 exports.fullDBComments = fullDBComments;

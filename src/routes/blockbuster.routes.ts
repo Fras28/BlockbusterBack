@@ -12,7 +12,7 @@ const router = Router();
 router.get("/",fullDbMovies)
 
 //GET BY ID
-router.get('/id/:id', getMovieId)
+router.get('/detail/:id', getMovieId)
 
 //POSTS MOVIE
 router.post('/addM', addMovie)
@@ -21,7 +21,7 @@ router.post('/addM', addMovie)
 router.post('/newU', addUser)
 
 //POST COMMENTS
-router.post("/commets", fullDBComments)
+router.post('/detail/:id', fullDBComments)
 
 
 

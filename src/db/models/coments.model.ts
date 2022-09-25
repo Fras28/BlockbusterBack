@@ -2,11 +2,10 @@ import { json } from "body-parser";
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from "../db";
 
-
 interface ComentsAttributes {
   id?: number;
-  idMovie?: number;
-  idUser?: number; 
+  movieId?: number;
+  idUser: number;
   name: string;
   nickname: string;
   coment: string;
@@ -16,6 +15,8 @@ interface ComentsAttributes {
 
 class comments extends Model<ComentsAttributes> {
   public id!: number;
+  public movieId!: number;
+  public idUser!: number;
   public name!: string;
   public nickname!: string;
   public coment!: string;
@@ -37,6 +38,12 @@ comments.init(
     name: {
       type: DataTypes.STRING,
     },
+    idUser: {
+      type: DataTypes.INTEGER,
+    },
+    movieId: {
+      type: DataTypes.INTEGER,
+    },
     nickname: {
       type: DataTypes.STRING,
     },
@@ -52,6 +59,5 @@ comments.init(
   },
   { sequelize: sequelizeConnection, paranoid: true }
 );
-
 
 export default comments;
