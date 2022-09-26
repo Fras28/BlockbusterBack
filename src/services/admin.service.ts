@@ -202,6 +202,15 @@ export class AdminService {
     );
     return editName;
   }
+
+  /*async userIdOne(idUser: number){
+    const idOne = await Users.findOne{
+      where: {
+        id:idUser;
+      }
+    }
+    return idOne;
+  }*/
 }
 //editar peliculas
 //quitar roll de admin

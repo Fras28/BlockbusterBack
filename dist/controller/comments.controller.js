@@ -12,18 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteComments = exports.editComments = exports.fullDBComments = void 0;
+exports.deleteComments = exports.editComments = exports.addComment = exports.fullDBComments = void 0;
 const coments_model_1 = __importDefault(require("../db/models/coments.model"));
 const coments_service_1 = require("../services/coments.service");
 const commentsService = new coments_service_1.CommentService(new coments_model_1.default());
-//CREA COMENTARIOS EN BD
+//GET COMENTARIOS EN BD
 const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let movieId = req.params;
-        // let xParamId = parseInt(movieId);
+        let { id } = req.params;
+        let xParamId = +id;
         const commentFullData = req.body;
-        // console.log(xParamId)
-        // commentFullData.movieId = xParamId;
+        console.log(xParamId, "acaa");
+        commentFullData.movieId = xParamId;
         const dbComments = yield coments_model_1.default.findAll();
         if (dbComments.length === 0) {
             yield commentsService.newComment(commentFullData);
@@ -37,6 +37,21 @@ const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.fullDBComments = fullDBComments;
+//CREATE COMMENT
+const addComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let { id } = req.params;
+        let xParamId = +id;
+        const commentFullData = req.body;
+        commentFullData.movieId = xParamId;
+        yield commentsService.newComment(commentFullData);
+        return res.status(200).send("Comment succses!");
+    }
+    catch (e) {
+        return res.status(400).send("Something went with your comment!");
+    }
+});
+exports.addComment = addComment;
 //EDITA COMENTARIOS
 const editComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { comment, id } = req.body;
@@ -61,3 +76,4 @@ const deleteComments = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.deleteComments = deleteComments;
+//GET COMMENT BY ID

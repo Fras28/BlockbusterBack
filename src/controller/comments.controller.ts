@@ -5,14 +5,14 @@ import { Comment } from "../services/coments.service";
 
 const commentsService = new CommentService(new comments());
 
-//CREA COMENTARIOS EN BD
+//GET COMENTARIOS EN BD
 export const fullDBComments = async (req: Request, res: Response) => {
   try {
-    let movieId = req.params;
-    // let xParamId = parseInt(movieId);
+    let { id }= req.params;
+    let xParamId = +id;
     const commentFullData: Comment = req.body;
-    // console.log(xParamId)
-    // commentFullData.movieId = xParamId;
+    console.log(xParamId,"acaa")
+    commentFullData.movieId = xParamId;
     const dbComments = await comments.findAll();
     if (dbComments.length === 0) {
       await commentsService.newComment(commentFullData);
@@ -25,6 +25,26 @@ export const fullDBComments = async (req: Request, res: Response) => {
   }
 };
 
+
+//CREATE COMMENT
+export const addComment = async  (req: Request, res: Response) =>{
+try{ 
+
+  let { id }= req.params;
+  let xParamId = +id;
+  const commentFullData: Comment = req.body;
+  commentFullData.movieId = xParamId;
+  await commentsService.newComment(commentFullData);
+  
+  return res.status(200).send("Comment succses!");
+
+} catch(e) {
+
+  return res.status(400).send("Something went with your comment!");
+}
+}
+
+
 //EDITA COMENTARIOS
 export const editComments = async (req: Request, res: Response) => {
   const { comment, id } = req.body;
@@ -36,6 +56,7 @@ export const editComments = async (req: Request, res: Response) => {
   }
 };
 
+
 //BORRAR COMENTARIOS
 export const deleteComments = async (req: Request, res: Response) => {
   const { id } = req.body;
@@ -46,3 +67,7 @@ export const deleteComments = async (req: Request, res: Response) => {
     return res.status(400).send(e);
   }
 };
+
+
+//GET COMMENT BY ID
+

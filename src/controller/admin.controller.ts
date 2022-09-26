@@ -72,6 +72,15 @@ export const suspendMovie = async (req: Request, res: Response) => {
   }
 };
 
+/*export const getUserById = async (req: Request, res: Response) => {
+  const id = req.body;
+  try{
+    const idOne = await adminService.userIdOne(id)
+    res.status(200).send(idOne)
+  }catch(e){
+    res.status(400).send("User not found!")
+  }
+}*/
 
 // export const editeMovie = async (req: Request, res: Response) => {
 //   const Movie:Movie = req.body;

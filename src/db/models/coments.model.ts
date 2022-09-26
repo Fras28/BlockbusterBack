@@ -5,7 +5,7 @@ import sequelizeConnection from "../db";
 interface ComentsAttributes {
   id?: number;
   movieId?: number;
-  idUser: number;
+  idUser?: number;
   name: string;
   nickname: string;
   coment: string;
