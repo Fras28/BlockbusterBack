@@ -42,7 +42,7 @@ try{
 
   return res.status(400).send("Something went with your comment!");
 }
-}
+};
 
 
 //EDITA COMENTARIOS
