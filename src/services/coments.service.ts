@@ -1,7 +1,9 @@
 import Comments from "../db/models/coments.model";
 
 export type Comment = {
-  id: number;
+  id?: number;
+  movieId: number;
+  idUser: number;
   name: string;
   nickname: string;
   coment: string;

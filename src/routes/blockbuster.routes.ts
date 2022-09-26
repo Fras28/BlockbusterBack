@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.controller";
 import { addUser } from "../controller/users.controller";
-import { fullDBComments } from "../controller/comments.controller"
+import { fullDBComments, addComment } from "../controller/comments.controller"
+//import {getUserById} from "../controller/admin.controller"
 
 
 const router = Router();
@@ -12,7 +13,12 @@ const router = Router();
 router.get("/",fullDbMovies)
 
 //GET BY ID
-router.get('/id/:id', getMovieId)
+router.get('/detail/:id', getMovieId)
+
+//GET COMMENTS
+router.get("/allComments", fullDBComments)
+
+//router.get("/findUser", getUserById)
 
 //POSTS MOVIE
 router.post('/addM', addMovie)
@@ -21,7 +27,7 @@ router.post('/addM', addMovie)
 router.post('/newU', addUser)
 
 //POST COMMENTS
-router.post("/commets", fullDBComments)
+router.post('/detail/:id', addComment)
 
 
 
