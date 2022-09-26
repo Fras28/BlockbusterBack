@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import dbInit from "./db/init";
+import cors from "cors"
 
 
 
@@ -16,7 +17,7 @@ dbInit();
 const app: Application = express();
 const port = process.env.PORT || 3000 ;
 
-
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cookieParser());
