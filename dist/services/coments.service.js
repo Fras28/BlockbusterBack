@@ -37,5 +37,25 @@ class CommentService {
             return !!comentD;
         });
     }
+    byIdMovie(movieId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const coments = yield coments_model_1.default.findAll({
+                where: {
+                    movieId,
+                },
+            });
+            return coments;
+        });
+    }
+    byIdUser(idUser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const coments = yield coments_model_1.default.findAll({
+                where: {
+                    idUser,
+                },
+            });
+            return coments;
+        });
+    }
 }
 exports.CommentService = CommentService;
