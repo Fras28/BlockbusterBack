@@ -23,8 +23,6 @@ const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function*
         let xParamId = +id;
         const commentFullData = req.body;
         console.log(xParamId, "acaa");
-        commentFullData.movieId = xParamId;
-        commentFullData.idUser = xParamId;
         const dbComments = yield coments_model_1.default.findAll();
         if (dbComments.length === 0) {
             yield commentsService.newComment(commentFullData);
@@ -45,7 +43,6 @@ const addComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         let xParamId = +id;
         const commentFullData = req.body;
         commentFullData.movieId = xParamId;
-        commentFullData.idUser = xParamId;
         yield commentsService.newComment(commentFullData);
         return res.status(200).send("Comment succses!");
     }

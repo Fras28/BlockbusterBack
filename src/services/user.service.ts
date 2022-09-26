@@ -20,10 +20,14 @@ export class UserService {
     const insertedUser = await Users.create(user, { validate: true });
     return insertedUser;
   }
+
+
   async defineCategory(category: Category, id: number) {
     let userX = await Users.update({ category }, { where: { id } });
     return userX;
   }
+
+  
   async changePic(picture: string, id: number) {
     let userX = await Users.update({ picture }, { where: { id } });
     return userX;

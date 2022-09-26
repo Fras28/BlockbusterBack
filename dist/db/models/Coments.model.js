@@ -17,13 +17,10 @@ comments.init({
         type: sequelize_1.DataTypes.STRING,
     },
     idUser: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.STRING,
     },
     movieId: {
         type: sequelize_1.DataTypes.INTEGER,
-    },
-    nickname: {
-        type: sequelize_1.DataTypes.STRING,
     },
     coment: {
         type: sequelize_1.DataTypes.STRING(300),
