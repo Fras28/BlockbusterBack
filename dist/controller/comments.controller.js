@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteComments = exports.editComments = exports.addComment = exports.fullDBComments = void 0;
+exports.deleteComments = exports.byIdCommentsUser = exports.byIdComments = exports.editComments = exports.addComment = exports.fullDBComments = void 0;
 const coments_model_1 = __importDefault(require("../db/models/coments.model"));
 const coments_service_1 = require("../services/coments.service");
 const commentsService = new coments_service_1.CommentService(new coments_model_1.default());
@@ -24,6 +24,7 @@ const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function*
         const commentFullData = req.body;
         console.log(xParamId, "acaa");
         commentFullData.movieId = xParamId;
+        commentFullData.idUser = xParamId;
         const dbComments = yield coments_model_1.default.findAll();
         if (dbComments.length === 0) {
             yield commentsService.newComment(commentFullData);
@@ -44,6 +45,7 @@ const addComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         let xParamId = +id;
         const commentFullData = req.body;
         commentFullData.movieId = xParamId;
+        commentFullData.idUser = xParamId;
         yield commentsService.newComment(commentFullData);
         return res.status(200).send("Comment succses!");
     }
@@ -64,16 +66,54 @@ const editComments = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.editComments = editComments;
+//RELACIONAR COMENTARIOS A MOVIES ID
+const byIdComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { idMovie } = req.body;
+    try {
+        const comments = yield commentsService.byIdMovie(idMovie);
+        if (comments.length > 0) {
+            res.status(200).send(comments);
+        }
+        else {
+            return res.status(400).send("This movie don't have any comments");
+        }
+    }
+    catch (e) {
+        return res.status(400).send(e);
+    }
+});
+exports.byIdComments = byIdComments;
+//RELACIONAR COMENTARIOS A USES POR ID
+const byIdCommentsUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { idUser } = req.body;
+    try {
+        const comments = yield commentsService.byIdUser(idUser);
+        if (comments.length > 0) {
+            res.status(200).send(comments);
+        }
+        else {
+            res.status(400).send("This User don't have any comments");
+        }
+    }
+    catch (e) {
+        res.status(400).send(e);
+    }
+});
+exports.byIdCommentsUser = byIdCommentsUser;
 //BORRAR COMENTARIOS
 const deleteComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {
         const dbComment = yield commentsService.deletComment(id);
-        return res.status(200).send(dbComment);
+        if (dbComment) {
+            return res.status(200).send(`The comment: ${id} delete`);
+        }
+        else {
+            res.status(400).send('Comment not found');
+        }
     }
     catch (e) {
         return res.status(400).send(e);
     }
 });
 exports.deleteComments = deleteComments;
-//GET COMMENT BY ID
