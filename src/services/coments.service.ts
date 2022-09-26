@@ -3,9 +3,8 @@ import Comments from "../db/models/coments.model";
 export type Comment = {
   id?: number;
   movieId: number;
-  idUser: number;
+  idUser: string;
   name: string;
-  nickname: string;
   coment: string;
   picture: string;
   status: boolean;

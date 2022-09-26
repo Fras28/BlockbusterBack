@@ -21,14 +21,12 @@
 
 //create comment
 // {
-//     "id": 2,
-//     "name": "string",
-//     "nickname": "string",
-//     "coment": "string",
+//     "name": "abi! putin",
+//     "movieId": "agus.1mollo",
+//     "coment": "gnvnvn",
 //     "picture": "string",
-//     "status": true,
+//     "status": true
 //   }
-
 
 
 

@@ -12,8 +12,6 @@ export const fullDBComments = async (req: Request, res: Response) => {
     let xParamId = +id;
     const commentFullData: Comment = req.body;
     console.log(xParamId, "acaa")
-    commentFullData.movieId = xParamId;
-    commentFullData.idUser = xParamId;
     const dbComments = await comments.findAll();
     if (dbComments.length === 0) {
       await commentsService.newComment(commentFullData);
@@ -33,7 +31,6 @@ export const addComment = async (req: Request, res: Response) => {
     let xParamId = +id;
     const commentFullData: Comment = req.body;
     commentFullData.movieId = xParamId;
-    commentFullData.idUser = xParamId;
     await commentsService.newComment(commentFullData);
     return res.status(200).send("Comment succses!");
   } catch (e) {
