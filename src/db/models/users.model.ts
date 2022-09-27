@@ -7,6 +7,7 @@ interface UsersAttributes {
   name: string;
   lastname: string;
   nickname: string;
+  date?: string;
   picture: string;
   email: string;
   status: boolean;
@@ -18,6 +19,7 @@ class users extends Model<UsersAttributes> {
   public name!: string;
   public lastname!: string;
   public nickname!: string;
+  public date!: string
   public picture!: string;
   public email!: string;
   public status!: boolean;         
@@ -50,17 +52,17 @@ users.init(
     email: {
       type: DataTypes.STRING,
     },
+    date: {
+      type: DataTypes.STRING,
+    },
     status: {
       type: DataTypes.BOOLEAN,
     },
     category: {
       type: DataTypes.STRING,
-      // .ENUM("user", "silver", "gold", "admin"),
-      // defaultValue: "user",
     },
   },
   { sequelize: sequelizeConnection, paranoid: true }
 );
-// season:{
-// type: DataTypes.ENUM("summer", "autumn","winter","spring")},
+
 export default users;

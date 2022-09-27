@@ -16,6 +16,7 @@ exports.picProfile = exports.afterPay = exports.addUser = exports.usersService =
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 const user_service_1 = require("../services/user.service");
 exports.usersService = new user_service_1.UserService(new users_model_1.default());
+//CREAR USUARIO
 const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(req);
     try {
@@ -28,6 +29,7 @@ const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.addUser = addUser;
+//ASIGNAR CATEGORIA
 const afterPay = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { category, id } = req.body;
     try {
@@ -49,6 +51,7 @@ const afterPay = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.afterPay = afterPay;
+//POSTA PARA CAMBIO DE FOTO
 const picProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { pic, id } = req.body;
     try {
@@ -56,7 +59,7 @@ const picProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         res.status(200).send("Succsesfuly change 👍​");
     }
     catch (e) {
-        res.status(404).send("something went rond with the change👎​");
+        res.status(404).send("Something went wrong with your change👎​");
     }
 });
 exports.picProfile = picProfile;

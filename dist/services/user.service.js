@@ -21,6 +21,9 @@ class UserService {
     //-------------Crear Usuario --------
     insertUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
+            user.status = true;
+            user.category = "user";
+            console.log(user);
             const insertedUser = yield users_model_1.default.create(user, { validate: true });
             return insertedUser;
         });

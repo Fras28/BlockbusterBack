@@ -1,14 +1,18 @@
 import Comments from "../db/models/coments.model";
 
+
 export type Comment = {
   id?: number;
   movieId: number;
-  idUser: string;
+  idUser: number;
   name: string;
   coment: string;
   picture: string;
   status: boolean;
 };
+
+
+
 
 export class CommentService {
   constructor(private commentModel: Comments) {}
@@ -20,8 +24,8 @@ export class CommentService {
   }
 
   async editComment(coment: string, id: number) {
-    Comments.update({ coment }, { where: { id } });
-    return coment;
+    let commentEDit = await Comments.update({ coment }, { where: { id } });
+    return commentEDit;
   }
 
   async deletComment(id: number): Promise<boolean> {

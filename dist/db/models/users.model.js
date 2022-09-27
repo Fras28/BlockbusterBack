@@ -28,15 +28,14 @@ users.init({
     email: {
         type: sequelize_1.DataTypes.STRING,
     },
+    date: {
+        type: sequelize_1.DataTypes.STRING,
+    },
     status: {
         type: sequelize_1.DataTypes.BOOLEAN,
     },
     category: {
         type: sequelize_1.DataTypes.STRING,
-        // .ENUM("user", "silver", "gold", "admin"),
-        // defaultValue: "user",
     },
 }, { sequelize: db_1.default, paranoid: true });
-// season:{
-// type: DataTypes.ENUM("summer", "autumn","winter","spring")},
 exports.default = users;

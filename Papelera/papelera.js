@@ -29,5 +29,13 @@
 //   }
 
 
+//crear usuario
+// {
+//     "name": "Agustin",
+//     "lastname": "Mollo",
+//     "nickname": "Mollo",
+//     "picture": "https://lh3.googleusercontent.com/a-/ACNPEu8iSKgizcdatj1USc9sUqWiOkXawZwklFwK64Bf6A=s288-p-rw-no",
+//     "email": "asdasdasd8@gmail.com"
+//   }
 
 

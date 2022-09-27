@@ -9,9 +9,7 @@ const commentsService = new CommentService(new comments());
 export const fullDBComments = async (req: Request, res: Response) => {
   try {
     let { id } = req.params;
-    let xParamId = +id;
     const commentFullData: Comment = req.body;
-    console.log(xParamId, "acaa")
     const dbComments = await comments.findAll();
     if (dbComments.length === 0) {
       await commentsService.newComment(commentFullData);
@@ -31,8 +29,8 @@ export const addComment = async (req: Request, res: Response) => {
     let xParamId = +id;
     const commentFullData: Comment = req.body;
     commentFullData.movieId = xParamId;
-    await commentsService.newComment(commentFullData);
-    return res.status(200).send("Comment succses!");
+    let newComment = await commentsService.newComment(commentFullData);
+    return res.status(200).send(newComment);
   } catch (e) {
     return res.status(400).send("Something went with your comment!");
   }
@@ -40,9 +38,10 @@ export const addComment = async (req: Request, res: Response) => {
 
  //EDITA COMENTARIOS
 export const editComments = async (req: Request, res: Response) => {
-  const { comment, id } = req.body;
+  const { coment, id } = req.body;
   try {
-    const dbComment = await commentsService.editComment(comment, id);
+    console.log(id,coment)
+    const dbComment = await commentsService.editComment(coment, id);
     return res.status(200).send(dbComment);
   } catch (e) {
     return res.status(400).send(e);

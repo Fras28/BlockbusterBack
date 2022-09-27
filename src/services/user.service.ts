@@ -16,7 +16,11 @@ export type User = {
 export class UserService {
   constructor(private userModel: Users) {}
   //-------------Crear Usuario --------
+  
   async insertUser(user: User) {
+    user.status = true;     
+    user.category = "user"
+    console.log(user)
     const insertedUser = await Users.create(user, { validate: true });
     return insertedUser;
   }
@@ -32,4 +36,6 @@ export class UserService {
     let userX = await Users.update({ picture }, { where: { id } });
     return userX;
   }
+
+
 }

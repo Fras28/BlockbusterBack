@@ -1,8 +1,7 @@
 import Blockbuster from "../db/models/blockbuster.model";
 import Users from "../db/models/users.model";
-// import { Movie } from "../types";
-// import { Adm } from "../types";
-// import { User } from "../types";
+import Comments from "../db/models/coments.model";
+
 
 export type Movie = {
   id: number;
@@ -26,30 +25,48 @@ export type Movie = {
 export type Adm = "admin";
 
 export type User = {
+  id?:number;
   name: string;
   lastname: string;
   nickname: string;
+  date?:string;
   picture: string;
   email: string;
   status: boolean;
   category: Adm;
 };
 
+export type Comment = {
+  id?: number;
+  movieId: number;
+  idUser: number;
+  name: string;
+  coment: string;
+  picture: string;
+  status: boolean;
+};
+
+
+
+
+
 export class AdminService {
   constructor(private UserModel: Users) {}
-  async banUser(id: number) {
+  
+
+
+  async bannUser(id: number) {
     let userX = await Users.update({ status: false }, { where: { id } });
     return userX;
   }
 
 
-  async desBanUser(id: number) {
+  async unnBanUser(id: number) {
     let userX = await Users.update({ status: true }, { where: { id } });
     return userX;
   }
 
 
-  //----------------- Creador de peliculas -------
   async addMovie(movie: Movie) {
     console.log(movie);
     const findInDb = Blockbuster.findOne({ where: { name: movie.name } });
@@ -63,12 +80,6 @@ export class AdminService {
   async deletMovie(id: number): Promise<boolean> {
     const byeMovie = await Blockbuster.destroy( { where: { id } });
     return !!byeMovie;
-  }
-
-
-  async suspendMovie(id: number) {
-    let movie = await Blockbuster.update({ status: false }, { where: { id } });
-    return movie;
   }
 
 
@@ -203,15 +214,35 @@ export class AdminService {
     return editName;
   }
 
-  /*async userIdOne(idUser: number){
-    const idOne = await Users.findOne{
-      where: {
-        id:idUser;
-      }
-    }
-    return idOne;
-  }*/
+
+  async getUserByEmail (email: string){
+    let emailUser = await Users.findOne({where: { email } });
+    return emailUser
+  }
+
+
+  async allUsers(){
+    let arrUsers = await Users.findAll()
+    arrUsers.sort((a, b)=>{
+      if(a.nickname < b.nickname){
+        return 1;}
+        if(b.nickname < a.nickname){
+          return -1;}
+          return 0
+    })
+    return arrUsers
+  }
+
+
+  async getUserById (id: number){
+    let idUser = await Users.findOne({where: { id } });
+    return idUser
+  }
+
+  
+  async bannComment (idUser: number) {
+    let bann = await Comments.update({ status:false }, { where: {idUser}  });
+    return bann;
+  }
+
 }
-//editar peliculas
-//quitar roll de admin
-//editar precio de mermrecias

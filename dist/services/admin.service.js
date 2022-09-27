@@ -15,23 +15,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminService = void 0;
 const blockbuster_model_1 = __importDefault(require("../db/models/blockbuster.model"));
 const users_model_1 = __importDefault(require("../db/models/users.model"));
+const coments_model_1 = __importDefault(require("../db/models/coments.model"));
 class AdminService {
     constructor(UserModel) {
         this.UserModel = UserModel;
     }
-    banUser(id) {
+    bannUser(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let userX = yield users_model_1.default.update({ status: false }, { where: { id } });
             return userX;
         });
     }
-    desBanUser(id) {
+    unnBanUser(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let userX = yield users_model_1.default.update({ status: true }, { where: { id } });
             return userX;
         });
     }
-    //----------------- Creador de peliculas -------
     addMovie(movie) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(movie);
@@ -46,12 +46,6 @@ class AdminService {
         return __awaiter(this, void 0, void 0, function* () {
             const byeMovie = yield blockbuster_model_1.default.destroy({ where: { id } });
             return !!byeMovie;
-        });
-    }
-    suspendMovie(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let movie = yield blockbuster_model_1.default.update({ status: false }, { where: { id } });
-            return movie;
         });
     }
     defineAdmin(id) {
@@ -144,8 +138,38 @@ class AdminService {
             return editName;
         });
     }
+    getUserByEmail(email) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let emailUser = yield users_model_1.default.findOne({ where: { email } });
+            return emailUser;
+        });
+    }
+    allUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let arrUsers = yield users_model_1.default.findAll();
+            arrUsers.sort((a, b) => {
+                if (a.nickname < b.nickname) {
+                    return 1;
+                }
+                if (b.nickname < a.nickname) {
+                    return -1;
+                }
+                return 0;
+            });
+            return arrUsers;
+        });
+    }
+    getUserById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let idUser = yield users_model_1.default.findOne({ where: { id } });
+            return idUser;
+        });
+    }
+    bannComment(idUser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let bann = yield coments_model_1.default.update({ status: false }, { where: { idUser } });
+            return bann;
+        });
+    }
 }
 exports.AdminService = AdminService;
-//editar peliculas
-//quitar roll de admin
-//editar precio de mermrecias

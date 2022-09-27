@@ -4,6 +4,7 @@ import { UserService } from "../services/user.service";
 
 export const usersService = new UserService(new users());
 
+//CREAR USUARIO
 export const addUser = async (req: Request, res: Response) => {
   console.log(req);
   try {
@@ -15,7 +16,7 @@ export const addUser = async (req: Request, res: Response) => {
   }
 };
 
-
+//ASIGNAR CATEGORIA
 export const afterPay = async (req: Request, res: Response) => {
   const { category, id } = req.body;
   try {
@@ -40,13 +41,14 @@ export const afterPay = async (req: Request, res: Response) => {
   }
 };
 
-
+//POSTA PARA CAMBIO DE FOTO
 export const picProfile = async (req: Request, res: Response) => {
   const { pic, id } = req.body;
   try {
     await usersService.changePic(pic, id);
     res.status(200).send("Succsesfuly change 👍​");
   } catch (e) {
-    res.status(404).send("something went rond with the change👎​");
+    res.status(404).send("Something went wrong with your change👎​");
   }
 };
+

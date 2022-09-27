@@ -12,43 +12,64 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.suspendMovie = exports.removeMovie = exports.newMovie = exports.newAdmin = exports.desBanUser = exports.banUser = void 0;
+exports.bannComments = exports.getUser = exports.fullUsers = exports.removeMovie = exports.newMovie = exports.newAdmin = exports.unBannUser = exports.bannUser = void 0;
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 const admin_service_1 = require("../services/admin.service");
 const adminService = new admin_service_1.AdminService(new users_model_1.default());
 //Bannear usuario
-const banUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const bannUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {
-        yield adminService.banUser(id);
-        res.status(200).send("User baned successfully");
+        let user = yield adminService.getUserById(id);
+        console.log(user);
+        if (user != null) {
+            yield adminService.bannUser(id);
+            res.status(200).send("User banned successfully!");
+        }
+        else {
+            res.status(404).send("User not found");
+        }
     }
     catch (e) {
-        res.status(404).send("User not found");
+        res.status(404).send(e);
     }
 });
-exports.banUser = banUser;
-//Unbann usuario 
-const desBanUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.bannUser = bannUser;
+//Unbann usuario
+const unBannUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {
-        yield adminService.desBanUser(id);
-        res.status(200).send("Reactivated user successfully");
+        let user = yield adminService.getUserById(id);
+        console.log(user);
+        if (user != null) {
+            yield adminService.unnBanUser(id);
+            res.status(200).send("User unbanned successfully!");
+        }
+        else {
+            res.status(404).send("User not found");
+        }
     }
     catch (e) {
-        res.status(404).send("User not found");
+        res.status(404).send(e);
     }
 });
-exports.desBanUser = desBanUser;
+exports.unBannUser = unBannUser;
 //Crear nuevo administrador
 const newAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { idUser } = req.body;
+    const { id } = req.body;
     try {
-        yield adminService.defineAdmin(idUser);
-        res.status(200).send(`Now this id=${idUser} works as Admin `);
+        let user = yield adminService.getUserById(id);
+        console.log(user);
+        if (user != null) {
+            yield adminService.defineAdmin(id);
+            res.status(200).send(`new admin id=${id}`);
+        }
+        else {
+            res.status(404).send(`Something went wrong! Try again.`);
+        }
     }
     catch (e) {
-        res.status(404).send(`this function don't work`);
+        res.status(404).send(e);
     }
 });
 exports.newAdmin = newAdmin;
@@ -66,28 +87,53 @@ const newMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.newMovie = newMovie;
 //Borrar pelicula
 const removeMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const idMovie = req.body;
+    const { id } = req.body;
+    console.log(id);
     try {
-        yield adminService.deletMovie(idMovie);
-        res.status(200).send("The movie was perfectry deleted");
+        yield adminService.deletMovie(id);
+        res.status(200).send("The movie was deleted");
     }
     catch (e) {
-        res.status(400).send("something went rong whit this Movie ​🎦​");
+        res.status(400).send("Something went rong whit this Movie ​🎦​");
     }
 });
 exports.removeMovie = removeMovie;
-//Bann pelicula
-const suspendMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const idMovie = req.body;
+//Busca todos los usuarios
+const fullUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield adminService.suspendMovie(idMovie);
-        res.status(200).send("The movie was perfectry suspended 💤​");
+        const usersArr = yield adminService.allUsers();
+        res.status(200).send(usersArr);
     }
     catch (e) {
-        res.status(400).send("something went rong whit this suspension ​🖕​​");
+        res.status(404).send("No users in DB ");
     }
 });
-exports.suspendMovie = suspendMovie;
+exports.fullUsers = fullUsers;
+//Busca user por email
+const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.params;
+    try {
+        let user = yield adminService.getUserByEmail(email);
+        res.status(200).send(user);
+    }
+    catch (e) {
+        res.status(404).send("User not found");
+    }
+});
+exports.getUser = getUser;
+// Bann comments
+const bannComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { idUser } = req.body;
+    console.log(idUser);
+    try {
+        let bannedComment = yield adminService.bannComment(idUser);
+        res.status(200).send(bannedComment);
+    }
+    catch (e) {
+        res.status(404).send("User not found");
+    }
+});
+exports.bannComments = bannComments;
 /*export const getUserById = async (req: Request, res: Response) => {
   const id = req.body;
   try{
