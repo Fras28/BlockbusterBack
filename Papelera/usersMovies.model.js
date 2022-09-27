@@ -1,8 +1,8 @@
-"use strict";
 // import { DataTypes, Model, Optional } from "sequelize";
 // import sequelizeConnection from "../db";
 // import blockbuster from "./blockbuster.model";
 // import users from "./users.model";
+
 // interface UsersMovieAttributes {
 //     id?: number;
 //     blockbusterId?: number;
@@ -11,17 +11,21 @@
 //     updateAt?: Date;
 //     deleteAt?: Date;
 // }
+
 // export interface UsersMovieInput extends Optional<UsersMovieAttributes, 'id'>{}
 // export interface UserMovieOutput extends UsersMovieInput{}
+
 // class usersMovies extends Model<UsersMovieAttributes, UsersMovieInput> implements UsersMovieAttributes{
 //     public id!: number;
 //     public blockbusterId!: number;
 //     public usersId!: number;
+
 //     // timestamps!
 //     public readonly createdAt!: Date;
 //     public readonly updatedAt!: Date;
 //     public readonly deletedAt!: Date;
 // }
+
 // usersMovies.init({
 //     id: {
 //         type: DataTypes.INTEGER,
@@ -46,4 +50,5 @@
 //     sequelize: sequelizeConnection
 // }
 // )
+
 // export default usersMovies;

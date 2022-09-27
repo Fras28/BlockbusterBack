@@ -27,8 +27,8 @@ class CommentService {
     }
     editComment(coment, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            coments_model_1.default.update({ coment }, { where: { id } });
-            return coment;
+            let commentEDit = yield coments_model_1.default.update({ coment }, { where: { id } });
+            return commentEDit;
         });
     }
     deletComment(id) {

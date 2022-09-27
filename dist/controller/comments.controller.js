@@ -20,9 +20,7 @@ const commentsService = new coments_service_1.CommentService(new coments_model_1
 const fullDBComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let { id } = req.params;
-        let xParamId = +id;
         const commentFullData = req.body;
-        console.log(xParamId, "acaa");
         const dbComments = yield coments_model_1.default.findAll();
         if (dbComments.length === 0) {
             yield commentsService.newComment(commentFullData);
@@ -43,8 +41,8 @@ const addComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         let xParamId = +id;
         const commentFullData = req.body;
         commentFullData.movieId = xParamId;
-        yield commentsService.newComment(commentFullData);
-        return res.status(200).send("Comment succses!");
+        let newComment = yield commentsService.newComment(commentFullData);
+        return res.status(200).send(newComment);
     }
     catch (e) {
         return res.status(400).send("Something went with your comment!");
@@ -53,9 +51,10 @@ const addComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.addComment = addComment;
 //EDITA COMENTARIOS
 const editComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { comment, id } = req.body;
+    const { coment, id } = req.body;
     try {
-        const dbComment = yield commentsService.editComment(comment, id);
+        console.log(id, coment);
+        const dbComment = yield commentsService.editComment(coment, id);
         return res.status(200).send(dbComment);
     }
     catch (e) {

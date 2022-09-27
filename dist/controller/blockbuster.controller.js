@@ -37,9 +37,14 @@ exports.fullDbMovies = fullDbMovies;
 //GET BY ID
 const getMovieId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    console.log(id);
-    let movie = yield blockbuster_model_1.default.findAll({ where: { id } });
-    return res.status(200).send(movie);
+    try {
+        console.log(id);
+        let movie = yield blockbuster_model_1.default.findAll({ where: { id } });
+        movie.length ? res.status(200).send(movie) : res.status(400).send("Id not found!");
+    }
+    catch (e) {
+        return res.status(404).send(e);
+    }
 });
 exports.getMovieId = getMovieId;
 //POST PARA CREAR PELICULAS

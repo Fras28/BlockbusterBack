@@ -1,37 +1,41 @@
-"use strict";
 // import { DataTypes, Model, Optional } from "sequelize";
 // import sequelizeConnection from "../db";
-// import blockbuster from "./blockbuster.model";
+// import comments from "./coments.model";
 // import users from "./users.model";
-// interface UsersMovieAttributes {
+
+// interface UsersCommentsAttributes {
 //     id?: number;
-//     blockbusterId?: number;
+//     commentsId?: number;
 //     usersId?: number;
 //     createdAt?: Date;
 //     updateAt?: Date;
 //     deleteAt?: Date;
 // }
-// export interface UsersMovieInput extends Optional<UsersMovieAttributes, 'id'>{}
-// export interface UserMovieOutput extends UsersMovieInput{}
-// class usersMovies extends Model<UsersMovieAttributes, UsersMovieInput> implements UsersMovieAttributes{
+
+// export interface UsersCommentsInput extends Optional<UsersCommentsAttributes, 'id'>{}
+// export interface UsersCommentsOutput extends UsersCommentsInput{}
+
+// class usersComments extends Model<UsersCommentsAttributes, UsersCommentsInput> implements UsersCommentsAttributes{
 //     public id!: number;
-//     public blockbusterId!: number;
+//     public commentsId!: number;
 //     public usersId!: number;
+
 //     // timestamps!
 //     public readonly createdAt!: Date;
 //     public readonly updatedAt!: Date;
 //     public readonly deletedAt!: Date;
 // }
-// usersMovies.init({
+
+// usersComments.init({
 //     id: {
 //         type: DataTypes.INTEGER,
 //         autoIncrement: true,
 //         primaryKey: true,
 //     },
-//     blockbusterId: {
+//     commentsId: {
 //         type: DataTypes.INTEGER,
 //         references: {
-//             model: blockbuster,
+//             model: comments,
 //             key: 'id'
 //         }
 //     },
@@ -46,4 +50,5 @@
 //     sequelize: sequelizeConnection
 // }
 // )
-// export default usersMovies;
+
+// export default usersComments;
