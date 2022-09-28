@@ -25,9 +25,11 @@ router.post('/detail/:id', comments_controller_1.addComment);
 router.delete('/detail/:id', comments_controller_1.deleteComments);
 //DELETE COMMENT
 router.put('/editComment', comments_controller_1.editComments);
-//----------------------------------- POSTS DE USERS--------------------------------
+//----------------------------------- POSTS/PUT DE USERS--------------------------------
 //CREAR USER--> el modelo de users(esta en ds en Info-Back)
 router.post('/newU', users_controller_1.addUser);
+//CREAR USER--> el modelo de users(esta en ds en Info-Back, name, lastname, date)
+router.put('/editU', users_controller_1.editUser);
 //----------------------------------- GETS DE ADMIN--------------------------------
 //GET ALL USERS--> para slect de todos los usuarios
 router.get("/users", admin_controller_1.fullUsers);

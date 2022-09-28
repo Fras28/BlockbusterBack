@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.picProfile = exports.afterPay = exports.addUser = exports.usersService = void 0;
+exports.editUser = exports.afterPay = exports.addUser = exports.usersService = void 0;
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 const user_service_1 = require("../services/user.service");
 exports.usersService = new user_service_1.UserService(new users_model_1.default());
@@ -52,14 +52,15 @@ const afterPay = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.afterPay = afterPay;
 //POSTA PARA CAMBIO DE FOTO
-const picProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { pic, id } = req.body;
+const editUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { name, lastname, date, id } = req.body;
     try {
-        yield exports.usersService.changePic(pic, id);
-        res.status(200).send("Succsesfuly change 👍​");
+        let editUser = yield exports.usersService.changePic(name, lastname, date, id);
+        let edited = yield exports.usersService.getUserId(id);
+        res.status(200).send(edited);
     }
     catch (e) {
         res.status(404).send("Something went wrong with your change👎​");
     }
 });
-exports.picProfile = picProfile;
+exports.editUser = editUser;

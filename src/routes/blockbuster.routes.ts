@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.controller";
-import { addUser } from "../controller/users.controller";
+import { addUser, editUser } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
 import {  bannComments, bannUser, fullUsers, getUser, newAdmin, removeMovie, unBannUser} from "../controller/admin.controller"
 const router = Router();
@@ -35,10 +35,14 @@ router.delete('/detail/:id', deleteComments)
 //DELETE COMMENT
 router.put('/editComment', editComments)
 
-//----------------------------------- POSTS DE USERS--------------------------------
+//----------------------------------- POSTS/PUT DE USERS--------------------------------
 
 //CREAR USER--> el modelo de users(esta en ds en Info-Back)
 router.post('/newU', addUser)
+
+//CREAR USER--> el modelo de users(esta en ds en Info-Back, name, lastname, date)
+router.put('/editU', editUser)
+
 
 //----------------------------------- GETS DE ADMIN--------------------------------
 
@@ -49,7 +53,6 @@ router.get("/users", fullUsers)
 router.get("/Uemail/:email", getUser)
 
 //----------------------------------- POSTS/PUTS DE ADMIN  PARA USERS--------------------------------
-
 
 //BANN USER--> necesito id(numerico) por body
 router.put("/bannUser", bannUser)
@@ -69,7 +72,6 @@ router.put("/removeM", removeMovie)
 router.post('/addM', addMovie)
 
 //------------------------------------- POSTS/PUTS DE COMMENTS BY ADMIN-------------------------------
-
 
 //BANN COMMENT
 router.put("/bannComments", bannComments)

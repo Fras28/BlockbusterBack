@@ -34,9 +34,15 @@ class UserService {
             return userX;
         });
     }
-    changePic(picture, id) {
+    changePic(name, date, lastname, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield users_model_1.default.update({ picture }, { where: { id } });
+            let userX = yield users_model_1.default.update({ name, date, lastname }, { where: { id } });
+            return userX;
+        });
+    }
+    getUserId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userX = yield users_model_1.default.findOne({ where: { id } });
             return userX;
         });
     }

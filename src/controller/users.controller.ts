@@ -42,11 +42,12 @@ export const afterPay = async (req: Request, res: Response) => {
 };
 
 //POSTA PARA CAMBIO DE FOTO
-export const picProfile = async (req: Request, res: Response) => {
-  const { pic, id } = req.body;
+export const editUser = async (req: Request, res: Response) => {
+  const { name, lastname, date, id } = req.body;
   try {
-    await usersService.changePic(pic, id);
-    res.status(200).send("Succsesfuly change 👍​");
+    let editUser = await usersService.changePic(name, lastname, date, id);
+    let edited = await usersService.getUserId(id)
+    res.status(200).send(edited);
   } catch (e) {
     res.status(404).send("Something went wrong with your change👎​");
   }
