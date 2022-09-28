@@ -77,8 +77,8 @@ export class AdminService {
   }
 
 
-  async deletMovie(id: number): Promise<boolean> {
-    const byeMovie = await Blockbuster.destroy( { where: { id } });
+  async suspendMovie(id: number): Promise<boolean> {
+    const byeMovie = await Blockbuster.update({ status: false }, { where: { id } });
     return !!byeMovie;
   }
 

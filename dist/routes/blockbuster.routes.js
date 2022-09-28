@@ -43,8 +43,8 @@ router.put("/unBannUser", admin_controller_1.unBannUser);
 //CREATE NEW ADMIN--> necesito id(numerico) por body
 router.put("/createAdm", admin_controller_1.newAdmin);
 //------------------------------------- POSTS/PUTS DE MOVIES BY ADMIN-------------------------------
-//DELE MOVIE--> necesito id(numerico) por body
-router.put("/removeM", admin_controller_1.removeMovie);
+//SUSPEND MOVIE--> necesito id(numerico) por body
+router.put("/removeM", admin_controller_1.suspMovie);
 //POSTS MOVIE--> el modelo de blockbusters(esta en ds en Info-Back)
 router.post('/addM', blockbuster_controller_1.addMovie);
 //------------------------------------- POSTS/PUTS DE COMMENTS BY ADMIN-------------------------------

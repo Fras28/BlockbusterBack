@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bannComments = exports.getUser = exports.fullUsers = exports.removeMovie = exports.newMovie = exports.newAdmin = exports.unBannUser = exports.bannUser = void 0;
+exports.bannComments = exports.getUser = exports.fullUsers = exports.suspMovie = exports.newMovie = exports.newAdmin = exports.unBannUser = exports.bannUser = void 0;
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 const admin_service_1 = require("../services/admin.service");
 const adminService = new admin_service_1.AdminService(new users_model_1.default());
@@ -85,19 +85,19 @@ const newMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.newMovie = newMovie;
-//Borrar pelicula
-const removeMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//suspender pelicula
+const suspMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     console.log(id);
     try {
-        yield adminService.deletMovie(id);
+        yield adminService.suspendMovie(id);
         res.status(200).send("The movie was deleted");
     }
     catch (e) {
-        res.status(400).send("Something went rong whit this Movie ​🎦​");
+        res.status(400).send("Something went rong whit this Movie ​​");
     }
 });
-exports.removeMovie = removeMovie;
+exports.suspMovie = suspMovie;
 //Busca todos los usuarios
 const fullUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

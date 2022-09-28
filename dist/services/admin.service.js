@@ -42,9 +42,9 @@ class AdminService {
             throw Error;
         });
     }
-    deletMovie(id) {
+    suspendMovie(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const byeMovie = yield blockbuster_model_1.default.destroy({ where: { id } });
+            const byeMovie = yield blockbuster_model_1.default.update({ status: false }, { where: { id } });
             return !!byeMovie;
         });
     }
