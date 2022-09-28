@@ -2,7 +2,7 @@ import { Router } from "express";
 import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.controller";
 import { addUser, editUser } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
-import {  bannComments, bannUser, fullUsers, getUser, newAdmin, removeMovie, unBannUser} from "../controller/admin.controller"
+import {  bannComments, bannUser, fullUsers, getUser, newAdmin, suspMovie, unBannUser} from "../controller/admin.controller"
 const router = Router();
 
 //------------------------------------- GETS DE MOVIES--------------------------------
@@ -65,8 +65,8 @@ router.put("/createAdm", newAdmin)
 
 //------------------------------------- POSTS/PUTS DE MOVIES BY ADMIN-------------------------------
 
-//DELE MOVIE--> necesito id(numerico) por body
-router.put("/removeM", removeMovie)
+//SUSPEND MOVIE--> necesito id(numerico) por body
+router.put("/removeM", suspMovie)
 
 //POSTS MOVIE--> el modelo de blockbusters(esta en ds en Info-Back)
 router.post('/addM', addMovie)

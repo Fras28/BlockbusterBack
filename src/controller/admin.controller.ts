@@ -66,15 +66,15 @@ export const newMovie = async (req: Request, res: Response) => {
   }
 };
 
-//Borrar pelicula
-export const removeMovie = async (req: Request, res: Response) => {
+//suspender pelicula
+export const suspMovie = async (req: Request, res: Response) => {
   const { id } = req.body;
   console.log(id);
   try {
-    await adminService.deletMovie(id);
+    await adminService.suspendMovie(id);
     res.status(200).send("The movie was deleted");
   } catch (e) {
-    res.status(400).send("Something went rong whit this Movie ​🎦​");
+    res.status(400).send("Something went rong whit this Movie ​​");
   }
 };
 
