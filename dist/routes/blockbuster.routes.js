@@ -5,6 +5,7 @@ const blockbuster_controller_1 = require("../controller/blockbuster.controller")
 const users_controller_1 = require("../controller/users.controller");
 const comments_controller_1 = require("../controller/comments.controller");
 const admin_controller_1 = require("../controller/admin.controller");
+const nodemailer_controller_1 = require("../controller/nodemailer.controller");
 const router = (0, express_1.Router)();
 //------------------------------------- GETS DE MOVIES--------------------------------
 //GET ALL MOVIES
@@ -22,7 +23,7 @@ router.get("/allComments", comments_controller_1.fullDBComments);
 //POST COMMENTS
 router.post('/detail/:id', comments_controller_1.addComment);
 //DELETE COMMENT
-router.delete('/detail/:id', comments_controller_1.deleteComments);
+router.delete('/detail', comments_controller_1.deleteComments);
 //DELETE COMMENT
 router.put('/editComment', comments_controller_1.editComments);
 //----------------------------------- POSTS/PUT DE USERS--------------------------------
@@ -50,4 +51,7 @@ router.post('/addM', blockbuster_controller_1.addMovie);
 //------------------------------------- POSTS/PUTS DE COMMENTS BY ADMIN-------------------------------
 //BANN COMMENT
 router.put("/bannComments", admin_controller_1.bannComments);
+//------------------------------------- NODEMAILER-------------------------------
+//SEND SPAM WELCOME EMAILS TO CLIENTS
+router.get("/nodemailer", nodemailer_controller_1.nodemailer);
 exports.default = router;

@@ -46,5 +46,12 @@ class UserService {
             return userX;
         });
     }
+    getAllUsersEmail() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let emailUser = yield users_model_1.default.findAll();
+            let mapMail = emailUser.map((e) => e.email);
+            return mapMail;
+        });
+    }
 }
 exports.UserService = UserService;

@@ -3,6 +3,7 @@ import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.con
 import { addUser, editUser } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
 import {  bannComments, bannUser, fullUsers, getUser, newAdmin, suspMovie, unBannUser} from "../controller/admin.controller"
+import { nodemailer } from "../controller/nodemailer.controller";
 const router = Router();
 
 //------------------------------------- GETS DE MOVIES--------------------------------
@@ -30,7 +31,7 @@ router.get("/allComments", fullDBComments)
 router.post('/detail/:id', addComment)
 
 //DELETE COMMENT
-router.delete('/detail/:id', deleteComments)
+router.delete('/detail', deleteComments)
 
 //DELETE COMMENT
 router.put('/editComment', editComments)
@@ -75,6 +76,15 @@ router.post('/addM', addMovie)
 
 //BANN COMMENT
 router.put("/bannComments", bannComments)
+
+//------------------------------------- NODEMAILER-------------------------------
+
+//SEND SPAM WELCOME EMAILS TO CLIENTS
+router.get("/nodemailer", nodemailer)
+
+
+
+
 
 export default router;
 
