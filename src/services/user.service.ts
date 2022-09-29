@@ -1,3 +1,4 @@
+import { strict } from "assert";
 import Users from "../db/models/users.model";
 
 type Category = "user" | "silver" | "gold";
@@ -42,6 +43,13 @@ export class UserService {
   async getUserId(id: number) {
     let userX = await Users.findOne({ where: { id } });
     return userX;
+  }
+
+  
+  async getAllUsersEmail (){
+    let emailUser = await Users.findAll();
+    let mapMail = emailUser.map((e)=> e.email)
+     return mapMail
   }
 
 }
