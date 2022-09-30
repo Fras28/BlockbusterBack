@@ -12,20 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nodemailer = exports.usersService = void 0;
+exports.nodemailerBannUser = exports.nodemailerCreateUser = exports.nodemailerAddMovie = exports.usersService = void 0;
 const nodemailer_1 = require("../nodemailer");
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 const user_service_1 = require("../services/user.service");
 exports.usersService = new user_service_1.UserService(new users_model_1.default());
 const emails = exports.usersService.getAllUsersEmail();
-const nodemailer = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const url = "https://blockbuster-pf.vercel.app/";
+const nodemailerAddMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         (yield emails).forEach((e) => {
             nodemailer_1.transporter.sendMail({
                 from: '"BLOCKBUSTER" <blockbusterpf@gmail.com>',
                 to: e,
                 subject: "BLOCKBUSTER PF",
-                text: "Welcome to Blockbuster experience! Hope you to enjoy it!!!",
+                html: `<p>🎊 Hey! We are happy to announce that a new movie was added 🎬. Click here and enjoy the experience --> <strong><a href=${url}>Blockbuster 🎞</a></strong> experience! Hope you to enjoy it!! 🎊</p>`,
             });
         });
         res.send("Email sended succefuly");
@@ -34,4 +35,41 @@ const nodemailer = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         console.log(e);
     }
 });
-exports.nodemailer = nodemailer;
+exports.nodemailerAddMovie = nodemailerAddMovie;
+const nodemailerCreateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.body;
+    console.log(email);
+    const { nickname } = req.body;
+    console.log(nickname);
+    try {
+        yield nodemailer_1.transporter.sendMail({
+            from: '"BLOCKBUSTER" <blockbusterpf@gmail.com>',
+            to: email,
+            subject: "BLOCKBUSTER PF",
+            html: `<p>Hey ${nickname}!!, Welcome to <strong><a href=${url} >Blockbuster 🎞</a></strong> experience! Hope you to enjoy it!!</p>`,
+        });
+        res.send("Email sended succefuly");
+    }
+    catch (e) {
+        console.log(e);
+    }
+});
+exports.nodemailerCreateUser = nodemailerCreateUser;
+const nodemailerBannUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { email } = req.body;
+        console.log(email);
+        console.log({ email });
+        nodemailer_1.transporter.sendMail({
+            from: '"BLOCKBUSTER" <blockbusterpf@gmail.com>',
+            to: email,
+            subject: "BLOCKBUSTER PF",
+            html: `<p>Ops!! You got banned😤<strong>. Please click here to go<a href=${url}> Blockbuster Website 🎞</a></strong></p>`,
+        });
+        res.send("Email sended succefuly");
+    }
+    catch (e) {
+        console.log(e);
+    }
+});
+exports.nodemailerBannUser = nodemailerBannUser;

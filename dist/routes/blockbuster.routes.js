@@ -6,6 +6,8 @@ const users_controller_1 = require("../controller/users.controller");
 const comments_controller_1 = require("../controller/comments.controller");
 const admin_controller_1 = require("../controller/admin.controller");
 const nodemailer_controller_1 = require("../controller/nodemailer.controller");
+const paymentGold_controller_1 = require("../controller/paymentGold.controller");
+const paymentSilver_controller_1 = require("../controller/paymentSilver.controller");
 const router = (0, express_1.Router)();
 //------------------------------------- GETS DE MOVIES--------------------------------
 //GET ALL MOVIES
@@ -23,7 +25,7 @@ router.get("/allComments", comments_controller_1.fullDBComments);
 //POST COMMENTS
 router.post('/detail/:id', comments_controller_1.addComment);
 //DELETE COMMENT
-router.delete('/detail', comments_controller_1.deleteComments);
+router.put('/detail', comments_controller_1.deleteComments);
 //DELETE COMMENT
 router.put('/editComment', comments_controller_1.editComments);
 //----------------------------------- POSTS/PUT DE USERS--------------------------------
@@ -51,7 +53,20 @@ router.post('/addM', blockbuster_controller_1.addMovie);
 //------------------------------------- POSTS/PUTS DE COMMENTS BY ADMIN-------------------------------
 //BANN COMMENT
 router.put("/bannComments", admin_controller_1.bannComments);
-//------------------------------------- NODEMAILER-------------------------------
+//-------------------------------------------- NODEMAILER-------------------------------------------
+//SEND SPAM NEW MOVIE 
+router.get("/nodemailer", nodemailer_controller_1.nodemailerAddMovie);
 //SEND SPAM WELCOME EMAILS TO CLIENTS
-router.get("/nodemailer", nodemailer_controller_1.nodemailer);
+router.get("/nodemaileru", nodemailer_controller_1.nodemailerCreateUser);
+//SEND SPAM THE THE ADMIN BANN SOMEONE
+router.get("/nodemailerb", nodemailer_controller_1.nodemailerBannUser);
+//---------------------------------------------- PAYPAL ---------------------------------------------------------
+//    http://localhost:3000/create-paymentGold [POST]
+router.post('/create-paymentGold', paymentGold_controller_1.createPaymentGold);
+//PAYMENT
+router.get('/execute-paymentGold', paymentGold_controller_1.executePaymentGold);
+//    http://localhost:3000/create-paymentSilver[POST]
+router.post('/create-paymentSilver', paymentSilver_controller_1.createPaymentSilver);
+//PAYMENT
+router.get('/execute-paymentSilver', paymentSilver_controller_1.executePaymentSilver);
 exports.default = router;
