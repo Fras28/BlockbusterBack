@@ -3,7 +3,10 @@ import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.con
 import { addUser, editUser } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
 import {  bannComments, bannUser, fullUsers, getUser, newAdmin, suspMovie, unBannUser} from "../controller/admin.controller"
-import { nodemailer } from "../controller/nodemailer.controller";
+import { nodemailerAddMovie, nodemailerBannUser, nodemailerCreateUser } from "../controller/nodemailer.controller";
+import {createPaymentGold, executePaymentGold} from "../controller/paymentGold.controller"
+import {createPaymentSilver, executePaymentSilver} from "../controller/paymentSilver.controller"
+
 const router = Router();
 
 //------------------------------------- GETS DE MOVIES--------------------------------
@@ -31,7 +34,7 @@ router.get("/allComments", fullDBComments)
 router.post('/detail/:id', addComment)
 
 //DELETE COMMENT
-router.delete('/detail', deleteComments)
+router.put('/detail', deleteComments)
 
 //DELETE COMMENT
 router.put('/editComment', editComments)
@@ -77,13 +80,31 @@ router.post('/addM', addMovie)
 //BANN COMMENT
 router.put("/bannComments", bannComments)
 
-//------------------------------------- NODEMAILER-------------------------------
+//-------------------------------------------- NODEMAILER-------------------------------------------
+
+//SEND SPAM NEW MOVIE 
+router.get("/nodemailer", nodemailerAddMovie)
 
 //SEND SPAM WELCOME EMAILS TO CLIENTS
-router.get("/nodemailer", nodemailer)
+router.get("/nodemaileru", nodemailerCreateUser)
+
+//SEND SPAM THE THE ADMIN BANN SOMEONE
+router.get("/nodemailerb", nodemailerBannUser)
+
+//---------------------------------------------- PAYPAL ---------------------------------------------------------
 
 
+//    http://localhost:3000/create-paymentGold [POST]
+router.post('/create-paymentGold', createPaymentGold)
 
+//PAYMENT
+router.get('/execute-paymentGold', executePaymentGold)
+
+//    http://localhost:3000/create-paymentSilver[POST]
+router.post('/create-paymentSilver', createPaymentSilver)
+
+//PAYMENT
+router.get('/execute-paymentSilver', executePaymentSilver)
 
 
 export default router;
