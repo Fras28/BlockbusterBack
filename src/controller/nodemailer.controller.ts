@@ -5,18 +5,60 @@ import { UserService } from "../services/user.service";
 
 export const usersService = new UserService(new users());
 const emails = usersService.getAllUsersEmail();
+const url = "https://blockbuster-pf.vercel.app/";
 
-export const nodemailer = async (req: Request, res: Response) => {
+
+export const nodemailerAddMovie = async (req: Request, res: Response) => {
   try {
     (await emails).forEach((e) => {
       transporter.sendMail({
-        from: '"BLOCKBUSTER" <blockbusterpf@gmail.com>', 
-        to: e, 
+        from: '"BLOCKBUSTER" <blockbusterpf@gmail.com>',
+        to: e,
         subject: "BLOCKBUSTER PF",
-        text: "Welcome to Blockbuster experience! Hope you to enjoy it!!!",
+        html: `<p>🎊 Hey! We are happy to announce that a new movie was added 🎬. Click here and enjoy the experience --> <strong><a href=${url}>Blockbuster 🎞</a></strong> experience! Hope you to enjoy it!! 🎊</p>`,
       });
-    }); res.send("Email sended succefuly")
+    });
+    res.send("Email sended succefuly");
   } catch (e) {
     console.log(e);
   }
 };
+
+
+export const nodemailerCreateUser = async (req: Request, res: Response) => {
+  const {email} = req.body;
+  console.log(email)
+  const {nickname} = req.body;
+  console.log(nickname)
+  try {
+       await transporter.sendMail({
+      from: '"BLOCKBUSTER" <blockbusterpf@gmail.com>',
+      to: email,
+      subject: "BLOCKBUSTER PF",
+      html: `<p>Hey ${nickname}!!, Welcome to <strong><a href=${url} >Blockbuster 🎞</a></strong> experience! Hope you to enjoy it!!</p>`,
+    });
+    res.send("Email sended succefuly");
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+
+export const nodemailerBannUser = async (req: Request, res: Response) => {
+  try {
+    const {email} = req.body;
+    console.log(email)
+    console.log({email})
+          transporter.sendMail({
+        from: '"BLOCKBUSTER" <blockbusterpf@gmail.com>',
+        to: email,
+        subject: "BLOCKBUSTER PF",
+        html: `<p>Ops!! You got banned😤<strong>. Please click here to go<a href=${url}> Blockbuster Website 🎞</a></strong></p>`,
+      });
+    
+    res.send("Email sended succefuly");
+  } catch (e) {
+    console.log(e);
+  }
+};
+
