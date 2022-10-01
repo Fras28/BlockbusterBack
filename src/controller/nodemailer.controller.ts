@@ -7,7 +7,7 @@ export const usersService = new UserService(new users());
 const emails = usersService.getAllUsersEmail();
 const url = "https://blockbuster-pf.vercel.app/";
 
-
+//MAIL POR ADD MOVIE  
 export const nodemailerAddMovie = async (req: Request, res: Response) => {
   try {
     (await emails).forEach((e) => {
@@ -24,7 +24,7 @@ export const nodemailerAddMovie = async (req: Request, res: Response) => {
   }
 };
 
-
+//MAIL POR CREAR USUARIO -- WELCOME
 export const nodemailerCreateUser = async (req: Request, res: Response) => {
   const {email} = req.body;
   console.log(email)
@@ -43,7 +43,7 @@ export const nodemailerCreateUser = async (req: Request, res: Response) => {
   }
 };
 
-
+//MAIL AVISO DE USUARIO BANNEADO
 export const nodemailerBannUser = async (req: Request, res: Response) => {
   try {
     const {email} = req.body;

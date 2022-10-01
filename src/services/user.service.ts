@@ -27,9 +27,15 @@ export class UserService {
     return insertedUser;
   }
 
+  
+  async defineCategoryGold(id: number) {
+    let userX = await Users.update({ category: "gold" }, { where: { id } });
+    return userX;
+  }
 
-  async defineCategory(category: Category, id: number) {
-    let userX = await Users.update({ category }, { where: { id } });
+  
+  async defineCategorySilver(id: number) {
+    let userX = await Users.update({ category: "silver" }, { where: { id } });
     return userX;
   }
 

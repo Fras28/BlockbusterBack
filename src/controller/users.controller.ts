@@ -17,29 +17,29 @@ export const addUser = async (req: Request, res: Response) => {
 };
 
 //ASIGNAR CATEGORIA
-export const afterPay = async (req: Request, res: Response) => {
-  const { category, id } = req.body;
-  try {
-    if (category === "silver") {
-      await usersService.defineCategory(category, id);
-      res
-        .status(200)
-        .send(
-          `thank you for the suscription, now you have ${category} memership 🥈​​ `
-        );
-    }
-    if (category === "gold") {
-      await usersService.defineCategory(category, id);
-      res
-        .status(200)
-        .send(
-          `thank you for the suscription, now you have ${category} memership 🥇​ `
-        );
-    }
-  } catch (e) {
-    res.status(404).send("something went rong whit the suscription 👎​");
-  }
-};
+// export const afterPay = async (req: Request, res: Response) => {
+//   const { category, id } = req.body;
+//   try {
+//     if (category === "silver") {
+//       await usersService.defineCategory(category, id);
+//       res
+//         .status(200)
+//         .send(
+//           `thank you for the suscription, now you have ${category} memership 🥈​​ `
+//         );
+//     }
+//     if (category === "gold") {
+//       await usersService.defineCategory(category, id);
+//       res
+//         .status(200)
+//         .send(
+//           `thank you for the suscription, now you have ${category} memership 🥇​ `
+//         );
+//     }
+//   } catch (e) {
+//     res.status(404).send("something went rong whit the suscription 👎​");
+//   }
+// };
 
 //POSTA PARA CAMBIO DE FOTO
 export const editUser = async (req: Request, res: Response) => {

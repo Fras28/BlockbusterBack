@@ -4,8 +4,8 @@ import { addUser, editUser } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
 import {  bannComments, bannUser, fullUsers, getUser, newAdmin, suspMovie, unBannUser} from "../controller/admin.controller"
 import { nodemailerAddMovie, nodemailerBannUser, nodemailerCreateUser } from "../controller/nodemailer.controller";
-import {createPaymentGold, executePaymentGold} from "../controller/paymentGold.controller"
-import {createPaymentSilver, executePaymentSilver} from "../controller/paymentSilver.controller"
+import {abi, createPaymentGold, executePaymentGold, gold} from "../controller/paymentGold.controller"
+import {apiSilver, createPaymentSilver, executePaymentSilver} from "../controller/paymentSilver.controller"
 
 const router = Router();
 
@@ -98,7 +98,8 @@ router.get("/nodemailerb", nodemailerBannUser)
 router.post('/create-paymentGold', createPaymentGold)
 
 //PAYMENT
-router.get('/execute-paymentGold', executePaymentGold)
+router.get('/execute-paymentGold', executePaymentGold, )
+
 
 //    http://localhost:3000/create-paymentSilver[POST]
 router.post('/create-paymentSilver', createPaymentSilver)
@@ -106,6 +107,8 @@ router.post('/create-paymentSilver', createPaymentSilver)
 //PAYMENT
 router.get('/execute-paymentSilver', executePaymentSilver)
 
+router.get('/abi', abi)
+router.get('/apiSilver', apiSilver)
 
 export default router;
 

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.editUser = exports.afterPay = exports.addUser = exports.usersService = void 0;
+exports.editUser = exports.addUser = exports.usersService = void 0;
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 const user_service_1 = require("../services/user.service");
 exports.usersService = new user_service_1.UserService(new users_model_1.default());
@@ -30,27 +30,29 @@ const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.addUser = addUser;
 //ASIGNAR CATEGORIA
-const afterPay = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { category, id } = req.body;
-    try {
-        if (category === "silver") {
-            yield exports.usersService.defineCategory(category, id);
-            res
-                .status(200)
-                .send(`thank you for the suscription, now you have ${category} memership 🥈​​ `);
-        }
-        if (category === "gold") {
-            yield exports.usersService.defineCategory(category, id);
-            res
-                .status(200)
-                .send(`thank you for the suscription, now you have ${category} memership 🥇​ `);
-        }
-    }
-    catch (e) {
-        res.status(404).send("something went rong whit the suscription 👎​");
-    }
-});
-exports.afterPay = afterPay;
+// export const afterPay = async (req: Request, res: Response) => {
+//   const { category, id } = req.body;
+//   try {
+//     if (category === "silver") {
+//       await usersService.defineCategory(category, id);
+//       res
+//         .status(200)
+//         .send(
+//           `thank you for the suscription, now you have ${category} memership 🥈​​ `
+//         );
+//     }
+//     if (category === "gold") {
+//       await usersService.defineCategory(category, id);
+//       res
+//         .status(200)
+//         .send(
+//           `thank you for the suscription, now you have ${category} memership 🥇​ `
+//         );
+//     }
+//   } catch (e) {
+//     res.status(404).send("something went rong whit the suscription 👎​");
+//   }
+// };
 //POSTA PARA CAMBIO DE FOTO
 const editUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, lastname, date, id } = req.body;
