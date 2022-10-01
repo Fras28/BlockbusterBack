@@ -19,6 +19,7 @@ const user_service_1 = require("../services/user.service");
 exports.usersService = new user_service_1.UserService(new users_model_1.default());
 const emails = exports.usersService.getAllUsersEmail();
 const url = "https://blockbuster-pf.vercel.app/";
+//MAIL POR ADD MOVIE  
 const nodemailerAddMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         (yield emails).forEach((e) => {
@@ -36,6 +37,7 @@ const nodemailerAddMovie = (req, res) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 exports.nodemailerAddMovie = nodemailerAddMovie;
+//MAIL POR CREAR USUARIO -- WELCOME
 const nodemailerCreateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email } = req.body;
     console.log(email);
@@ -55,6 +57,7 @@ const nodemailerCreateUser = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.nodemailerCreateUser = nodemailerCreateUser;
+//MAIL AVISO DE USUARIO BANNEADO
 const nodemailerBannUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email } = req.body;

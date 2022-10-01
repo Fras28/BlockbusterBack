@@ -28,9 +28,15 @@ class UserService {
             return insertedUser;
         });
     }
-    defineCategory(category, id) {
+    defineCategoryGold(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield users_model_1.default.update({ category }, { where: { id } });
+            let userX = yield users_model_1.default.update({ category: "gold" }, { where: { id } });
+            return userX;
+        });
+    }
+    defineCategorySilver(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userX = yield users_model_1.default.update({ category: "silver" }, { where: { id } });
             return userX;
         });
     }

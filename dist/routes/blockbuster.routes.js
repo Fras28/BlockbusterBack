@@ -69,4 +69,6 @@ router.get('/execute-paymentGold', paymentGold_controller_1.executePaymentGold);
 router.post('/create-paymentSilver', paymentSilver_controller_1.createPaymentSilver);
 //PAYMENT
 router.get('/execute-paymentSilver', paymentSilver_controller_1.executePaymentSilver);
+router.get('/abi', paymentGold_controller_1.abi);
+router.get('/apiSilver', paymentSilver_controller_1.apiSilver);
 exports.default = router;
