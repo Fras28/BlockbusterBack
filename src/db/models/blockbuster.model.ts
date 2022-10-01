@@ -5,7 +5,7 @@ import sequelizeConnection from "../db";
 interface BlockbusterAttributes {
   id?: number;
   name: string;
-  year?: string;
+  year: string;
   genre: string;
   poster: string;
   rated: string;
@@ -24,7 +24,7 @@ interface BlockbusterAttributes {
 class blockbuster extends Model<BlockbusterAttributes> {
   public id!: number;
   public name!: string;
-  public year?: string;
+  public year!: string;
   public genre!: string;
   public poster!: string;
   public rated!: string;
