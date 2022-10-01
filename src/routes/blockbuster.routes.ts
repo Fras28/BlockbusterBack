@@ -34,7 +34,7 @@ router.get("/allComments", fullDBComments)
 router.post('/detail/:id', addComment)
 
 //DELETE COMMENT
-router.put('/detail', deleteComments)
+router.post('/detail', deleteComments)
 
 //DELETE COMMENT
 router.put('/editComment', editComments)
