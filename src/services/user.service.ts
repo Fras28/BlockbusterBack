@@ -39,6 +39,11 @@ export class UserService {
     return userX;
   }
 
+  async deletUser(id: number){
+    let deletUser = Users.destroy({ where: {id} });
+    return deletUser;
+  }
+
   
   async changePic(name: string, date: string, lastname:string, id: number) {
     let userX = await Users.update({ name, date, lastname }, { where: { id } });
