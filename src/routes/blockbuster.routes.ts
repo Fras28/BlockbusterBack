@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.controller";
-import { addUser, editUser } from "../controller/users.controller";
+import { addUser, deletUser, editUser } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
 import {  bannComments, bannUser, fullUsers, getUser, newAdmin, suspMovie, unBannUser} from "../controller/admin.controller"
 import { nodemailerAddMovie, nodemailerBannUser, nodemailerCreateUser } from "../controller/nodemailer.controller";
@@ -67,6 +67,9 @@ router.put("/unBannUser", unBannUser)
 //CREATE NEW ADMIN--> necesito id(numerico) por body
 router.put("/createAdm", newAdmin)
 
+//DELETE USERS
+router.post('/deletUser', deletUser)
+
 //------------------------------------- POSTS/PUTS DE MOVIES BY ADMIN-------------------------------
 
 //SUSPEND MOVIE--> necesito id(numerico) por body
@@ -100,14 +103,16 @@ router.post('/create-paymentGold', createPaymentGold)
 //PAYMENT
 router.get('/execute-paymentGold', executePaymentGold, )
 
-
 //    http://localhost:3000/create-paymentSilver[POST]
 router.post('/create-paymentSilver', createPaymentSilver)
 
 //PAYMENT
 router.get('/execute-paymentSilver', executePaymentSilver)
 
+//CHANGE GOLD
 router.get('/abi', abi)
+
+//CHANGE SILVER
 router.get('/apiSilver', apiSilver)
 
 export default router;

@@ -26,8 +26,8 @@ export const createPaymentGold = async (req: Request, res: Response) => {
       brand_name: `BlockbusterHenry.com`,
       landing_page: "NO_PREFERENCE", // Default, para mas informacion https://developer.paypal.com/docs/api/orders/v2/#definition-order_application_context
       user_action: "PAY_NOW", // Accion para que en paypal muestre el monto del pago
-      return_url: `http://localhost:3000/execute-paymentGold`, // Url despues de realizar el pago
-      cancel_url: `http://localhost:3000/cancel-payment`, // Url despues de realizar el pago
+      return_url: `https://blockbuster-pf.vercel.app/gold`, // Url despues de realizar el pago
+      cancel_url: `https://blockbuster-pf.vercel.app`, // Url despues de realizar el pago
     },
   };
 

@@ -25,7 +25,7 @@ router.get("/allComments", comments_controller_1.fullDBComments);
 //POST COMMENTS
 router.post('/detail/:id', comments_controller_1.addComment);
 //DELETE COMMENT
-router.put('/detail', comments_controller_1.deleteComments);
+router.post('/detail', comments_controller_1.deleteComments);
 //DELETE COMMENT
 router.put('/editComment', comments_controller_1.editComments);
 //----------------------------------- POSTS/PUT DE USERS--------------------------------
@@ -45,6 +45,8 @@ router.put("/bannUser", admin_controller_1.bannUser);
 router.put("/unBannUser", admin_controller_1.unBannUser);
 //CREATE NEW ADMIN--> necesito id(numerico) por body
 router.put("/createAdm", admin_controller_1.newAdmin);
+//DELETE USERS
+router.post('/deletUser', users_controller_1.deletUser);
 //------------------------------------- POSTS/PUTS DE MOVIES BY ADMIN-------------------------------
 //SUSPEND MOVIE--> necesito id(numerico) por body
 router.put("/removeM", admin_controller_1.suspMovie);
@@ -69,6 +71,8 @@ router.get('/execute-paymentGold', paymentGold_controller_1.executePaymentGold);
 router.post('/create-paymentSilver', paymentSilver_controller_1.createPaymentSilver);
 //PAYMENT
 router.get('/execute-paymentSilver', paymentSilver_controller_1.executePaymentSilver);
+//CHANGE GOLD
 router.get('/abi', paymentGold_controller_1.abi);
+//CHANGE SILVER
 router.get('/apiSilver', paymentSilver_controller_1.apiSilver);
 exports.default = router;

@@ -34,8 +34,8 @@ const createPaymentGold = (req, res) => __awaiter(void 0, void 0, void 0, functi
             brand_name: `BlockbusterHenry.com`,
             landing_page: "NO_PREFERENCE",
             user_action: "PAY_NOW",
-            return_url: `http://localhost:3000/execute-paymentGold`,
-            cancel_url: `http://localhost:3000/cancel-payment`, // Url despues de realizar el pago
+            return_url: `https://blockbuster-pf.vercel.app/gold`,
+            cancel_url: `https://blockbuster-pf.vercel.app`, // Url despues de realizar el pago
         },
     };
     //https://api-m.sandbox.paypal.com/v2/checkout/orders [POST]

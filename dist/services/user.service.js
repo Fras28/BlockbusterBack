@@ -40,6 +40,12 @@ class UserService {
             return userX;
         });
     }
+    deletUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let deletUser = users_model_1.default.destroy({ where: { id } });
+            return deletUser;
+        });
+    }
     changePic(name, date, lastname, id) {
         return __awaiter(this, void 0, void 0, function* () {
             let userX = yield users_model_1.default.update({ name, date, lastname }, { where: { id } });
