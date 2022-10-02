@@ -10,7 +10,7 @@ export type User = {
   nickname: string;
   picture: string;
   email: string;
-  age:string
+  age: string;
   status: boolean;
   category: Category;
 };
@@ -18,57 +18,57 @@ export type User = {
 export class UserService {
   constructor(private userModel: Users) {}
   //-------------Crear Usuario --------
-  
+
   async insertUser(user: User) {
-    user.status = true;     
-    user.category = "user"
-    console.log(user)
+    user.status = true;
+    user.category = "user";
+    console.log(user);
     const insertedUser = await Users.create(user, { validate: true });
     return insertedUser;
   }
 
-  
   async defineCategoryGold(id: number) {
     let userX = await Users.update({ category: "gold" }, { where: { id } });
     return userX;
   }
 
-  
   async defineCategorySilver(id: number) {
     let userX = await Users.update({ category: "silver" }, { where: { id } });
     return userX;
   }
 
-  async deletUser(id: number){
-    let deletUser = Users.destroy({ where: {id} });
+  async deletUser(id: number) {
+    let deletUser = Users.destroy({ where: { id } });
     return deletUser;
   }
 
-  
-  async changePic(name: string, date: string, lastname:string, id: number) {
+  async changePic(name: string, date: string, lastname: string, id: number) {
     let userX = await Users.update({ name, date, lastname }, { where: { id } });
     return userX;
   }
-
 
   async getUserId(id: number) {
     let userX = await Users.findOne({ where: { id } });
     return userX;
   }
 
-  
-  async getAllUsersEmail (){
+  async getAllUsersEmail() {
     let emailUser = await Users.findAll();
-    let mapMail = emailUser.map((e)=> e.email)
-     return mapMail
+    let mapMail = emailUser.map((e) => e.email);
+    return mapMail;
   }
-  async newFav(idMovie:number,idUser:number){
-    let newARR= await Users.findAll({ where: { id :idUser} })
-    if(newARR[0].fav)
-    newARR[0].fav.push(idMovie)
-    let newFavList = await Users.update({fav:newARR[0].fav  }, { where: { id:idUser } });
-
-    return  newFavList
+  async newFav(idMovie: number, idUser: number) {
+    let newARR = await Users.findAll({ where: { id: idUser } });
+    if (newARR[0].fav.indexOf(idMovie) === -1) {
+      newARR[0].fav.push(idMovie);
+      let newFavList = await Users.update(
+        { fav: newARR[0].fav },
+        { where: { id: idUser } }
+      );
+      return newFavList;
+    } else {
+      const rta = newARR[0].fav.filter((e) => e !== idMovie);
+      return rta;
+    }
   }
-
 }
