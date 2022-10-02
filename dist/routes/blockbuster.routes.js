@@ -72,7 +72,7 @@ router.post('/create-paymentSilver', paymentSilver_controller_1.createPaymentSil
 //PAYMENT
 router.get('/execute-paymentSilver', paymentSilver_controller_1.executePaymentSilver);
 //CHANGE GOLD
-router.get('/abi', paymentGold_controller_1.abi);
+router.put('/abi', paymentGold_controller_1.abi);
 //CHANGE SILVER
-router.get('/apiSilver', paymentSilver_controller_1.apiSilver);
+router.put('/apiSilver', paymentSilver_controller_1.apiSilver);
 exports.default = router;

@@ -101,7 +101,7 @@ router.get("/nodemailerb", nodemailerBannUser)
 router.post('/create-paymentGold', createPaymentGold)
 
 //PAYMENT
-router.get('/execute-paymentGold', executePaymentGold, )
+router.get('/execute-paymentGold', executePaymentGold )
 
 //    http://localhost:3000/create-paymentSilver[POST]
 router.post('/create-paymentSilver', createPaymentSilver)
@@ -110,10 +110,10 @@ router.post('/create-paymentSilver', createPaymentSilver)
 router.get('/execute-paymentSilver', executePaymentSilver)
 
 //CHANGE GOLD
-router.get('/abi', abi)
+router.put('/abi', abi)
 
 //CHANGE SILVER
-router.get('/apiSilver', apiSilver)
+router.put('/apiSilver', apiSilver)
 
 export default router;
 
