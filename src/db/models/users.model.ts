@@ -64,7 +64,7 @@ users.init(
       type: DataTypes.STRING,
     },
     fav: {
-      type: DataTypes.ARRAY,
+      type:DataTypes.ARRAY(DataTypes.NUMBER),
     },
   },
   { sequelize: sequelizeConnection, paranoid: true }
