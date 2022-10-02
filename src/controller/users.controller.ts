@@ -16,6 +16,20 @@ export const addUser = async (req: Request, res: Response) => {
   }
 };
 
+export const addFav = async(req: Request, res: Response) => {
+  const {idMovie,idUser} = req.body;
+  try{
+    const newFav = await usersService.newFav(idMovie,idUser)
+    res.status(200).send(newFav)
+  }catch(e){
+    res.status(404).send("bad request")
+  }
+}
+
+
+
+
+
 //ASIGNAR CATEGORIA
 // export const afterPay = async (req: Request, res: Response) => {
 //   const { category, id } = req.body;

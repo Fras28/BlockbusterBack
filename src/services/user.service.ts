@@ -57,5 +57,13 @@ export class UserService {
     let mapMail = emailUser.map((e)=> e.email)
      return mapMail
   }
+  async newFav(idMovie:number,idUser:number){
+    let newARR= await Users.findAll({ where: { id :idUser} })
+    if(newARR[0].fav)
+    newARR[0].fav.push(idMovie)
+    let newFavList = await Users.update({fav:newARR[0].fav  }, { where: { id:idUser } });
+
+    return  newFavList
+  }
 
 }
