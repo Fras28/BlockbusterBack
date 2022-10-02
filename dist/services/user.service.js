@@ -21,20 +21,48 @@ class UserService {
     //-------------Crear Usuario --------
     insertUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
+            user.status = true;
+            user.category = "user";
+            console.log(user);
             const insertedUser = yield users_model_1.default.create(user, { validate: true });
             return insertedUser;
         });
     }
-    defineCategory(category, id) {
+    defineCategoryGold(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield users_model_1.default.update({ category }, { where: { id } });
+            let userX = yield users_model_1.default.update({ category: "gold" }, { where: { id } });
             return userX;
         });
     }
-    changePic(picture, id) {
+    defineCategorySilver(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield users_model_1.default.update({ picture }, { where: { id } });
+            let userX = yield users_model_1.default.update({ category: "silver" }, { where: { id } });
             return userX;
+        });
+    }
+    deletUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let deletUser = users_model_1.default.destroy({ where: { id } });
+            return deletUser;
+        });
+    }
+    changePic(name, date, lastname, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userX = yield users_model_1.default.update({ name, date, lastname }, { where: { id } });
+            return userX;
+        });
+    }
+    getUserId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userX = yield users_model_1.default.findOne({ where: { id } });
+            return userX;
+        });
+    }
+    getAllUsersEmail() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let emailUser = yield users_model_1.default.findAll();
+            let mapMail = emailUser.map((e) => e.email);
+            return mapMail;
         });
     }
 }

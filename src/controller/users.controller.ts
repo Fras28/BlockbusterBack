@@ -4,6 +4,7 @@ import { UserService } from "../services/user.service";
 
 export const usersService = new UserService(new users());
 
+//CREAR USUARIO
 export const addUser = async (req: Request, res: Response) => {
   console.log(req);
   try {
@@ -15,38 +16,39 @@ export const addUser = async (req: Request, res: Response) => {
   }
 };
 
+export const addFav = async(req: Request, res: Response) => {
+  const {idMovie,idUser} = req.body;
+  try{
+    const newFav = await usersService.newFav(idMovie,idUser)
+    res.status(200).send(newFav)
+  }catch(e){
+    res.status(404).send("bad request")
+  }
+}
 
-export const afterPay = async (req: Request, res: Response) => {
-  const { category, id } = req.body;
+
+
+
+
+export const deletUser = async (req: Request, res: Response) => {
+  const {id} = req.body;
+  try{
+    await usersService.deletUser(id);
+    res.status(200).send("User deleted successfully");
+  }catch(e){
+    res.status(400).send("User not found");
+  }
+}
+
+//POSTA PARA CAMBIO DE FOTO
+export const editUser = async (req: Request, res: Response) => {
+  const { name, lastname, date, id } = req.body;
   try {
-    if (category === "silver") {
-      await usersService.defineCategory(category, id);
-      res
-        .status(200)
-        .send(
-          `thank you for the suscription, now you have ${category} memership 🥈​​ `
-        );
-    }
-    if (category === "gold") {
-      await usersService.defineCategory(category, id);
-      res
-        .status(200)
-        .send(
-          `thank you for the suscription, now you have ${category} memership 🥇​ `
-        );
-    }
+    let editUser = await usersService.changePic(name, lastname, date, id);
+    let edited = await usersService.getUserId(id)
+    res.status(200).send(edited);
   } catch (e) {
-    res.status(404).send("something went rong whit the suscription 👎​");
+    res.status(404).send("Something went wrong with your change👎​");
   }
 };
 
-
-export const picProfile = async (req: Request, res: Response) => {
-  const { pic, id } = req.body;
-  try {
-    await usersService.changePic(pic, id);
-    res.status(200).send("Succsesfuly change 👍​");
-  } catch (e) {
-    res.status(404).send("something went rond with the change👎​");
-  }
-};

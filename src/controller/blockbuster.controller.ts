@@ -25,9 +25,14 @@ export const fullDbMovies = async (req: Request, res: Response) => {
 //GET BY ID
 export const getMovieId =async (req: Request, res: Response) => {
   const {id} = req.params;
-console.log(id)
-  let movie = await blockbuster.findAll({where:{id}})
-  return res.status(200).send(movie)
+  try{
+    console.log(id)
+    let movie = await blockbuster.findAll({where:{id}})
+    movie.length? res.status(200).send(movie) : res.status(400).send("Id not found!");
+  }
+  catch(e){
+    return res.status(404).send(e);
+  }
 }
 
 //POST PARA CREAR PELICULAS

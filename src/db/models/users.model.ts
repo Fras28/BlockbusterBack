@@ -7,10 +7,12 @@ interface UsersAttributes {
   name: string;
   lastname: string;
   nickname: string;
+  date?: string;
   picture: string;
   email: string;
   status: boolean;
   category: string;
+  fav?:number[];
 }
 
 class users extends Model<UsersAttributes> {
@@ -18,10 +20,12 @@ class users extends Model<UsersAttributes> {
   public name!: string;
   public lastname!: string;
   public nickname!: string;
+  public date!: string
   public picture!: string;
   public email!: string;
   public status!: boolean;         
   public category!: string;
+  public fav!: number[];
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -50,17 +54,20 @@ users.init(
     email: {
       type: DataTypes.STRING,
     },
+    date: {
+      type: DataTypes.STRING,
+    },
     status: {
       type: DataTypes.BOOLEAN,
     },
     category: {
       type: DataTypes.STRING,
-      // .ENUM("user", "silver", "gold", "admin"),
-      // defaultValue: "user",
+    },
+    fav: {
+      type:DataTypes.ARRAY(DataTypes.NUMBER),
     },
   },
   { sequelize: sequelizeConnection, paranoid: true }
 );
-// season:{
-// type: DataTypes.ENUM("summer", "autumn","winter","spring")},
+
 export default users;
