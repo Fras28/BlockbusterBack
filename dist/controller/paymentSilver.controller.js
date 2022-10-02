@@ -35,8 +35,8 @@ const createPaymentSilver = (req, res) => __awaiter(void 0, void 0, void 0, func
             brand_name: `BlockbusterHenry.com`,
             landing_page: 'NO_PREFERENCE',
             user_action: 'PAY_NOW',
-            return_url: `http://localhost:3000/execute-paymentSilver`,
-            cancel_url: `http://localhost:3000cancel-payment` // Url despues de realizar el pago
+            return_url: `https://blockbuster-pf.vercel.app/silver`,
+            cancel_url: `https://blockbuster-pf.vercel.app` // Url despues de realizar el pago
         }
     };
     //https://api-m.sandbox.paypal.com/v2/checkout/orders [POST]
