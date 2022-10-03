@@ -33,6 +33,7 @@ export type User = {
   email: string;
   status: boolean;
   category: Adm;
+  fav?:number[];
 };
 
 export type Comment = {

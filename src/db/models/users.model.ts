@@ -12,7 +12,6 @@ interface UsersAttributes {
   email: string;
   status: boolean;
   category: string;
-  fav?:number[];
 }
 
 class users extends Model<UsersAttributes> {
@@ -25,7 +24,7 @@ class users extends Model<UsersAttributes> {
   public email!: string;
   public status!: boolean;         
   public category!: string;
-  public fav?: number[];
+
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -62,9 +61,6 @@ users.init(
     },
     category: {
       type: DataTypes.STRING,
-    },
-    fav: {
-      type:DataTypes.ARRAY(DataTypes.NUMBER),
     },
   },
   { sequelize: sequelizeConnection, paranoid: true }

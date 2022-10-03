@@ -58,7 +58,7 @@ export const executePaymentGold = async (req: Request, res: Response) => {
   );
   // usersService.defineCategoryGold(id)
   data2.push(response.data);
-  res.send(data2);
+  res.redirect(`https://blockbuster-pf.vercel.app/gold`);
 };
 
 export const gold = () => {
