@@ -119,8 +119,6 @@ router.put('/abi', abi)
 //CHANGE SILVER
 router.put('/apiSilver', apiSilver)
 
-
-// router.put("/favList", addFav)
 export default router;
 
 

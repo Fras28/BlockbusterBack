@@ -1,7 +1,6 @@
 import { strict } from "assert";
 import Users from "../db/models/users.model";
 import favMovies from "../db/models/favMovie.model"
-import fav from "../db/models/favMovie.model";
 
 type Category = "user" |"transition"| "silver" | "gold";
 

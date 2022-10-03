@@ -25,6 +25,7 @@ class users extends Model<UsersAttributes> {
   public status!: boolean;
   public category!: string;
 
+
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt!: Date;
