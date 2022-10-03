@@ -29,6 +29,15 @@ const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.addUser = addUser;
+// export const addFav = async(req: Request, res: Response) => {
+//   const {idMovie,idUser} = req.body;
+//   try{
+//     const newFav = await usersService.newFav(idMovie,idUser)
+//     res.status(200).send(newFav)
+//   }catch(e){
+//     res.status(404).send("bad request")
+//   }
+// }
 const deletUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {
