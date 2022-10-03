@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.editUser = exports.deletUser = exports.addUser = exports.usersService = void 0;
+exports.editUser = exports.deletUser = exports.listFav = exports.addFav = exports.addUser = exports.usersService = void 0;
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 const user_service_1 = require("../services/user.service");
 exports.usersService = new user_service_1.UserService(new users_model_1.default());
@@ -29,15 +29,27 @@ const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.addUser = addUser;
-// export const addFav = async(req: Request, res: Response) => {
-//   const {idMovie,idUser} = req.body;
-//   try{
-//     const newFav = await usersService.newFav(idMovie,idUser)
-//     res.status(200).send(newFav)
-//   }catch(e){
-//     res.status(404).send("bad request")
-//   }
-// }
+const addFav = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { idMovie, idUser } = req.body;
+    try {
+        const newFav = yield exports.usersService.newFav(idMovie, idUser);
+        res.status(200).send(newFav);
+    }
+    catch (e) {
+        res.status(404).send("bad request");
+    }
+});
+exports.addFav = addFav;
+const listFav = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const allFavList = yield exports.usersService.listFav();
+        return res.status(200).send(allFavList);
+    }
+    catch (e) {
+        res.status(404).send("Empty fav list");
+    }
+});
+exports.listFav = listFav;
 const deletUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     try {

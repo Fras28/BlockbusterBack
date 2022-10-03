@@ -76,4 +76,4 @@ export const abi = async (req: Request, res: Response) => {
     usersService.defineCategoryGold(id);
   }
   res.send(api);
-}}
+}

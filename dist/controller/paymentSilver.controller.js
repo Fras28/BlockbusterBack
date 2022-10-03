@@ -62,7 +62,7 @@ const executePaymentSilver = (req, res) => __awaiter(void 0, void 0, void 0, fun
         },
     });
     data2.push(response.data);
-    res.redirect(`https://blockbuster-pf.vercel.app/silver`);
+    res.redirect("https://blockbuster-pf.vercel.app/silver");
     //console.log(response.data, "acaaa")
     //res.json({ data: response })
     //res.json({ data: response.data })

@@ -60,7 +60,7 @@ const executePaymentGold = (req, res) => __awaiter(void 0, void 0, void 0, funct
     });
     // usersService.defineCategoryGold(id)
     data2.push(response.data);
-    res.redirect(`https://blockbuster-pf.vercel.app/gold`);
+    res.redirect("https://blockbuster-pf.vercel.app/gold");
 });
 exports.executePaymentGold = executePaymentGold;
 const gold = () => {

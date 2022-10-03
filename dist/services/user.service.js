@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const users_model_1 = __importDefault(require("../db/models/users.model"));
+const favMovie_model_1 = __importDefault(require("../db/models/favMovie.model"));
 class UserService {
     constructor(userModel) {
         this.userModel = userModel;
@@ -31,6 +32,12 @@ class UserService {
     defineCategoryGold(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let userX = yield users_model_1.default.update({ category: "gold" }, { where: { id } });
+            return userX;
+        });
+    }
+    defineCategoryTanction(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userX = yield users_model_1.default.update({ category: "transition" }, { where: { id } });
             return userX;
         });
     }
@@ -63,6 +70,26 @@ class UserService {
             let emailUser = yield users_model_1.default.findAll();
             let mapMail = emailUser.map((e) => e.email);
             return mapMail;
+        });
+    }
+    newFav(idMovie, idUser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let newARR = yield favMovie_model_1.default.findAll({ where: { idUser: idUser } });
+            let arrFav = newARR.filter(e => e.idMovie === idMovie);
+            if (!arrFav) {
+                yield favMovie_model_1.default.create({ idMovie, idUser }, { validate: true });
+                return "new FAV movie";
+            }
+            else {
+                let arrNoFav = yield favMovie_model_1.default.destroy({ where: { id: arrFav[0].id } });
+                return arrNoFav;
+            }
+        });
+    }
+    listFav() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const listMovies = yield favMovie_model_1.default.findAll();
+            return listMovies;
         });
     }
 }
