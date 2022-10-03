@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.controller";
-import { addFav, addUser, deletUser, editUser } from "../controller/users.controller";
+import {  addFav, addUser, deletUser, editUser, listFav } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
 import {  bannComments, bannUser, fullUsers, getUser, newAdmin, suspMovie, unBannUser} from "../controller/admin.controller"
 import { nodemailerAddMovie, nodemailerBannUser, nodemailerCreateUser } from "../controller/nodemailer.controller";
@@ -46,6 +46,10 @@ router.post('/newU', addUser)
 
 //CREAR USER--> el modelo de users(esta en ds en Info-Back, name, lastname, date)
 router.put('/editU', editUser)
+
+router.post('/favList', addFav)
+
+router.get('/allFavs', listFav)
 
 
 //----------------------------------- GETS DE ADMIN--------------------------------
@@ -115,7 +119,8 @@ router.put('/abi', abi)
 //CHANGE SILVER
 router.put('/apiSilver', apiSilver)
 
-router.put("/favList", addFav)
+
+// router.put("/favList", addFav)
 export default router;
 
 

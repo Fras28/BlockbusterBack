@@ -25,6 +25,13 @@ export const addFav = async(req: Request, res: Response) => {
     res.status(404).send("bad request")
   }
 }
+export const listFav = async(req: Request, res: Response) => {
+ try{const allFavList = await usersService.listFav()
+  return res.status(200).send(allFavList)
+} catch(e){
+    res.status(404).send("Empty fav list")
+  }
+}
 
 
 
@@ -50,5 +57,6 @@ export const editUser = async (req: Request, res: Response) => {
   } catch (e) {
     res.status(404).send("Something went wrong with your change👎​");
   }
+
 };
 

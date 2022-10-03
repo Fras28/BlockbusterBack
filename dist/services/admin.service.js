@@ -42,10 +42,17 @@ class AdminService {
             throw Error;
         });
     }
-    suspendMovie(id) {
+    statusMovie(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const byeMovie = yield blockbuster_model_1.default.update({ status: false }, { where: { id } });
-            return !!byeMovie;
+            const movieInfo = yield blockbuster_model_1.default.findAll({ where: { id } });
+            if (movieInfo[0].status === true) {
+                const byeMovie = yield blockbuster_model_1.default.update({ status: false }, { where: { id } });
+                return !!byeMovie;
+            }
+            else {
+                const byeMovie = yield blockbuster_model_1.default.update({ status: true }, { where: { id } });
+                return !!byeMovie;
+            }
         });
     }
     defineAdmin(id) {

@@ -1,7 +1,9 @@
 import { strict } from "assert";
 import Users from "../db/models/users.model";
+import favMovies from "../db/models/favMovie.model"
+import fav from "../db/models/favMovie.model";
 
-type Category = "user" | "silver" | "gold";
+type Category = "user" |"transition"| "silver" | "gold";
 
 export type User = {
   id: number;
@@ -13,8 +15,13 @@ export type User = {
   age: string;
   status: boolean;
   category: Category;
-  fav?:number[];
 };
+
+export type Fav = {
+  id:number;
+  idUser:number;
+  idMovie:number;
+}
 
 export class UserService {
   constructor(private userModel: Users) {}
@@ -30,6 +37,11 @@ export class UserService {
 
   async defineCategoryGold(id: number) {
     let userX = await Users.update({ category: "gold" }, { where: { id } });
+    return userX;
+  }
+  
+  async defineCategoryTanction(id: number) {
+    let userX = await Users.update({ category: "transition" }, { where: { id } });
     return userX;
   }
 
@@ -58,18 +70,21 @@ export class UserService {
     let mapMail = emailUser.map((e) => e.email);
     return mapMail;
   }
+
+
   async newFav(idMovie: number, idUser: number) {
-    let newARR = await Users.findAll({ where: { id: idUser } });
-    if (newARR[0].fav?.indexOf(idMovie) === -1) {
-      newARR[0].fav.push(idMovie);
-      let newFavList = await Users.update(
-        { fav: newARR[0].fav },
-        { where: { id: idUser } }
-      );
-      return newFavList;
-    } else {
-      const rta = newARR[0].fav?.filter((e) => e !== idMovie);
-      return rta;
+    let newARR:Array<Fav> = await favMovies.findAll({ where: { idUser: idUser } });
+    let arrFav = newARR.filter(e => e.idMovie === idMovie )
+    if(!arrFav){
+      await favMovies.create({idMovie,idUser}, { validate: true })
+      return "new FAV movie"
+    }  else {
+        let arrNoFav = await favMovies.destroy({ where: { id: arrFav[0].id } });
+        return arrNoFav;
     }
+  }
+  async listFav(){
+    const listMovies = await favMovies.findAll()
+    return listMovies
   }
 }

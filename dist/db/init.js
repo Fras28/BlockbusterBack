@@ -5,10 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const blockbuster_model_1 = __importDefault(require("./models/blockbuster.model"));
 const coments_model_1 = __importDefault(require("./models/coments.model"));
+const favMovie_1 = __importDefault(require("./models/favMovie"));
 const users_model_1 = __importDefault(require("./models/users.model"));
 const dbInit = () => Promise.all([
     blockbuster_model_1.default.sync({ alter: true }),
     coments_model_1.default.sync({ alter: true }),
     users_model_1.default.sync({ alter: true }),
+    favMovie_1.default.sync({ alter: true }),
 ]);
 exports.default = dbInit;

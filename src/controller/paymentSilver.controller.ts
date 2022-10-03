@@ -54,7 +54,7 @@ export const executePaymentSilver = async (req: Request, res: Response) => {
         },
     })
     data2.push(response.data)
-    res.send(data2)
+    res.redirect("https://blockbuster-pf.vercel.app/silver");
     //console.log(response.data, "acaaa")
     //res.json({ data: response })
     //res.json({ data: response.data })
