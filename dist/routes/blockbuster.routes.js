@@ -75,4 +75,5 @@ router.get('/execute-paymentSilver', paymentSilver_controller_1.executePaymentSi
 router.put('/abi', paymentGold_controller_1.abi);
 //CHANGE SILVER
 router.put('/apiSilver', paymentSilver_controller_1.apiSilver);
+// router.put("/favList", addFav)
 exports.default = router;

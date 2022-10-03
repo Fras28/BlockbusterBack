@@ -71,8 +71,8 @@ export const suspMovie = async (req: Request, res: Response) => {
   const { id } = req.body;
   console.log(id);
   try {
-    await adminService.suspendMovie(id);
-    res.status(200).send("The movie was deleted");
+    await adminService.statusMovie(id);
+    res.status(200).send("The movie was Updated");
   } catch (e) {
     res.status(400).send("Something went rong whit this Movie ​​");
   }

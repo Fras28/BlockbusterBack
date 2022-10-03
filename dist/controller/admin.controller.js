@@ -90,8 +90,8 @@ const suspMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     console.log(id);
     try {
-        yield adminService.suspendMovie(id);
-        res.status(200).send("The movie was deleted");
+        yield adminService.statusMovie(id);
+        res.status(200).send("The movie was Updated");
     }
     catch (e) {
         res.status(400).send("Something went rong whit this Movie ​​");
