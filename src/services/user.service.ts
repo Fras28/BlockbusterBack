@@ -13,6 +13,7 @@ export type User = {
   age: string;
   status: boolean;
   category: Category;
+  fav?:number[];
 };
 
 export class UserService {
@@ -58,19 +59,4 @@ export class UserService {
     return mapMail;
   }
 
-
-  // async newFav(idMovie: number, idUser: number) {
-  //   let newARR = await Users.findAll({ where: { id: idUser } });
-  //   if (newARR[0].fav.indexOf(idMovie) === -1) {
-  //     newARR[0].fav.push(idMovie);
-  //     let newFavList = await Users.update(
-  //       { fav: newARR[0].fav },
-  //       { where: { id: idUser } }
-  //     );
-  //     return newFavList;
-  //   } else {
-  //     const rta = newARR[0].fav.filter((e) => e !== idMovie);
-  //     return rta;
-  //   }
-  // }
 }
