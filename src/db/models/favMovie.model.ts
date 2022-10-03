@@ -25,8 +25,12 @@ fav.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    idUser: { type: DataTypes.INTEGER },
-    idMovie: { type: DataTypes.INTEGER },
+    idUser: {
+       type: DataTypes.INTEGER 
+      },
+    idMovie: { 
+      type: DataTypes.INTEGER
+     },
   },
   { sequelize: sequelizeConnection, paranoid: true }
 );

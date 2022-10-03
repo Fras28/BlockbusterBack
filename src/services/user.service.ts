@@ -17,7 +17,7 @@ export type User = {
 };
 
 export type Fav = {
-  id:number;
+  id?:number;
   idUser:number;
   idMovie:number;
 }
@@ -74,13 +74,14 @@ export class UserService {
   async newFav(idMovie: number, idUser: number) {
     let newARR:Array<Fav> = await favMovies.findAll({ where: { idUser: idUser } });
     let arrFav = newARR.filter(e => e.idMovie === idMovie )
-    if(!arrFav){
-      await favMovies.create({idMovie,idUser}, { validate: true })
-      return "new FAV movie"
-    }  else {
-        let arrNoFav = await favMovies.destroy({ where: { id: arrFav[0].id } });
-        return arrNoFav;
-    }
+    const ojbeto = {idMovie,idUser}
+    if(!arrFav.length){
+     const lista =  await favMovies.create(ojbeto, { validate: true })
+      return lista
+    }  if(arrFav.length) {
+         let arrNoFav = await favMovies.destroy({ where: { id: arrFav[0].id } });
+         return arrNoFav;
+     }else throw new Error
   }
   async listFav(){
     const listMovies = await favMovies.findAll()
