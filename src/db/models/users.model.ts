@@ -25,7 +25,7 @@ class users extends Model<UsersAttributes> {
   public email!: string;
   public status!: boolean;         
   public category!: string;
-  public fav!: number[];
+  public fav?: number[];
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
