@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc && node ./dist/index.js",
-    "start": "ts-node-dev --respawn src/index.ts"
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "start": "tsc && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
