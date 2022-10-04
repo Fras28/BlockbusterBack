@@ -10,7 +10,7 @@ exports.transporter = nodemailer_1.default.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: "blockbusterpf@gmail.com",
-        pass: "olwlnsfckucnihjn", // generated ethereal password
+        user: "abi.rgalindo96@gmail.com",
+        pass: "ayqbfcoauewompxy", // generated ethereal password
     },
 });

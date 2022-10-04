@@ -3,7 +3,7 @@ import { addMovie, fullDbMovies, getMovieId} from "../controller/blockbuster.con
 import {  addUser, deletUser, editUser } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
 import {  bannComments, bannUser, fullUsers, getUser, newAdmin, suspMovie, unBannUser} from "../controller/admin.controller"
-// import { nodemailerAddMovie, nodemailerBannUser, nodemailerCreateUser } from "../controller/nodemailer.controller";
+import { nodemailerAddMovie, nodemailerBannUser, nodemailerCreateUser } from "../controller/nodemailer.controller";
 import {abi, createPaymentGold, executePaymentGold, gold} from "../controller/paymentGold.controller"
 import {apiSilver, createPaymentSilver, executePaymentSilver} from "../controller/paymentSilver.controller"
 
@@ -85,14 +85,14 @@ router.put("/bannComments", bannComments)
 
 //-------------------------------------------- NODEMAILER-------------------------------------------
 
-// //SEND SPAM NEW MOVIE 
-// router.get("/nodemailer", nodemailerAddMovie)
+//SEND SPAM NEW MOVIE
+router.get("/nodemailer", nodemailerAddMovie)
 
-// //SEND SPAM WELCOME EMAILS TO CLIENTS
-// router.get("/nodemaileru", nodemailerCreateUser)
+//SEND SPAM WELCOME EMAILS TO CLIENTS
+router.get("/nodemaileru", nodemailerCreateUser)
 
-// //SEND SPAM THE THE ADMIN BANN SOMEONE
-// router.get("/nodemailerb", nodemailerBannUser)
+//SEND SPAM THE THE ADMIN BANN SOMEONE
+router.get("/nodemailerb", nodemailerBannUser)
 
 //---------------------------------------------- PAYPAL ---------------------------------------------------------
 
