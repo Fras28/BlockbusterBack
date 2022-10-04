@@ -33,4 +33,10 @@ favMovies.init({
     sequelize: db_1.default,
     paranoid: true,
 });
+blockbuster_model_1.default.belongsToMany(users_model_1.default, {
+    through: favMovies
+});
+users_model_1.default.belongsToMany(blockbuster_model_1.default, {
+    through: favMovies
+});
 exports.default = favMovies;

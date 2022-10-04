@@ -54,4 +54,11 @@ favMovies.init(
   }
 );
 
+blockbuster.belongsToMany(users,{
+  through:favMovies
+})
+users.belongsToMany(blockbuster,{
+  through:favMovies
+})
+
 export default favMovies;

@@ -5,8 +5,8 @@ import nodemailer from "nodemailer"
     port: 465,
     secure: true,
     auth: {
-      user: process.env.NODEMAIL, // generated ethereal user
-      pass: process.env.PASSNODE, // generated ethereal password
+      user: "blockbusterpg@gmail.com", // generated ethereal user
+      pass: "dufdymmcmzuaspnd", // generated ethereal password
     },
   });
 

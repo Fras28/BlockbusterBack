@@ -8,9 +8,12 @@ interface UsersAttributes {
   lastname: string;
   nickname: string;
   picture: string;
+  date:string;
   email: string;
   status: boolean;
   category: string;
+  limiter?:string;//0 if(category:silver){update(limitador+1) if(limitado >20){(update(category:"user"))}}
+  //
 }
 
 class users extends Model<UsersAttributes> {
@@ -22,6 +25,8 @@ class users extends Model<UsersAttributes> {
   public email!: string;
   public status!: boolean;         
   public category!: string;
+  public limiter !:string;
+
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -44,6 +49,9 @@ users.init(
     nickname: {
       type: DataTypes.STRING,
     },
+    date:{
+      type: DataTypes.STRING,
+    },
     picture: {
       type: DataTypes.STRING,
     },
@@ -55,8 +63,9 @@ users.init(
     },
     category: {
       type: DataTypes.STRING,
-      // .ENUM("user", "silver", "gold", "admin"),
-      // defaultValue: "user",
+    },
+    limiter:{
+      type: DataTypes.STRING,
     },
   },
   { sequelize: sequelizeConnection, paranoid: true }
