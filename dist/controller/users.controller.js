@@ -44,7 +44,7 @@ exports.deletUser = deletUser;
 const editUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, lastname, date, id } = req.body;
     try {
-        let editUser = yield exports.usersService.changePic(name, lastname, date, id);
+        let editUser = yield exports.usersService.changePic(name, lastname, id);
         let edited = yield exports.usersService.getUserId(id);
         res.status(200).send(edited);
     }

@@ -11,9 +11,6 @@ exports.transporter = nodemailer_1.default.createTransport({
     secure: true,
     auth: {
         user: "blockbusterpf@gmail.com",
-        pass: "lsaomypmspnamwje", // generated ethereal password
+        pass: "olwlnsfckucnihjn", // generated ethereal password
     },
-});
-exports.transporter.verify().then(() => {
-    console.log("Ready for send email`s");
 });

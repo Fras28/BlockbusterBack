@@ -16,19 +16,6 @@ export const addUser = async (req: Request, res: Response) => {
   }
 };
 
-export const addFav = async(req: Request, res: Response) => {
-  const {idMovie,idUser} = req.body;
-  try{
-    const newFav = await usersService.newFav(idMovie,idUser)
-    res.status(200).send(newFav)
-  }catch(e){
-    res.status(404).send("bad request")
-  }
-}
-
-
-
-
 
 export const deletUser = async (req: Request, res: Response) => {
   const {id} = req.body;
@@ -44,7 +31,7 @@ export const deletUser = async (req: Request, res: Response) => {
 export const editUser = async (req: Request, res: Response) => {
   const { name, lastname, date, id } = req.body;
   try {
-    let editUser = await usersService.changePic(name, lastname, date, id);
+    let editUser = await usersService.changePic(name, lastname, id);
     let edited = await usersService.getUserId(id)
     res.status(200).send(edited);
   } catch (e) {

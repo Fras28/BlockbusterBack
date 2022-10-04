@@ -46,9 +46,9 @@ class UserService {
             return deletUser;
         });
     }
-    changePic(name, date, lastname, id) {
+    changePic(name, lastname, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield users_model_1.default.update({ name, date, lastname }, { where: { id } });
+            let userX = yield users_model_1.default.update({ name, lastname }, { where: { id } });
             return userX;
         });
     }
