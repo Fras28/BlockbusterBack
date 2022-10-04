@@ -1,4 +1,5 @@
 import { strict } from "assert";
+import favMovies from "../db/models/favMovies";
 import Users from "../db/models/users.model";
 
 type Category = "user" | "silver" | "gold";
@@ -14,6 +15,12 @@ export type User = {
   status: boolean;
   category: Category;
 };
+
+export type Fav = {
+  id?:number;
+  idUser:number;
+  idMovie:number;
+}
 
 export class UserService {
   constructor(private userModel: Users) {}
@@ -58,4 +65,22 @@ export class UserService {
     return mapMail;
   }
 
+  async newFav(idMovie: number, idUser: number) {
+    let newARR:Array<Fav> = await favMovies.findAll({ where: { idUser } });
+    let arrFav = newARR.filter(e => e.idMovie === idMovie )
+    const ojbeto = {idMovie,idUser}
+    if(!arrFav.length){
+     const lista =  await favMovies.create(ojbeto, { validate: true })
+      return lista
+    }  if(arrFav.length) {
+         let arrNoFav = await favMovies.destroy({ where: { id: arrFav[0].id } });
+         return arrNoFav;
+     }else throw new Error
+  }
+
+  async listFav(){
+    const listMovies = await favMovies.findAll()
+    return listMovies
+  }
 }
+

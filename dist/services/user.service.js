@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
+const favMovies_1 = __importDefault(require("../db/models/favMovies"));
 const users_model_1 = __importDefault(require("../db/models/users.model"));
 class UserService {
     constructor(userModel) {
@@ -63,6 +64,29 @@ class UserService {
             let emailUser = yield users_model_1.default.findAll();
             let mapMail = emailUser.map((e) => e.email);
             return mapMail;
+        });
+    }
+    newFav(idMovie, idUser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let newARR = yield favMovies_1.default.findAll({ where: { idUser } });
+            let arrFav = newARR.filter(e => e.idMovie === idMovie);
+            const ojbeto = { idMovie, idUser };
+            if (!arrFav.length) {
+                const lista = yield favMovies_1.default.create(ojbeto, { validate: true });
+                return lista;
+            }
+            if (arrFav.length) {
+                let arrNoFav = yield favMovies_1.default.destroy({ where: { id: arrFav[0].id } });
+                return arrNoFav;
+            }
+            else
+                throw new Error;
+        });
+    }
+    listFav() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const listMovies = yield favMovies_1.default.findAll();
+            return listMovies;
         });
     }
 }
