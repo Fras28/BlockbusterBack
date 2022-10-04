@@ -1,6 +1,7 @@
 import Blockbuster from "../db/models/blockbuster.model";
 import Users from "../db/models/users.model";
 import Comments from "../db/models/coments.model";
+import favMovies from "../db/models/favMovies";
 
 export type Movie = {
   id: number;

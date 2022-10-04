@@ -22,6 +22,9 @@ users.init({
     nickname: {
         type: sequelize_1.DataTypes.STRING,
     },
+    date: {
+        type: sequelize_1.DataTypes.STRING,
+    },
     picture: {
         type: sequelize_1.DataTypes.STRING,
     },
@@ -33,8 +36,9 @@ users.init({
     },
     category: {
         type: sequelize_1.DataTypes.STRING,
-        // .ENUM("user", "silver", "gold", "admin"),
-        // defaultValue: "user",
+    },
+    limiter: {
+        type: sequelize_1.DataTypes.STRING,
     },
 }, { sequelize: db_1.default, paranoid: true });
 // season:{

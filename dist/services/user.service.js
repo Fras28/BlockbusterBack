@@ -41,15 +41,21 @@ class UserService {
             return userX;
         });
     }
+    defineCategoryUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userX = yield users_model_1.default.update({ category: "user" }, { where: { id } });
+            return userX;
+        });
+    }
     deletUser(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let deletUser = users_model_1.default.destroy({ where: { id } });
             return deletUser;
         });
     }
-    changePic(name, lastname, id) {
+    changePic(name, date, lastname, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let userX = yield users_model_1.default.update({ name, lastname }, { where: { id } });
+            let userX = yield users_model_1.default.update({ name, lastname, date }, { where: { id } });
             return userX;
         });
     }
@@ -69,7 +75,7 @@ class UserService {
     newFav(idMovie, idUser) {
         return __awaiter(this, void 0, void 0, function* () {
             let newARR = yield favMovies_1.default.findAll({ where: { idUser } });
-            let arrFav = newARR.filter(e => e.idMovie === idMovie);
+            let arrFav = newARR.filter((e) => e.idMovie === idMovie);
             const ojbeto = { idMovie, idUser };
             if (!arrFav.length) {
                 const lista = yield favMovies_1.default.create(ojbeto, { validate: true });
@@ -80,13 +86,45 @@ class UserService {
                 return arrNoFav;
             }
             else
-                throw new Error;
+                throw new Error();
         });
     }
     listFav() {
         return __awaiter(this, void 0, void 0, function* () {
             const listMovies = yield favMovies_1.default.findAll();
             return listMovies;
+        });
+    }
+    limiter(id, idMovie) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const userX = yield users_model_1.default.findAll({ where: { id } });
+            if (userX[0].category === "silver") {
+                const limi = userX[0].limiter;
+                const rta = limi + "," + idMovie;
+                yield users_model_1.default.update({ limiter: rta }, { where: { id } });
+                if (userX[0].limiter.slice(0, 19)) {
+                    yield users_model_1.default.update({ category: "user" }, { where: { id } });
+                    yield users_model_1.default.update({ limiter: "" }, { where: { id } });
+                    const userX1 = yield users_model_1.default.findAll({ where: { id } });
+                    return userX1[0];
+                }
+                return userX[0];
+            }
+            if (userX[0].category === "gold") {
+                const limi = userX[0].limiter;
+                const rta = limi + "," + idMovie;
+                yield users_model_1.default.update({ limiter: rta }, { where: { id } });
+                if (userX[0].limiter.slice(0, 39)) {
+                    yield users_model_1.default.update({ category: "user" }, { where: { id } });
+                    yield users_model_1.default.update({ limiter: "" }, { where: { id } });
+                    const userX1 = yield users_model_1.default.findAll({ where: { id } });
+                    return userX1[0];
+                }
+                return userX[0];
+            }
+            else {
+                throw new Error();
+            }
         });
     }
 }

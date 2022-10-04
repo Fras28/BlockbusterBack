@@ -9,7 +9,7 @@ const SECRET =
   "EAzzDuNzWs9-wZSuNwqO-VV4BteE8OUvQctWqC7VBLeYdhClktLEmHHAjxMZYI24f5zmhwCI57yLr1Qk";
 const PAYPAL_API = "https://api-m.sandbox.paypal.com"; // Live https://api-m.paypal.com
 
-const auth = { user: CLIENT, pass: SECRET };
+const auth = { user: process.env.CLIENT, pass: process.env.SECRET };
 
 export const createPaymentGold = async (req: Request, res: Response) => {
   const body = {
@@ -58,7 +58,7 @@ export const executePaymentGold = async (req: Request, res: Response) => {
   );
   // usersService.defineCategoryGold(id)
   data2.push(response.data);
-  res.send(data2);
+  res.redirect("https://blockbuster-pf.vercel.app/gold");
 };
 
 export const gold = () => {
@@ -69,9 +69,6 @@ export const gold = () => {
 export const abi = async (req: Request, res: Response) => {
   const { id } = req.body;
   let api = gold();
-  api.map((e) => {
-    return e.status;
-  });
   if (api) {
     usersService.defineCategoryGold(id);
   }

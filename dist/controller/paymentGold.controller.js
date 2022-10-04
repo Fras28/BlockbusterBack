@@ -18,7 +18,7 @@ const users_controller_1 = require("./users.controller");
 const CLIENT = "AZ3uE4WtcfAbqy5f_Ak2Uxnqd4sCZH5EyG1LeOAzz072y_I-IPyzY3esn1BRJ0KWpqulbcq-5NnGQxVB";
 const SECRET = "EAzzDuNzWs9-wZSuNwqO-VV4BteE8OUvQctWqC7VBLeYdhClktLEmHHAjxMZYI24f5zmhwCI57yLr1Qk";
 const PAYPAL_API = "https://api-m.sandbox.paypal.com"; // Live https://api-m.paypal.com
-const auth = { user: CLIENT, pass: SECRET };
+const auth = { user: process.env.CLIENT, pass: process.env.SECRET };
 const createPaymentGold = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = {
         intent: "CAPTURE",
@@ -60,7 +60,7 @@ const executePaymentGold = (req, res) => __awaiter(void 0, void 0, void 0, funct
     });
     // usersService.defineCategoryGold(id)
     data2.push(response.data);
-    res.send(data2);
+    res.redirect("https://blockbuster-pf.vercel.app/gold");
 });
 exports.executePaymentGold = executePaymentGold;
 const gold = () => {
@@ -71,9 +71,6 @@ exports.gold = gold;
 const abi = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.body;
     let api = (0, exports.gold)();
-    api.map((e) => {
-        return e.status;
-    });
     if (api) {
         users_controller_1.usersService.defineCategoryGold(id);
     }
